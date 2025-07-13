@@ -1,5 +1,5 @@
 <!---------------------------- Banner Image ----------------------------->
-![Devraj Chatribin - Banner](https://user-images.githubusercontent.com/65373279/118028011-34ec0180-b380-11eb-80ce-58f1e13a1292.png)
+![Taiwo Adekola - Banner](https://res.cloudinary.com/dtjjgiitl/image/upload/q_auto:good,f_auto,fl_progressive/v1752427949/ulnxcstlzdkah1p6czpc.jpg)
 
 
 <!---------------------------- Typewriter animation ----------------------------->
@@ -16,7 +16,7 @@
 - 👯 Building [Design & Code](https://discord.gg/gM3bG4U5) Community.
 - 👨‍💻 Explore my diverse projects at https://taiwoadekola.com/.
 - 💬 Ask me about **Data Analysis & Visualization, CRM, Automation and Flow Development.**
-- 📫 Reach out to me at: <a href="mailto:adekola.taiwo@yahoo.com<">adekola.taiwo@yahoo.com</a>
+- 📫 Reach out to me at: <a href="mailto:contact@taiwoadekola.com<">contact@taiwoadekola.com</a>
 - 📄 Dive into my experiences with my **Resume**: [here]([https://docs.google.com/document/d/1byhlSiSjIklDE3ORVPURsdJgRfKGxaJEukBjgcoQHPc])
 - ⚡ Fun fact: Apart from Data, I'm also an accomplished **Flowgrammer**!
 <br>
