@@ -1,168 +1,163 @@
 # Tenda — Media Kit
 
-Everything a journalist needs to file without emailing us first. Hand this over with the press release and the asset folder.
-
 ---
 
 ## 1. Fact sheet
 
 | | |
 |---|---|
-| **Name** | Tenda |
-| **Category** | Onchain microtasking application *(not a marketplace — see §4)* |
-| **What it is** | A mobile app where tasks are posted, assigned, completed, accepted and paid — with settlement happening at the moment of acceptance |
-| **Who it's for** | **Earners:** anyone with a phone and spare time. **Posters:** anyone who needs a volume of small tasks done without a hiring process |
-| **The claim** | You are paid instantly after completing an assigned task |
-| **Geography** | Tasks can be created anywhere and executed anywhere |
-| **Platforms** | [[VERIFY: iOS / Android / both]] |
-| **Launch date** | [[VERIFY]] |
-| **Launch markets** | [[VERIFY]] |
-| **Chain** | [[VERIFY]] |
-| **Settlement asset** | [[VERIFY]] |
-| **Wallet model** | [[VERIFY: custodial / embedded / bring-your-own]] |
-| **Fees** | [[VERIFY]] |
-| **KYC** | [[VERIFY]] |
-| **Founded** | [[VERIFY]] |
-| **Headquarters** | [[VERIFY]] |
-| **Team size** | [[VERIFY]] |
-| **Funding** | [[VERIFY — omit the row entirely if not disclosing; never approximate]] |
+| **Name** | Tenda *(wordmark: `tenda.`)* |
+| **What it is** | On-chain escrow application for small paid work |
+| **Two surfaces** | **Gigs** — post/accept tasks in 5 categories · **Exchange** — P2P crypto ↔ local cash |
+| **Release** | `v0.4.3-testnet` — **testnet** |
+| **Audit** | **Pending. Not yet audited.** Third-party audit due before public mainnet |
+| **Chains** | Solana · Base · Celo |
+| **Assets in escrow** | USDC · SOL · ETH |
+| **Escrow lock time** | < 2 seconds |
+| **Fee** | 2.5% flat, deducted at release *(12 USDC → 11.70 worker / 0.30 Tenda)* |
+| **Custody** | Self-custody. Funds move from the user's own wallet into the contract. **No admin key, no pause button, no sweep function** |
+| **Release condition** | Photo or video proof + one poster approval; atomic split in the same transaction |
+| **Gig categories** | delivery · photo · errand · service · digital |
+| **Observed gig range** | 11–60 USDC |
+| **Fiat markets** | 8 — NGN, GHS, KES, ZAR, PHP, USD, GBP, EUR |
+| **Cash rails** | Bank transfer · M-Pesa · MoMo · GCash |
+| **Wallets** | Phantom · Solflare · 400+ via Reown AppKit |
+| **Gas handling** | Celo: USDC pays its own gas (`feeCurrency`). Solana: one-time gas grant. Base: Paymaster sponsorship *in progress* |
+| **Source** | Open. Solana program Rust/Anchor; EVM Solidity/Foundry; full test suites |
+| **Access** | Web app + downloadable app |
 | **Website** | tendahq.com |
-| **Press contact** | [[NAME]] · [[EMAIL]] |
-
-> **Do not publish this sheet with a bracket in it.** Any row that cannot be filled should be deleted, not guessed. An empty row is a smaller problem than a wrong one, and a wrong one in a press kit gets repeated by every outlet that copies it.
+| **Founder** | [[UNKNOWN — supply name and title]] |
+| **Mainnet date / audit firm** | [[UNKNOWN]] |
+| **App stores** | [[UNKNOWN — is "Download App" iOS, Android, or both?]] |
+| **KYC** | [[UNKNOWN]] |
+| **Token** | [[UNKNOWN — no token appears anywhere on the site; confirm "none" before answering]] |
 
 ---
 
 ## 2. Boilerplate
 
 **Long (75 words)**
-> Tenda is a rewarding onchain microtasking application. Anyone can post a task from anywhere and anyone can complete one from anywhere, with payment settling onchain the moment a completed task is accepted — no payout queue, no threshold, no waiting period. Tenda is an application rather than a marketplace: posting, assignment, completion and settlement all happen on one surface, which is what makes instant settlement possible. Tenda is available on [[PLATFORMS]]. More at tendahq.com.
+> Tenda is an on-chain escrow application for small paid work. When a gig is posted, funds leave the poster's wallet and lock in a contract on Solana, Base or Celo; the worker delivers and uploads photo proof; one approval releases 97.5% to the worker in seconds, with a 2.5% flat fee. Tenda holds no balances and has no admin key. Tenda is currently a testnet release (v0.4.3-testnet) with a third-party audit due before mainnet. tendahq.com
 
 **Short (30 words)**
-> Tenda is a rewarding onchain microtasking application where tasks can be posted or completed from anywhere, and payment settles the moment work is accepted. Not a marketplace — an application. tendahq.com
+> Tenda is an on-chain escrow app for small paid work. Funds lock when a gig posts, photo proof releases them, and settlement takes seconds. Currently a testnet release. tendahq.com
 
 **Ultra-short (15 words)**
-> Tenda is an onchain microtasking app that pays earners the moment a task is accepted.
+> Tenda is an on-chain escrow app where the money locks before the work starts.
 
 ---
 
-## 3. The loop — the diagram every explainer needs
+## 3. The flow
 
 ```
-   POST  ──▶  ASSIGN  ──▶  DO  ──▶  ACCEPT  ──▶  PAID
-    │                                              ▲
-    └──────────── all of it onchain ───────────────┘
+   LOCK  ────▶   WORK   ────▶  APPROVE  ────▶  RELEASE
+  poster        worker         poster        program · atomic
+  < 2s          photo proof    one signature  97.5% / 2.5% · seconds
 ```
 
-Five states of one task. On other platforms, the fifth is a separate process with its own queue, threshold and calendar. On Tenda it happens in the same moment as the fourth.
+**Worked example, from the site:** 12 USDC locked → `PROOF SUBMITTED` (photo, 2 files) → `APPROVED` → `SETTLED`: payout **11.70 USDC**, fee **0.30 USDC**.
 
-**The sentence to quote:** *On Tenda, "paid" isn't the next step after the task. It's the last state of the task.*
+**Quotable:** *The money doesn't travel when you're paid. It was already there — approval just opens the lock.*
 
 ---
 
-## 4. A note for writers covering Tenda
+## 4. A note for writers
 
-Tenda is an application, not a marketplace. This is a factual description of the product, not a branding preference, and getting it wrong changes what the story says.
+**Please describe Tenda as an escrow application.** Gigs and Exchange are two surfaces over one contract; the contract is the product. *(Note: the site currently labels the gigs surface "Marketplace · Gigs" — that label is being corrected and does not reflect the product.)*
 
-A marketplace's job is finished when two parties find each other; the work and the payment then happen elsewhere, on other systems, later. Tenda's job is finished when the work is done and the money has moved, and all five states of a task live on one surface. That is precisely why settlement can happen at acceptance — payment cannot be part of task completion if payment runs on a different system than the task.
-
-**Please write:**
+**Please also carry the release stage.** Tenda is testnet, and the audit is not complete. We would rather a smaller story that is accurate.
 
 | Instead of | Write |
 |---|---|
-| "Tenda, a marketplace for gig work" | "Tenda, an onchain microtasking app" |
-| "a platform connecting workers with employers" | "an app where tasks are posted, completed and paid" |
-| "users list their services" | "posters create tasks; earners complete them" |
-| "a crypto gig marketplace" | "an onchain microtasking application" |
-| "workers request a payout" | "earners are paid when a task is accepted" |
-| "the Tenda ecosystem" | "the Tenda app" |
-| "Mechanical Turk, but crypto" | *(please don't — the difference is the settlement, and the comparison buries it)* |
+| a marketplace for gig work | an on-chain escrow application for small paid work |
+| Tenda holds the funds in escrow | the funds are held by an on-chain contract; Tenda has no admin key |
+| users withdraw their earnings | approval releases the funds to the worker |
+| a crypto gig platform | an escrow app for gigs and P2P trades |
+| Tenda is live | Tenda is a testnet release; mainnet follows a third-party audit |
+| trustless | nobody has to go first — the contract holds the money |
 
-**Terms we use:** Poster (creates a task) · Earner (completes a task) · Task · The loop (post → assign → do → accept → paid) · Settlement.
+**Terms:** Poster · Worker · Gig · Lock / Work / Approve / Release · Proof · Escrow
 
 ---
 
 ## 5. Quote bank
 
-Five approved quotes, each on a different angle, so that outlets covering the same launch don't run identical pulls. **Assign one per outlet** and note the assignment in the pitch tracker. All are attributed to `[[FOUNDER NAME]], [[TITLE]]` and must be approved by them before use.
+Assign one per outlet; never double-assign. All require `[[FOUNDER]]` approval.
 
-**Q1 — The core (default; use for general tech)**
-> "Nobody ever quit a microtasking app because the tasks were too hard. They quit at the payout screen. The work was never the problem — the gap between finishing and being paid is. So we don't have one."
+**Q1 — The core** *(default)*
+> "In informal work the problem was never finding someone to do the job. It's that somebody always has to go first. The worker does the job and hopes, or the poster pays up front and hopes. We made it so neither of them goes first — the contract does."
 
-**Q2 — The category claim (use for business and analysis desks)**
-> "A marketplace's job ends at the handshake. Ours ends when the money has moved. That's not a positioning line, it's an architecture decision — you cannot make payment part of finishing a task if the payment lives on a different system than the task."
+**Q2 — Escrow at errand scale** *(business, fintech)*
+> "Escrow has existed for decades and has never once been used on an eleven-dollar delivery, because the paperwork costs more than the job. A contract's overhead is a few cents. That's the entire opening."
 
-**Q3 — Access and geography (use for global, emerging-markets and policy desks)**
-> "'Work from anywhere' in this industry has always been sold as a laptop on a beach. For the people actually doing this work it means something much plainer: the app doesn't check your passport before deciding whether you're allowed to be paid."
+**Q3 — Proof is a photograph** *(features, product press)*
+> "The thing that makes escrow work on a fourteen-dollar errand isn't legal machinery. It's a photo of the package at the door — the same evidence people already send each other on WhatsApp. Except here it releases the money instead of asking for it."
 
-**Q4 — Why onchain, without the sermon (use for crypto desks — and for sceptics)**
-> "We didn't put this onchain to make a point about decentralisation. We put it onchain because it was the only way to make the money land at the same time as the work. If a bank rail could have done it in that moment, we'd have used a bank rail."
+**Q4 — No admin key** *(crypto, security)*
+> "We'd rather people read the contracts than take our word for anything. No admin key, no pause button, no sweep function. If you have to trust us, we built it wrong."
 
-**Q5 — The tap-to-earn inversion (use for feature writers and podcasts)**
-> "Tap-to-earn already proved that hundreds of millions of people will do small repetitive things on a phone for money. What it never had was work anyone needed done or money anyone could spend. We run the same loop and point it at real tasks."
+**Q5 — The gas wall** *(consumer crypto, ecosystem)*
+> "Most people quit crypto at 'first, buy a gas token.' That's not a user failure, it's a design failure. On Celo your USDC pays its own gas; on Solana we cover your first escrow. That part is ours to solve, not yours."
+
+**Q6 — On shipping testnet-first** *(use when asked why launch before audit)*
+> "We're testnet and we say so. The contracts are open and the test suites ship with them — read them end to end before you deposit anything. We'd rather be small and checkable than big and taken on faith."
 
 ---
 
-## 6. FAQ — the questions journalists will actually ask
+## 6. Journalist FAQ
 
-**Q: Isn't this a marketplace?**
-No. A marketplace lists supply and demand, introduces two parties, takes a fee for the introduction and steps back — the work and the money then happen on other systems. On Tenda all five states of a task live in one app: post, assign, do, accept, paid. That is why payment can settle at acceptance.
+**Q: Is this live? Can I use it with real money?**
+It is a testnet release, `v0.4.3-testnet`. Mainnet follows a third-party audit that has not yet been completed.
 
-**Q: What does "instantly" actually mean — seconds? Minutes?**
-[[VERIFY: state the real number and the conditions. If it is "typically under N seconds, subject to network confirmation," say that. A specific, honest number is far stronger than "instant," and it is the first thing a technical reporter will test.]]
+**Q: Where does the money sit during a job?**
+In the on-chain escrow contract — not a Tenda account, not the worker's wallet. Tenda has no admin key, pause button or sweep function. The same contract logic runs on Solana, Base and Celo, and any settlement is inspectable in that chain's block explorer.
 
-**Q: What kinds of tasks are on Tenda?**
-[[VERIFY: give three concrete examples with real ranges. "A task" is the least persuasive noun in this kit. Every good story about Tenda will be built around a specific example.]]
+**Q: What stops a worker taking a job and vanishing?**
+Nothing is paid until proof clears. If the worker walks, funds return to the poster once the proof deadline passes — the poster claims the refund on-chain. Workers also accumulate public history: `completed_gigs` is tracked on-chain; ratings, reviews and dispute counts are held off-chain by Tenda and shown on every profile.
 
-**Q: How do you stop people submitting garbage and claiming payment?**
-[[VERIFY: acceptance and verification model, dispute handling, and what protects each side. This is the single hardest question in the category and the one most likely to become the angle of a critical piece. Prepare a real answer, not a reassurance.]]
+**Q: What stops a poster refusing to approve after good work?**
+Two routes. **Dispute:** either side can escalate after proof is submitted, and Tenda mediation reviews evidence and instructs the contract to release or refund, within 24 hours. **Auto-approve:** a 48-hour window after which funds release automatically to the worker — **this route is planned and not yet live.** Until it ships, dispute is the only recourse against a silent poster. *(Expect this question. Answer it exactly this way — it is the sharpest gap in the product and evasion here would be found immediately.)*
 
-**Q: How do you stop scam or abusive tasks being posted?**
-[[VERIFY: moderation and task-approval policy.]]
+**Q: Isn't Tenda mediation a central point of trust?**
+Yes, for disputes specifically. Mediation instructs the contract; it cannot move funds arbitrarily, and the outcome is an on-chain receipt both sides can see. [[VERIFY: who mediates, and what governs the decision]]
 
-**Q: Do I need to know anything about crypto to use it?**
-[[VERIFY against the actual onboarding. The intended answer, if the product supports it: no — you complete a task and the money arrives; the chain is how it arrives, not something you operate.]]
+**Q: How much does it cost?**
+2.5% flat, taken at release. A 12 USDC gig pays the worker 11.70.
 
-**Q: Do earners have to deposit anything?**
-[[VERIFY. If the answer is no, say it loudly and early — it is the fastest way past the scam objection.]]
-
-**Q: Which countries can be paid?**
-[[VERIFY. If the answer is broader than the incumbents', this is a headline, not a footnote.]]
-
-**Q: How do you make money?**
-[[VERIFY: fee model.]]
-
-**Q: What stops this becoming a farm for low-quality AI-generated submissions?**
-[[VERIFY. Expect this question from every serious outlet in 2026; it may be the most-asked question of the launch.]]
+**Q: Do I need to own crypto to start?**
+No. On Celo, network fees come out of the USDC you're already transacting. On Solana, a one-time grant seeds your first wallet with enough SOL for a complete escrow lifecycle. On Base, sponsored transactions are in progress. Bring Phantom, Solflare, or any of 400+ wallets via Reown AppKit.
 
 **Q: Is there a token?**
-[[VERIFY. Answer plainly either way. An evasive answer here costs more credibility than any answer.]]
+[[UNKNOWN — no token appears on the site. Confirm and answer plainly; evasion here costs more than any answer.]]
+
+**Q: How do people turn USDC into spendable money?**
+Through Tenda Exchange — P2P trades against 8 fiat currencies over bank transfer, M-Pesa, MoMo and GCash, with the same escrow releasing only when both sides confirm.
+
+**Q: What's the AI-generated-submission risk on digital gigs?**
+[[VERIFY. Proof for a delivery is a photo; proof for "fix a broken Shopify checkout" is not. Expect this question on the digital category specifically.]]
 
 ---
 
 ## 7. Asset checklist
 
-Ship the kit only when every item is present. A journalist who has to ask for a screenshot on deadline writes a shorter story.
-
-- [ ] Logo — SVG + PNG, light and dark, with clear-space rules
-- [ ] App icon — 1024×1024 PNG
-- [ ] Founder headshot — high-res, plus name and title spelled exactly as they should appear
-- [ ] **Product screenshots — 5, and make them the loop:** (1) a real task with a real amount, (2) task assigned, (3) submitting completed work, (4) accepted, (5) **the paid state, with the balance changed.** Screenshot 5 is the entire story; nothing else in this kit works as hard.
-- [ ] Screen recording, 15–20s, unedited, one take — post to paid, in real time. Do not speed this up. If it is genuinely fast, the unedited clip *is* the proof, and speeding it up destroys the proof.
-- [ ] Product video, 60s, with captions
-- [ ] The loop diagram as SVG and PNG
-- [ ] Brand colours and typefaces
-- [ ] Press release in `.docx` and plain text
-- [ ] This kit as a shareable page: [[PRESS KIT URL]]
+- [ ] Logo — `tenda.` wordmark, SVG + PNG, light and dark
+- [ ] App icon 1024×1024
+- [ ] Founder headshot, name and title
+- [ ] **Screen recording, one take, unedited: post → lock → proof → approve → settled, with the block explorer open alongside.** The explorer is what makes it evidence rather than animation. Nothing else in this kit works as hard.
+- [ ] Screenshots: gig list with real amounts · escrow locked state · proof upload · approved · settled with the 11.70/0.30 split visible
+- [ ] The four-stage flow diagram, SVG + PNG
+- [ ] Contract addresses on all three testnets + explorer links
+- [ ] Links to the open-source repos
+- [ ] Press release, `.docx` and plain text
 
 ---
 
 ## 8. Correction protocol
 
-If an outlet publishes "marketplace," do not send a correction request for that alone. Reply once, warmly, with the §4 note and an offer of the loop diagram, and thank them for the coverage. Fight only these three:
+Correct these three immediately, every time:
 
-1. A stated **fee, chain or payout figure** that is wrong.
-2. A claim that **earners deposit money** to participate. *(If false, correct immediately — this one metastasises into "is Tenda a scam" searches.)*
-3. A claim about **which countries can be paid** that is wrong in either direction.
+1. **Any claim that Tenda is live on mainnet, or audited.** This is the one that matters most.
+2. **Any claim that Tenda holds user funds.** The contract does; Tenda has no admin key.
+3. **Any wrong fee or split figure.**
 
-Everything else is the cost of coverage.
+Let "marketplace" go — reply once with §4 and move on. Fix the site label instead.

@@ -1,167 +1,167 @@
 # Tenda — Landing Page Copy
 
-Section by section, in page order. Each section has one job. Where a section can't be written without an unverified fact, the placeholder is explicit — do not publish a bracket.
+The current site leads with the mechanism ("The escrow does the trusting"). This version keeps that as the brand line but leads the page with the **worker's** stake in it, which is what converts.
 
 ---
 
 ## Hero
 
-> # Finish the task. The money's already there.
+> **v0.4.3 · TESTNET RELEASE** · LIVE ON SOLANA · BASE · CELO
 >
-> Tenda is a rewarding onchain microtasking app. Post a task from anywhere, take a task from anywhere, and get paid the moment your work is accepted — not queued for payout, not scheduled for Friday.
+> # The money is already there.
 >
-> **[ Get Tenda for iPhone ]**  **[ Get Tenda for Android ]**
+> Tenda locks the payment in an on-chain contract the moment a gig is posted — before you agree to anything. Do the work, upload the photo, get released in seconds.
 >
-> *No deposit. No payout minimum. [[VERIFY both before publishing.]]*
+> Nobody holds it in between. Not the poster, not an exchange, not us.
+>
+> **[ Open Web App ]** **[ Download App ]**
+>
+> `< 2s lock` · `2.5% flat` · `97.5% to you` · `no gas token needed`
 
-**5-second test:**
-- *Who is it for?* Someone who wants to be paid for small work — established by "finish the task" and "the money."
-- *What does it do?* Named plainly in the subhead: post or complete tasks, get paid on acceptance.
-- *Why now?* The gap that everyone in this category has lived with is gone.
+**Hero variants**
 
-**Hero variants for A/B testing**
-
-| Variant | Headline | Tests |
+| | Headline | Tests |
 |---|---|---|
-| A *(control)* | Finish the task. The money's already there. | Benefit as a scene |
-| B | Done and paid, in the same moment. | The brand line as a headline |
-| C | Nobody quits these apps because the work was hard. They quit at the payout screen. | Problem-first — expect the highest scroll depth and the lowest bounce from cold traffic |
-| D | The app doesn't check your country before it pays you. | Access-first — run this one in emerging markets |
+| A | The money is already there. | Benefit from the worker's side |
+| B | The escrow does the trusting. | Current site line — mechanism-first |
+| C | Check the money's there before you take the job. | Instruction — highest expected conversion with sceptics |
+| D | Nobody goes first. | The abstraction |
 
 ---
 
-## The problem
+## Problem
 
-> ### The work was never the problem.
+> ### Somebody always has to go first.
 >
-> You did it. On a phone, on a bus, between two other things. It was fine.
+> That's the whole problem with small work, and it always has been.
 >
-> Then came the part nobody talks about in the ad: the $50 minimum you'll reach next March. The thirty-day hold. The dropdown with a hundred and ninety countries in it, eleven of which can actually withdraw. The gift card for a shop that doesn't exist where you live. The frozen account and the support address that doesn't reply.
+> You do the delivery and hope they pay. Or you pay up front and hope the delivery happens. One of you is always carrying the risk that the other one disappears — and that risk is priced into every informal job in Lagos, Nairobi, Accra and Johannesburg.
 >
-> **The gap between finishing and being paid is where this whole industry keeps its worst behaviour.**
+> It's why people work for less than they're worth. It's why they say no to strangers who would have paid.
 
 ---
 
-## The solution
+## Solution
 
-> ### So Tenda doesn't have a gap.
+> ### So neither of you goes first.
 >
-> A task is posted. It's assigned. You do it. It's accepted. You're paid.
+> When a gig is posted, the money leaves the poster's wallet and locks in an on-chain contract. It's not with the poster. It's not with us — **we have no admin key, no pause button, no sweep function.**
 >
-> Those are five states of one task, in one app — and the last one happens in the same moment as the one before it. There's no payout run to wait for, because there is no payout run.
+> Before you agree to anything, open a block explorer and look at it.
 >
-> **On Tenda, "paid" isn't the step after the task. It's the last state of the task.**
+> Then do the work and photograph it. One approval releases the funds — 97.5% to you, in seconds.
+>
+> **The money doesn't travel when you're paid. It was already there. Approval just opens the lock.**
 
 ---
 
 ## How it works
 
-> ### One loop. Five states. No gap.
+> ### Lock. Work. Approve. Release.
 >
-> **1 · Post** — Anyone can create a task, from anywhere. It goes onchain.
-> **2 · Assign** — The task goes to the person who's going to do it. [[VERIFY: assignment model]]
-> **3 · Do** — The work gets done and submitted in the app.
-> **4 · Accept** — The submission is accepted. [[VERIFY: acceptance model]]
-> **5 · Paid** — Settlement happens onchain. Now. Not next.
+> **01 · Lock** — Funds leave the poster's wallet and enter the escrow contract. Under two seconds. Neither party controls them now.
+> **02 · Work** — You accept and deliver. Photo or video proof goes up in the app.
+> **03 · Approve** — The poster reviews the proof and signs. One tap. No back-office, no phone calls.
+> **04 · Release** — In that same transaction, the contract splits the funds: 97.5% to you, 2.5% to Tenda. Settles in seconds on every chain.
 >
-> *[Diagram: the five-state loop]*
-> *[20-second unedited screen recording — post to paid, real time, no cuts]*
-
-> **Put the unedited recording here, not a montage.** This section either proves the claim or wastes the visit. A speeded-up video destroys the only evidence you have.
+> *[Screen recording — one take, block explorer visible alongside]*
 
 ---
 
-## For earners
+## If something goes wrong
 
-> ### Your phone is the workplace.
+> ### Funds are never stuck.
 >
-> - **Paid on acceptance.** Not a payout request. Not a threshold. The moment your task is accepted.
-> - **No deposit, ever.** You don't pay to work. [[VERIFY]]
-> - **From anywhere.** Tenda doesn't check where you are before deciding whether you're allowed to be paid.
-> - **You don't need to know anything about crypto.** Finish the task, the money arrives. The chain is how it arrives — not something you have to operate. [[VERIFY against onboarding]]
+> Every gig has a deterministic exit. Whichever one triggers, both sides get the same on-chain receipt.
 >
-> **[ Start earning ]**
+> | | |
+> |---|---|
+> | **Cancel** | The poster cancels before anyone accepts — funds return to them |
+> | **Reclaim** | You miss the proof deadline — the poster claims the refund |
+> | **Dispute** | Either side escalates after proof is submitted. Tenda mediation reviews the evidence and instructs the contract. Within 24 hours |
+> | **Auto-approve** | If the poster neither approves nor disputes within 48 hours, funds release to you automatically — **planned, not yet live** |
+>
+> ⚠️ **Say "planned" here in the product, exactly as the site does.** Until auto-approve ships, dispute is the only recourse against a poster who goes quiet, and hiding that would be the single fastest way to lose the trust this whole page is built on.
 
 ---
 
-## For posters
+## No gas token
 
-> ### Three hundred small things, done this week.
+> ### You don't need to own crypto to be paid in it.
 >
-> - **Post from anywhere**, to people anywhere. No hiring req, no contractor onboarding, no cross-border invoice.
-> - **Pay on acceptance.** You approve the work; the payment goes with it. Nothing to reconcile afterwards.
-> - **Built for volume.** One task or a batch of five hundred. [[VERIFY: batch capability]]
-> - **[[VERIFY & WRITE: quality and verification model.]]** *This bullet decides whether posters trust the app. It cannot ship as a placeholder, and it cannot ship as a vague reassurance — write the actual mechanism.*
+> Most people quit at *"first, buy a gas token."* That's a design failure, not a user failure — so we deleted the step.
 >
-> **[ Post your first task ]**
+> - **On Celo** — your USDC pays its own network fees. No CELO to find first.
+> - **On Solana** — link a wallet and we seed it with enough SOL for a full escrow. One grant per user, on us.
+> - **On Base** — sponsored transactions via Base Paymaster. *In progress.*
+> - **Any wallet** — Phantom, Solflare, or 400+ others through Reown AppKit. Or bring nothing and start fresh.
 
 ---
 
-## Proof
+## What gets posted
 
-> ### Don't take our word for it. Take twenty seconds.
+> ### If someone can do it, someone will post it.
 >
-> *[The unedited recording again, or a live counter]*
+> Deliveries, photoshoots, queues stood in, taps fixed, reels edited. Posted in local terms, paid in USDC.
 >
-> [[VERIFY & INSERT: real, specific proof only. Acceptable: total tasks paid, median seconds from acceptance to settlement, number of countries paid into, an earner testimonial with a name and a country. **Not acceptable — do not write these:** "thousands trust us," "join our growing community," five-star graphics with no source, or any number you cannot point at a dashboard for.]]
+> | | | |
+> |---|---|---|
+> | Bike a laptop across town · Ikeja | 11 USDC | NG Lagos |
+> | Translate a menu to French | 12 USDC | Remote |
+> | Wait in line for concert tickets | 14 USDC | ZA Johannesburg |
+> | Set up a WhatsApp Business catalog | 16 USDC | Remote |
+> | Fix a leaking kitchen tap | 20 USDC | GH Accra |
+> | Event photographer · 2 hours | 35 USDC | KE Nairobi |
+> | Fix a broken Shopify checkout | 50 USDC | Remote |
+> | Drone shots of a building site | 60 USDC | KE Nairobi |
 >
-> If there are no numbers yet, delete this section. An empty proof section is honest. A padded one is the exact thing this category's users have learned to spot.
+> Five categories: delivery · photo · errand · service · digital
 
 ---
 
-## Objections
+## Cash out
 
-> ### The questions you're already asking.
+> ### USDC in. Local cash out.
 >
-> **"Is this actually going to pay me?"**
-> That's the right question, and it's the one the whole app is built around. Payment settles when your completed task is accepted — it isn't a request you file afterwards and hope about. Watch the twenty-second recording above; it's one take, unedited.
+> Trade USDC, SOL or ETH against NGN, GHS, KES, ZAR, PHP, USD, GBP or EUR — over the rails you already use. Bank transfer, M-Pesa, MoMo, GCash.
 >
-> **"Do I have to put money in first?"**
-> No. [[VERIFY]]
+> Same escrow. It only releases when both sides confirm.
 >
-> **"I don't know anything about crypto."**
-> You don't need to. You finish a task, the money arrives. Onchain is how it arrives that fast. [[VERIFY]]
->
-> **"Is my country supported?"**
-> [[VERIFY — answer specifically. If the list is genuinely long, this is a headline, not a footnote.]]
->
-> **"How much can I actually make?"**
-> [[VERIFY — give a real range for real tasks, or say plainly that it depends on what's posted. Never imply an income.]]
->
-> **"Is this a marketplace?"**
-> No. A marketplace introduces two people and steps back; the work and the money then happen somewhere else. Tenda is where the work happens and where the money moves.
+> *Example: 250 USDC on Celo ↔ ₵3,950 GHS via MTN MoMo.*
 
 ---
 
-## Closing CTA
+## Testnet notice — put this above the footer, not in it
 
-> ### The gap was always optional.
+> ### Tenda is a testnet release.
 >
-> Post a task, or take one. Either way, the money moves when the work is done.
+> `v0.4.3-testnet`. A third-party audit is scheduled before public mainnet and **has not been completed yet.**
 >
-> **[ Get Tenda for iPhone ]**  **[ Get Tenda for Android ]**
+> The source is open — the Solana program in Rust/Anchor, the EVM contracts in Solidity/Foundry, both with full test suites. Read them end to end before you deposit anything. We'd rather you check than trust us.
 >
-> *Done and paid, in the same moment.*
+> **[ Read the contracts ]**
 
 ---
 
-## Meta and SEO
+## Closing
 
-**Title tag (58 chars)**
-`Tenda — Onchain Microtasking App. Paid on Acceptance.`
+> ### Nobody goes first.
+>
+> The contract does.
+>
+> **[ Open Web App ]** **[ Download App ]**
+>
+> *The escrow does the trusting.*
 
-**Meta description (154 chars)**
-`Post or complete small paid tasks from anywhere. Tenda settles payment the moment your work is accepted — no payout minimum, no hold, no withdrawal request.`
+---
 
-**Primary keyword:** onchain microtasking app
-**Secondary:** get paid instantly for tasks · microtask app that pays instantly · earn money from tasks on your phone · post small tasks online
-**Long-tail worth owning:** *"microtask apps that actually pay"* · *"microtask app no payout minimum"* · *"tasks that pay instantly in [country]"*
+## Meta / SEO
 
-> The long-tail terms are the highest-intent traffic in this category, because they are what someone types after being burned. Write one honest comparison page for each. That page, not the homepage, is what converts a sceptic.
+**Title (57)** `Tenda — On-Chain Escrow for Small Paid Work`
+**Meta (152)** `The money locks in a contract when a gig is posted, and photo proof releases it in seconds. 2.5% flat, no gas token needed. Solana, Base and Celo.`
 
-**Open Graph**
-- `og:title` — Finish the task. The money's already there.
-- `og:description` — Tenda is an onchain microtasking app. Post or complete tasks from anywhere, and get paid the moment your work is accepted.
-- `og:image` — the *paid* screen with a visibly changed balance. Not the logo.
+**Primary:** on-chain escrow app · crypto escrow for gig work
+**Secondary:** get paid in USDC for tasks · escrow gig app Nigeria/Kenya/Ghana · USDC to MoMo · USDC to M-Pesa
+**High-intent long-tail:** *"how to not get scammed on gig work"* · *"escrow for freelance work crypto"* · *"P2P USDC escrow M-Pesa"* — these are typed by someone who has already been burned, and they convert at a multiple of everything else. One honest comparison page each.
 
-**Schema:** `SoftwareApplication` — name, operatingSystem, applicationCategory, offers, aggregateRating **only if genuine store ratings exist.**
+**og:image** — the settled state showing `11.70 USDC` payout and the `0.30 · 2.5%` fee. Not the logo.

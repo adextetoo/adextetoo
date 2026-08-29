@@ -1,145 +1,114 @@
 # Tenda — Copy Review & Open Questions
 
-The Phase 4 gate. **Nothing in this campaign ships until Section 1 is empty.**
+---
+
+## 1 · Three findings that changed the campaign
+
+These emerged from reading the site and they matter more than any copy decision in this folder.
+
+### 1.1 — It's a testnet release with no audit
+
+`v0.4.3-testnet`. The site's own FAQ says the audit lands before mainnet and hasn't happened.
+
+**Consequence:** the campaign is split into two tracks. **Track A** (now) pitches builders and crypto press on an open, pre-audit escrow contract — an honest and genuinely interesting story. **Track B** (mainnet + published audit) is the consumer launch. Pitching consumer tech blogs a "get paid instantly" earning app that is unaudited testnet would produce a correction cycle, and in this category the first "it didn't pay me" wave never fully clears.
+
+**This is the recommendation I'd push hardest.** Track A costs nothing to run now and makes Track B easier later.
+
+### 1.2 — "Paid instantly after completing a task" isn't what the contract does
+
+The actual sequence is: funds lock at post → worker submits proof → **poster approves** → atomic release in seconds.
+
+Payment is instant **on approval**, not on completion. And the safety net for a poster who never approves — **auto-approve, 48h — is marked PLANNED on your own site and is not live.** Until it ships, an unresponsive poster leaves funds locked with only the dispute route as recourse.
+
+**Consequence:** every asset uses the accurate framing, which is stronger anyway — *the money was locked before you started.* That is a bigger claim than fast payment, it's verifiable in a block explorer, and no competitor can make it without rebuilding their custody.
+
+**Do not describe payment as automatic on completion anywhere.** A journalist who tests it and finds an approval step writes a very different second article.
+
+### 1.3 — Your site contradicts your positioning in one word
+
+You said: *we are not a marketplace, we are an application.* tendahq.com labels the gigs surface **`MARKETPLACE · GIGS`**.
+
+The reconciliation used throughout: **Tenda is an escrow application; Gigs and Exchange are surfaces over one contract.** That's accurate, defensible, and preserves your intent.
+
+**Fix the label before any pitch goes out.** It's one word, it's in the place every journalist screenshots, and no amount of media-kit language outweighs the product arguing against itself.
 
 ---
 
-## 1. Blocking — facts that must be resolved before anything publishes
+## 2 · What changed from the first draft
 
-`tendahq.com` could not be read from the environment this campaign was written in — the domain is blocked by the session's network egress policy (403 at the gateway), and the product has no public search footprint. **Every factual claim in this campaign therefore traces back to one of the five founder-supplied statements in `00-positioning-brief.md`, and nothing else.**
+The first version of this campaign was written before the site was available and rested on five statements. It was wrong in ways worth naming:
 
-That was a deliberate choice. A press kit containing a plausible-but-invented chain, fee or launch date is worse than one with a blank, because press kits get copied verbatim by every outlet that quotes them, and a wrong number propagates faster than a correction.
-
-**Resolve these, then find-and-replace. There are 103 bracketed placeholders across 13 files.**
-
-### Tier A — blocks the press release and media kit
-
-| # | Question | Why it blocks |
-|---|---|---|
-| A1 | **What does "instantly" mean in seconds, and under what conditions?** | The campaign's central claim. The first thing a technical journalist will time. A specific number ("typically under N seconds") is far stronger than the word "instant" — and honest about its conditions. |
-| A2 | **Which chain, and which settlement asset?** | First question from every crypto desk. Cannot ship a crypto pitch without it. |
-| A3 | **Wallet model — custodial, embedded, or bring-your-own?** | Determines whether "no crypto knowledge needed" is true. If it isn't true, several pieces of copy are wrong, not just imprecise. |
-| A4 | **Do earners ever deposit anything?** | The scam objection turns on this. If the answer is no, it should be one of the loudest lines in the campaign. |
-| A5 | **Is there a payout minimum?** | Claimed as "none" in the landing page, store listing and ads. If false, remove from all three. |
-| A6 | **The fee model — how does Tenda make money?** | Asked by every business desk and analyst. An evasive answer costs more credibility than any honest answer. |
-| A7 | **Platforms and launch date.** | Appears in every asset. |
-| A8 | **Launch markets, and which countries can actually be paid.** | If the list is genuinely broader than the incumbents', this is a headline rather than a footnote — and it changes which angle leads. |
-| A9 | **Founder name, title, and sign-off on all five quotes.** | No quote may be attributed without approval. |
-| A10 | **Is there a token?** | Answer plainly either way. Evasion here reads as concealment. |
-
-### Tier B — blocks the poster-side story and will decide the first critical article
-
-| # | Question | Why it matters |
-|---|---|---|
-| B1 | **Assignment model** — open claim, application, invitation, or algorithmic match? | State 2 of the loop is currently a blank in the product's own diagram. |
-| B2 | **Acceptance model** — poster review, automated check, or both? And what's the time limit? | State 4. "Paid on acceptance" is meaningless until acceptance is defined. If a poster can sit on an acceptance indefinitely, the gap has been moved, not removed — and a journalist will find that. |
-| B3 | **Verification, in both directions.** What stops rubbish submissions? What stops posters rejecting good work to avoid paying? | The hardest problem in microtasking and the most likely angle for a critical piece. Prepare a real mechanism with named limits. |
-| B4 | **AI-generated submissions.** | The live problem in this category in 2026. Expect it from every serious outlet and from Hacker News within the hour. |
-| B5 | **Task moderation** — what stops scam or abusive tasks being posted? | A single well-publicised scam task at launch would define the coverage. |
-| B6 | **Three concrete example tasks, with real pay ranges.** | "A task" is the least persuasive noun in the kit. Every good story about Tenda will be built around a specific example, and right now there isn't one anywhere in this campaign. |
-| B7 | **KYC requirements, if any.** | Affects the access angle, which is the campaign's strongest pitch. |
-| B8 | **Batch capability for posters.** | Claimed in the landing page. |
-
-### Tier C — needed for the proof sections, and honestly optional at launch
-
-| # | Question |
+| First draft | Reality |
 |---|---|
-| C1 | Real usage numbers: tasks paid, median seconds to settlement, countries paid into |
-| C2 | Named earner testimonials, with permission and country |
-| C3 | Company facts: founded, HQ, team size, funding *(omit any not disclosed — never approximate)* |
-| C4 | Support, privacy and terms URLs |
-| C5 | Press kit URL and media contact |
+| Angle: "the gap between done and paid" — payout minimums, 30-day holds | Wrong problem. Tenda's users don't face payout queues; they face **counterparty risk** in informal work. New angle: **the money is already there.** |
+| Competitors: MTurk, Clickworker, Appen, Toloka | Wrong set. The real incumbents are **WhatsApp gig groups, Binance P2P, and local errand apps.** |
+| Positioned as microtasking vs. marketplaces | Missed that the product is **escrow**, and missed **Exchange entirely** — a second surface with 8 fiat corridors |
+| Assumed a payout-speed story | The real stories are **escrow at errand scale** and **the gas wall removed** — neither of which was in the first draft |
+| Treated instant payment as the differentiator | The differentiator is that **funds are locked and verifiable before work begins** |
 
-> **If Tier C is empty, delete the proof sections.** An absent proof section is honest. A padded one is the precise thing this audience has been trained to detect, and it will cost more than it earns.
+The positioning method held; the inputs were wrong. Everything has been rewritten against `FACTS.md`.
 
 ---
 
-## 2. Quality gate — results
+## 3 · Quality gate
 
 | Check | Result |
 |---|---|
-| Every deliverable sounds like the same author | **Pass.** One voice defined in `01`, applied throughout. Register shifts by channel — HN is drier, TikTok is faster — but the vocabulary and the refusal to embellish are constant. |
-| No hollow superlatives or filler adjectives | **Pass.** Audited by grep: all hits for banned words appear only inside ban lists and explicit prohibitions, never in live copy. |
-| Every CTA specific and earned | **Pass.** No "learn more," no "click here." CTAs are actions: *Take a task · Post your first task · Watch a task go from posted to paid · Get Tenda.* |
-| No copy duplicated verbatim across platforms | **Pass.** LinkedIn, X, email, ads and store copy are separately written. The one-liner bank exists precisely so repeated *ideas* get different *sentences*. |
-| Hero passes the 5-second test | **Pass.** Documented in `05`, §Hero. |
-| Email subjects match bodies | **Pass.** No bait-and-switch; Email 6 self-disables when there's no real deadline. |
-| Ad claims match landing page exactly | **Pass.** "No payout minimum," "no hold," "paid on acceptance," "doesn't check your country" appear identically in both — all four contingent on A4, A5, A8. |
-| No copy that would work unchanged for another product | **Pass.** The category argument ("application, not marketplace"), the float argument, and the tap-to-earn inversion are all unusable by a competitor without first rebuilding their settlement. |
-| Cross-channel consistency | **Pass**, with one live risk — see §3.1. |
+| One author across all assets | **Pass** — voice defined in `01`, applied throughout; register shifts by channel, vocabulary doesn't |
+| No hollow superlatives | **Pass** — audited by grep; banned words appear only in ban lists. "Trustless" banned and absent |
+| CTAs specific and earned | **Pass** — *Read the source · Check the contract · Open the app · Watch it settle.* No "learn more" |
+| No verbatim duplication across platforms | **Pass** |
+| Ad claims match landing page | **Pass** — all Track A claims appear identically in both |
+| Testnet status carried everywhere | **Pass** — in the body of every asset, never only a footer |
+| Auto-approve described as planned | **Pass** — in `03`, `05`, `07`, `08`, `12`, and the site's own wording is matched |
+| No copy that would work for a competitor | **Pass** — "no admin key," the 11.70/0.30 split, `feeCurrency`, and the four exits are all Tenda-specific |
+| No earnings claims | **Pass** |
 
 ---
 
-## 3. Flagged issues
+## 4 · Flagged issues
 
-### 3.1 — "Instant" is doing a lot of work, and it's the one word that can break the campaign
+**4.1 — Digital gigs are the weak link in the proof model.** A photo proves a package reached a door. It proves very little about "fix a broken Shopify checkout" (50 USDC, your largest listed gig). Expect this question from Hacker News within the hour and from any serious reporter. `12` answers it as an open problem rather than a solved one, which is the only credible option — but a real answer would be worth more than any asset in this folder.
 
-The entire angle rests on it. If real settlement is "usually a few seconds, sometimes longer when the network is busy," that is still an excellent product and a fine story — but the copy must say so, and it must say so *before* launch rather than in a correction after.
+**4.2 — Mediation is a centralised trust point in a product whose pitch is that you don't need to trust anyone.** The concession is written into `03` and `12`, but it needs a specific answer: who mediates, under what published standard, with what appeal. A vague answer here undermines the "no admin key" claim by association, which is the strongest thing Tenda has.
 
-**Recommendation:** replace the word "instantly" with the actual measured number wherever it appears. *"Paid in under four seconds"* is more persuasive than *"paid instantly"* precisely because it sounds like a measurement rather than a promise. This audience discounts adjectives and trusts numbers.
+**4.3 — The gas story is under-told on the site.** "The hardest part of crypto, removed" is arguably a better consumer hook than the escrow itself — it's the one thing here that solves a problem every single crypto app has. It currently sits below the fold. Consider testing it as the hero for consumer traffic at Track B.
 
-### 3.2 — "Paid on acceptance" is only as strong as acceptance is bounded
+**4.4 — Exchange is nearly invisible in the site's own hierarchy.** Eight fiat corridors with M-Pesa, MoMo and GCash settlement is a substantial story for emerging-markets press on its own, and it's what makes Gigs useful — earning USDC matters only if it becomes spendable. It's currently a secondary card. Worth its own pitch, possibly its own launch.
 
-If a poster can delay acceptance indefinitely, Tenda hasn't removed the gap — it has moved it upstream, from payout to approval. This is the first thing a sharp journalist or a Hacker News commenter will notice, and the campaign has no answer for it yet.
+**4.5 — The float argument cuts both ways.** `08` LI-2 argues that Tenda gave up the float and that 2.5% is the whole model. It's a strong, honest argument and it invites: *is that viable?* Have an answer before publishing it.
 
-**Recommendation:** if there's an acceptance time limit or auto-accept window, it deserves to be a headline feature, not a footnote. If there isn't one, expect this to become the story, and prepare an honest answer now.
-
-### 3.3 — The campaign has no concrete example task anywhere in it
-
-Thirteen documents about small paid work, and not one names an actual task with an actual amount. That's the direct consequence of the site being unreadable, and it's the single biggest weakness in the material. Abstraction is the enemy of this category — "a task" persuades nobody, while "label 40 receipts, $3, about six minutes" persuades immediately.
-
-**Recommendation:** resolving B6 will improve more copy in this campaign than any other single answer. Pass three real examples through the landing page, the store listing, the ads and every video script.
-
-### 3.4 — "Not a marketplace" will be ignored by roughly half of coverage
-
-It's a fine and genuinely load-bearing distinction, but journalists reach for familiar categories under deadline. The §4 note in `03-media-kit.md` and the correction protocol in §8 are the mitigation.
-
-**Recommendation:** accept a hit rate around 50% and don't spend goodwill fighting it. Correct fees, deposits and country claims. Let "marketplace" go, and win it back over time by being consistent everywhere Tenda controls the words.
-
-### 3.5 — The strongest angle is the one with the least budget behind it
-
-Tier 3 (global/emerging markets) is the best story in the pack and reaches the actual users. Tier 1 (general tech) is the most prestigious and reaches almost none of them. There's a standing temptation to spend the launch chasing TechCrunch.
-
-**Recommendation:** pitch Tier 3 first and hardest, as scheduled at T-9. Coverage in Rest of World, TechCabal and Techpoint will both convert better and make the Tier-1 pitch warmer.
-
-### 3.6 — The float question will be asked, and the answer isn't written
-
-`08-social-posts.md` (LI-1) and `07-email-sequence.md` (Email 3) both make a sharp argument that competitors profit from the delay, and that Tenda gives that up deliberately. It's a genuinely good argument — and it invites the obvious follow-up: *so how do you make money?* Right now that's A6, unanswered.
-
-**Recommendation:** do not publish the float argument until the fee model is public. Making a pointed argument about someone else's business model while declining to explain your own is the one move in this campaign that could turn a friendly reporter.
+**4.6 — Solana Mobile (Seeker) reduced fees is a partnership-shaped detail that isn't being used.** It appears once, as a bullet. If there's a real relationship there, it's a pitch of its own to the Solana ecosystem press.
 
 ---
 
-## 4. What I could not do, and what it cost
+## 5 · Still unknown
 
-**Blocked:** `tendahq.com` is denied by this session's network egress policy — confirmed by three independent routes (WebFetch → `EGRESS_BLOCKED`; `curl` → 403 CONNECT at the gateway; headless Chromium via Playwright → `ERR_TUNNEL_CONNECTION_FAILED`, with and without explicit proxy configuration). The environment runs a strict allowlist: `wikipedia.org` and `example.com` are blocked too, so this is not specific to Tenda. Web search returns nothing about the product — the name collides with a large router manufacturer.
+Filled from the site where possible. These aren't:
 
-The proxy documentation is explicit that policy denials are to be reported rather than routed around, so no workaround was attempted.
-
-**What that cost, concretely:**
-- No real task examples, pay ranges, or screenshots *(§3.3 — the most damaging gap)*
-- No verified chain, fee model, wallet UX, or availability
-- No existing site copy to align the brand voice against, so the voice in `01` is derived from the five founder statements and the category's failure modes rather than from Tenda's own existing language
-- No team names, funding, or company facts
-- No confirmation of the actual settlement time *(§3.1)*
-
-**What it did not cost:** the positioning, the category argument, the campaign angle, the voice, the message hierarchy, and the structure of all thirteen deliverables. Those derive from the five founder statements and from competitive research, both of which were available. The material is complete and internally consistent; it needs facts poured into named slots, not rewriting.
-
-**Fastest path to resolution:** paste the site's copy into the conversation, or add `tendahq.com` to the environment's network policy and re-run — the Playwright MCP is now installed and committed to `.mcp.json`, so a fresh session will have browser tools ready the moment the domain is allowed.
+| # | Question | Blocks |
+|---|---|---|
+| 1 | Founder name and title | Every quote and press release |
+| 2 | Mainnet date; audit firm and date | Track B entirely |
+| 3 | Is "Download App" iOS, Android, APK, TestFlight or PWA? | `06` app store listing |
+| 4 | KYC requirements, if any | Emerging-markets pitches |
+| 5 | Token — is there one? *(none appears on the site)* | Crypto pitches; answer plainly either way |
+| 6 | Measured **release** time after approval *(the <2s figure is the lock)* | Every "seconds" claim |
+| 7 | Who mediates disputes, under what standard | §4.2 |
+| 8 | Verification approach for digital gigs | §4.1 |
+| 9 | Company: founded, HQ, team, funding | Fact sheet |
+| 10 | Contract addresses + explorer + repo links | Developer pitches — highest-value item on this list |
 
 ---
 
-## 5. Pre-flight checklist
+## 6 · Pre-flight
 
-- [ ] All Tier A questions answered
-- [ ] All Tier B questions answered
-- [ ] Tier C answered, or the proof sections deleted rather than padded
+- [ ] **Site label `MARKETPLACE · GIGS` → `GIGS`**
+- [ ] Founder name, title, and sign-off on all six quotes
+- [ ] Contract addresses, explorer links and repo links published
+- [ ] Script D (explorer proof clip) shot — **nothing ships before this**
 - [ ] `grep -r "\[\[" tenda-launch/` returns nothing
-- [ ] "Instantly" replaced with the measured number everywhere
-- [ ] Three concrete example tasks threaded through every asset
-- [ ] Founder has approved all five quotes and the LinkedIn posts written in their voice
-- [ ] Script E (the 20-second unedited proof clip) exists — **nothing ships before this**
-- [ ] Legal review of earnings language in every market *(no income claims anywhere)*
-- [ ] Store listings submitted with 10 days of review buffer
-- [ ] Support staffed for launch day, in every launch market's timezone
-- [ ] Someone named and available to answer every store review and comment for 72 hours
+- [ ] Every asset carries testnet status in the body
+- [ ] Auto-approve called "planned" everywhere, matching the site
+- [ ] No asset implies mainnet, an audit, or earnings
+- [ ] Track B assets confirmed unpublished until all four gates clear

@@ -1,126 +1,90 @@
 # Tenda — App Store & Play Store Listing
 
-The most important copy in the mobile launch. More people will decide about Tenda on a store page than on the website, and they will decide in about four seconds, from the title, the subtitle, and the first screenshot caption.
+> ⚠️ **Do not submit until mainnet + completed audit.** Both stores' financial-services rules make an unaudited testnet product handling crypto a rejection risk, and a rejection burns the review window. Ship the web app now; submit the stores for Track B. Confirm whether "Download App" today is an APK, a TestFlight build, or a PWA — the answer changes this document.
 
 ---
 
-## Apple App Store
+## App Store
 
-**App name (30 char max)**
-`Tenda: Tasks That Pay Now` *(25)*
+**Name (30)** `Tenda: Escrow for Gig Work` *(26)*
+**Subtitle (30)** `The money locks up front` *(24)*
 
-**Subtitle (30 char max)**
-`Paid the moment you finish` *(26)*
+Alternatives: `Paid on proof, not on trust` (27) · `Nobody goes first` (17) · `Check the money before you go` (29)
 
-Alternatives, in preference order:
-- `Do a task. Get paid. Anywhere.` *(30)*
-- `Onchain tasks, instant pay` *(26)*
-- `Small tasks. Real money. Now.` *(29)*
-
-**Promotional text (170 char max — editable without review; use for launch and campaign moments)**
-> No payout minimum. No thirty-day hold. No withdrawal request. Finish a task on Tenda and you're paid the moment it's accepted — wherever you are. *(147)*
+**Promotional text (170)**
+> The payment locks in a contract before you accept the job. Do the work, upload a photo, get released in seconds — 97.5% to you. No gas token needed to start. *(158)*
 
 **Description**
 
-> **Finish the task. The money's already there.**
+> **The money is already there.**
 >
-> Tenda is a rewarding onchain microtasking app. Take a task, do it on your phone, and get paid the moment your work is accepted.
+> On Tenda, the payment for a gig locks in an on-chain contract the moment it's posted — before you agree to anything. You can check it's there yourself.
 >
-> Not next Friday. Not after a thirty-day hold. Not once you've reached a fifty-dollar minimum you'd hit sometime next year. The moment it's accepted.
+> Then you do the work, photograph it, and one approval releases the funds. 97.5% to you, in seconds.
 >
 > **HOW IT WORKS**
-> 1. Browse tasks and take one
-> 2. Do the work in the app
-> 3. Submit it
-> 4. It's accepted — and you're paid, right then
+> 1. **Lock** — the poster's money enters the escrow contract. Under 2 seconds.
+> 2. **Work** — you deliver, and upload photo or video proof.
+> 3. **Approve** — the poster reviews and signs. One tap.
+> 4. **Release** — the contract pays you in the same transaction. Seconds.
 >
-> **WHY TENDA IS DIFFERENT**
+> **WHY IT'S DIFFERENT**
+> • **Nobody holds your money.** Not the poster, not an exchange, not Tenda. No admin key, no pause button, no sweep function.
+> • **Verify before you commit.** Every lock and settlement is a transaction you can open in a block explorer.
+> • **2.5% flat.** A 12 USDC gig pays you 11.70.
+> • **No gas token.** On Celo your USDC pays its own fees. On Solana we cover your first escrow.
+> • **Funds are never stuck.** Cancel, reclaim, dispute — every gig has a defined exit.
 >
-> • **Paid on acceptance.** Payment isn't a request you file after the work. It's the last step of the work.
-> • **No payout minimum.** Nothing to accumulate toward. [[VERIFY]]
-> • **No deposit.** You never pay to work. [[VERIFY]]
-> • **From anywhere.** Tenda doesn't check where you are before deciding whether you're allowed to be paid.
-> • **No crypto knowledge needed.** You finish, the money arrives. Onchain is how it arrives that fast — not something you operate. [[VERIFY]]
+> **WHAT PEOPLE POST**
+> Deliveries, photoshoots, errands, repairs, translations, digital work. From biking a laptop across town to drone shots of a building site.
 >
-> **POST TASKS TOO**
->
-> Tenda works both ways. Need a hundred small things done? Post a task from anywhere and pay on acceptance. No hiring process, no contractor onboarding, no cross-border invoice.
->
-> **NOT A MARKETPLACE**
->
-> A marketplace introduces two people and steps back — the work and the money then happen somewhere else, later. Tenda is where the work happens and where the money moves. That's the whole reason payment can be instant instead of promised.
->
-> Small work. Real money. No gap.
+> **CASH OUT LOCALLY**
+> Trade USDC, SOL or ETH against NGN, GHS, KES, ZAR, PHP, USD, GBP or EUR over bank transfer, M-Pesa, MoMo or GCash.
 >
 > ---
-> Support: [[URL]] · Privacy: [[URL]] · Terms: [[URL]]
+> Tenda is currently a testnet release. Support: [[URL]] · Privacy: [[URL]] · Terms: [[URL]]
 
-**Keywords field (100 char max, comma-separated, no spaces, no repeats from the title)**
-`microtask,earn,money,gig,side,income,paid,instant,task,work,remote,crypto,usdc,payout,jobs`
-
-**What's New — v1.0**
-> Tenda is here. Take a task, finish it, get paid the moment it's accepted. Post tasks too, from anywhere. We built this because the gap between doing the work and seeing the money is the worst part of every app like this — so we removed it. Tell us what breaks: [[SUPPORT EMAIL]]
+**Keywords (100)**
+`escrow,gig,usdc,crypto,task,errand,delivery,freelance,paid,proof,solana,base,celo,p2p,momo`
 
 ---
 
-## Google Play Store
+## Play Store
 
-**Title (30 char max)**
-`Tenda: Tasks That Pay Now` *(25)*
+**Title (30)** `Tenda: Escrow for Gig Work`
+**Short description (80)**
+> The money locks in a contract before you start. Photo proof releases it. *(71)*
 
-**Short description (80 char max)**
-> Do small tasks on your phone. Get paid the moment your work is accepted. *(72)*
+**Full description** — as above, plus:
 
-Alternatives:
-- `Onchain microtasking. Paid on acceptance — no minimum, no waiting.` *(66)*
-- `Post or do tasks anywhere. The money lands when the work is accepted.` *(69)*
-
-**Full description** — as the App Store description above, plus:
-
-> **WHO USES TENDA**
->
-> Students filling the hours between classes. Freelancers between projects. Anyone who has done work on a phone and then waited three weeks to be allowed to touch the money.
->
-> And on the other side: founders, growth teams, researchers and community operators who need a volume of small things done this week, not a hiring process next month.
+> **BUILT FOR CASH-FIRST MARKETS**
+> Lagos, Nairobi, Accra, Johannesburg, Manila. Gigs posted in local terms, paid in USDC, cashed out over the rails you already use.
 
 ---
 
 ## Screenshot captions
 
-Six frames. **The order is the argument** — the loop closing, ending on the money. Captions are short because they're read at thumbnail size.
-
 | # | Screen | Caption |
 |---|---|---|
-| 1 | Task list, real tasks, real amounts | **Take a task.** |
-| 2 | Task detail, assigned | **Anywhere. No country check.** |
-| 3 | Doing the work in-app | **Do it on your phone.** |
-| 4 | Submitting | **Submit.** |
-| 5 | **Accepted → balance changing** | **Paid. Right then.** |
-| 6 | Post-a-task screen | **Or post a task of your own.** |
+| 1 | Gig list, real amounts and cities | **Real gigs. Real amounts.** |
+| 2 | Escrow locked badge on a gig | **The money's locked before you accept.** |
+| 3 | Block explorer showing the lock | **Don't trust us. Check it.** |
+| 4 | Proof upload | **Do the work. Photograph it.** |
+| 5 | **Settled — 11.70 USDC payout, 0.30 fee** | **Approved. Released. Seconds.** |
+| 6 | Exchange — USDC ↔ MoMo | **Cash out where you are.** |
 
-> **Frame 5 is the entire listing.** It is the only screenshot that proves the claim. Design it so that the balance change is legible at thumbnail size — most people will never tap through past frame 2, so the strongest frame cannot be the last one they'd reach. Consider making 5 the *second* screenshot in the carousel if store analytics show low swipe-through.
-
----
-
-## App preview video — 25 seconds, no narration
-
-No music bed with a voiceover explaining the app. One unedited take of the loop, captioned. See `09-video-scripts.md`, Script C.
+> **Frame 3 is the one that converts.** Every competitor claims safety; a block explorer screenshot is the only one that can be checked. Consider placing it second in the carousel, since most viewers never swipe past frame 2.
 
 ---
 
 ## ASO notes
 
-**Terms worth ranking for, in descending intent:**
-
 | Term | Intent | Note |
 |---|---|---|
-| `microtask app that actually pays` | Very high | Typed by someone who has been burned. Highest-converting term in the category. |
-| `microtask no minimum payout` | Very high | Directly matches the product's differentiator. |
-| `tasks that pay instantly` | High | Broad but on-message. |
-| `earn money on phone [country]` | High | Localise per launch market. |
-| `get paid in crypto for tasks` | Medium | Attracts a crypto-native audience that is *not* the core earner. |
-| `side hustle app` | Low | Enormous volume, terrible intent, brutal competition. Don't chase. |
+| `escrow app for freelancers` | Very high | Typed by someone who has been burned |
+| `get paid usdc for tasks` | High | On-message |
+| `usdc to momo / m-pesa` | High | Localise per market |
+| `gig app [city]` | Medium | Localise |
+| `earn crypto` | Low | Huge volume, wrong audience, brutal competition. Don't chase |
 
-**Localisation:** translate the listing for each launch market rather than shipping English everywhere. In this category, a store page in the local language is a trust signal as much as a comprehension one — it says the app expects people there to be paid.
-
-**The review problem:** this category's store reviews are dominated by payout complaints, and Tenda's entire claim is about payout. That makes review response a marketing channel, not a support cost. Answer every one-star review about money publicly, specifically, and within a day. Prospective users read those replies more carefully than they read the description.
+**Review response is a marketing channel here, not a support cost.** The entire claim is about money arriving. Answer every payment-related review publicly and within a day — prospective users read those replies more carefully than the description.

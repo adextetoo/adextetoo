@@ -1,198 +1,168 @@
 # Tenda — Email Sequence
 
-Seven emails, one purpose each, following the arc: **problem → education → agitation → solution → proof → urgency → final CTA.**
-
-Audience: waitlist signups and post-launch installs who haven't yet completed a first task.
-**Success metric for the whole sequence is one thing:** first task completed and paid. Not opens, not clicks. Someone who has been paid once by Tenda does not need another email.
-
-**Global rules**
-- One CTA per email. One.
-- Subject lines under 45 characters — read on a phone, in a crowded inbox.
-- Preview text extends the subject; it never repeats it.
-- No countdown timers, no fake scarcity. This audience has been marketed at by scams and reads urgency as a warning sign.
-- **Exit rule:** the moment someone completes and is paid for a task, they leave this sequence immediately, mid-flight. Nothing is more damaging than emailing "still haven't tried Tenda?" to someone who was paid an hour ago.
+Seven emails. Arc: problem → education → agitation → solution → proof → urgency → final CTA.
+**Success metric:** one completed gig, locked and released. Not opens.
+**Exit rule:** anyone who completes a gig leaves the sequence immediately.
+**Every email carries the testnet status.** Not in the footer — in the body.
 
 ---
 
-## Email 1 — Day 0 · Purpose: name the problem they already know
+## 1 · Day 0 — the problem
 
-**Subject:** The worst screen in every earning app
-**Preview:** It isn't the tasks.
+**Subject:** Somebody always has to go first
+**Preview:** That's the whole problem with small work.
 
-> You know the screen.
+> You've either been on one side of this or the other.
 >
-> Not the task screen. The other one. The one with the balance you can look at but not touch. The minimum you'll reach sometime next spring. The dropdown with a hundred and ninety countries in it, eleven of which can actually withdraw.
+> You do the delivery and hope they pay. Or you pay up front and hope the delivery happens.
 >
-> You did the work. It was fine. The work was never the problem.
+> One of you is always carrying the risk that the other one disappears. And that risk gets priced into everything — it's why people work for less than they're worth, and why they say no to strangers who would have paid them fine.
 >
-> Tenda is an app we built around that screen — specifically, around not having one. When your completed task is accepted, you're paid in that moment. There's nothing to request afterwards, because there's nothing left to happen.
+> Tenda is built around removing that, not around finding you more work. When a gig is posted, the money locks in a contract first. Neither side goes first, because the contract does.
 >
-> That's the whole idea. Over the next few days I'll show you exactly how it works and exactly what we haven't figured out yet.
+> I'll show you exactly how over the next few days, including the part we haven't finished.
 >
-> — [[FOUNDER FIRST NAME]]
+> *Tenda is a testnet release — v0.4.3-testnet. The audit lands before mainnet.*
 >
-> **[ See how the money moves ]**
-
----
-
-## Email 2 — Day 2 · Purpose: educate — how the loop actually works
-
-**Subject:** Five states, no gap
-**Preview:** Where the money is at every step.
-
-> Here's the whole app.
->
-> **Post** → someone creates a task, from anywhere.
-> **Assign** → it goes to the person who'll do it.
-> **Do** → the work gets done in the app.
-> **Accept** → the submission is accepted.
-> **Paid** → settlement happens. Now.
->
-> That's five states of one task. On other apps the fifth is a separate process with its own queue, its own threshold and its own calendar — which is why you can finish work in March and see money in May.
->
-> On Tenda it happens in the same moment as the fourth. Not because we're being generous, but because the task and the payment live on the same system. That's what "onchain" is doing here. It isn't a philosophy, it's the reason the timing is possible.
->
-> Twenty seconds, one take, no edits:
->
-> **[ Watch a task go from posted to paid ]**
+> **[ See how the lock works ]**
 
 ---
 
-## Email 3 — Day 4 · Purpose: agitate — make the cost of the gap concrete
+## 2 · Day 2 — how it works
 
-**Subject:** What the wait actually costs you
-**Preview:** Not just patience.
+**Subject:** Lock. Work. Approve. Release.
+**Preview:** Where the money is at each step.
 
-> A thirty-day hold isn't a delay. It's a loan.
+> Four stages. Here's where your money is in each one.
 >
-> You did the work in week one. The money moves in week five. For those four weeks somebody is holding your money — and it isn't you. In a category where the average task pays a couple of dollars, that float, multiplied across millions of tasks, is not a rounding error. It's a business model.
+> **Lock** — it leaves the poster's wallet and enters the escrow contract. Under two seconds. It is now out of their control *and ours.*
+> **Work** — you deliver and upload a photo or video.
+> **Approve** — the poster reviews and signs once.
+> **Release** — that same transaction splits it. 97.5% to you. Seconds.
 >
-> Then there's what the wait does to you. The minimum you never reach, so the balance just sits there. The market that gets switched off after you've already worked. The account frozen with no one to email.
+> The part worth sitting with: **the money never travelled.** It was in the contract the entire time you were working. Approval didn't send it — it opened the lock.
 >
-> None of that is about the tasks. All of it is about the gap.
+> Which is why you can check it before you start. Open a block explorer, find the gig's contract, see the amount. We have no admin key, no pause button and no sweep function, so there's nothing to take your word for.
 >
-> We gave up the float on purpose. It's the part of the model we can't have if the payment happens at acceptance — and that's fine, because it was never ours.
->
-> **[ Take your first task ]**
-
----
-
-## Email 4 — Day 6 · Purpose: solve — the specific answer, with the objection handled
-
-**Subject:** No deposit. Ever.
-**Preview:** The question everyone asks first.
-
-> The first thing people ask about Tenda is some version of: *what's the catch?*
->
-> Fair. Here are the plain answers.
->
-> **Do I put money in first?** No. Never. You don't pay to work. [[VERIFY]]
-> **Is there a payout minimum?** No. [[VERIFY]]
-> **How long until I'm paid?** [[VERIFY: the real number. Say the number.]]
-> **Do I need to understand crypto?** No. You finish a task and the money arrives. Onchain is how it arrives that fast. [[VERIFY]]
-> **Is my country supported?** [[VERIFY — answer specifically, and if the answer is "yes, most of them," lead with that.]]
-> **How do you make money, then?** [[VERIFY: fee model. Answer this one honestly and specifically. An evasive answer here costs more than any answer.]]
->
-> If something above is still unclear, reply to this email. It comes to me.
->
-> **[ Start your first task ]**
+> **[ Watch a gig go from locked to settled ]**
 
 ---
 
-## Email 5 — Day 9 · Purpose: proof
+## 3 · Day 4 — agitate
 
-**Subject:** Don't believe us. Watch it.
-**Preview:** One take, no edits, real time.
+**Subject:** What "trust me" actually costs
+**Preview:** You've been paying it the whole time.
 
-> Everything we've told you is a claim until you see the balance change.
+> Every informal job you've done has had a price attached that nobody wrote down.
 >
-> So here's a recording of one task going from posted to paid. One take. Real time. No cuts, no speed-up — if we sped it up, it would stop being evidence.
+> You quoted lower because they were a stranger. You skipped the job in the next neighbourhood because you didn't know them. You took the 60% up front instead of the full amount after, because half of something beats all of nothing.
+>
+> That's counterparty risk, and you've been absorbing it for free.
+>
+> When the money is already locked, that discount has no reason to exist. The job is worth what the job is worth.
+>
+> That's the actual argument for escrow — not speed. Speed is nice. Not having to discount your work because someone might vanish is the point.
+>
+> **[ Look at what's posted ]**
+
+---
+
+## 4 · Day 6 — solve, and the honest gaps
+
+**Subject:** The parts we haven't finished
+**Preview:** Including the one that could cost you.
+
+> Everyone sends the email about how good their product is. Here are the holes in ours.
+>
+> **We're testnet.** `v0.4.3-testnet`. The third-party audit happens before mainnet and hasn't happened yet. The contracts are open source with full test suites — read them before you deposit anything.
+>
+> **Auto-approve isn't live yet.** The plan is: if a poster doesn't approve or dispute within 48 hours, the contract releases to you automatically. It's built into the design and it is *not shipped.* Until it is, a poster who goes silent means you open a dispute, and Tenda mediation decides within 24 hours. That's a real gap and I'd rather you hear it from me.
+>
+> **What is solid:** the money is locked before you start and we cannot touch it. Cancel, reclaim and dispute all work. The 2.5% is the whole fee — 12 USDC in, 11.70 to you.
+>
+> **And you don't need to own crypto.** On Celo your USDC pays its own gas. On Solana we cover your first escrow. Bring Phantom or Solflare, or bring nothing.
+>
+> Reply to this if something's still unclear. It comes to me.
+>
+> **[ Try one gig ]**
+
+---
+
+## 5 · Day 9 — proof
+
+**Subject:** Don't trust us. Check the chain.
+**Preview:** One take, explorer open alongside.
+
+> Everything I've said is a claim until you watch the contract do it.
+>
+> Here's one gig, one take, no edits — posted, locked, worked, approved, settled — with a block explorer open next to it the whole time. Every state change is a transaction you can look up yourself.
 >
 > **[ Watch it ]**
 >
-> [[INSERT, ONLY IF REAL: a named earner testimonial with a country, or a specific number — tasks paid, median seconds to settlement, countries paid into. If there are no real numbers yet, delete this block. Do not write "thousands of users." This audience has been lied to with exactly that sentence, and they recognise it.]]
+> Then check ours: the Solana program is Rust/Anchor, the EVM contracts are Solidity/Foundry, and both ship with their test suites. Contract addresses are in the app.
 >
-> Then do one yourself. That's the only proof that actually counts.
+> The design goal was never "trust Tenda." It was that you shouldn't have to.
 >
-> **[ Take a task ]**
+> **[ Take a gig ]**
 
 ---
 
-## Email 6 — Day 13 · Purpose: urgency — real, or none at all
+## 6 · Day 13 — urgency
 
 **Subject:** [[Only send with a real reason]]
-**Preview:** —
 
-> **Do not send this email without a genuine deadline.** Acceptable reasons: a real launch-window bonus with a real end date; a market opening with limited early access; a task batch with a real expiry. Unacceptable: manufactured scarcity, a countdown to nothing, "spots filling fast."
+> **Send only with a genuine deadline** — mainnet migration date, audit publication, a market opening. Manufactured scarcity aimed at an audience trained by scams to spot it will cost more trust than the email can earn. **If there's no real reason, skip to Email 7.**
 >
-> If there is no real reason, **skip to Email 7.** A fabricated deadline sent to an audience trained by scams to spot fabricated deadlines will cost more trust than the email could possibly earn.
-
-**If there is a real reason, the template:**
-
-> [[SPECIFIC EVENT]] ends [[SPECIFIC DATE]].
->
-> Here's exactly what it is and exactly what happens after: [[PLAIN DESCRIPTION, NO EMBELLISHMENT]].
->
-> That's the only reason I'm sending this. If it's not useful, ignore it — the app will still be here afterwards, working the same way.
->
-> **[ [[SPECIFIC ACTION]] ]**
+> Template: state the event, the date, and what happens after, in plain sentences. Nothing else.
 
 ---
 
-## Email 7 — Day 17 · Purpose: final CTA, and a graceful exit
+## 7 · Day 17 — final
 
-**Subject:** Last one from me
+**Subject:** Last one
 **Preview:** Then I'll stop.
 
-> This is the last email in this sequence.
+> Last email in this sequence — unsubscribe below and I won't take it personally.
 >
-> If Tenda isn't for you, that's genuinely fine — unsubscribe below and I won't take it personally.
+> If you're still here because you've been stiffed before and you're waiting to see whether this one's different: the fastest way to know isn't another email. It's opening a gig and looking at the block explorer before you accept.
 >
-> But if you're still here because you've been burned before and you're waiting to see whether this one is different: the fastest way to find out is one task. Not a review, not a video, not this email. One task, and watch what happens when it's accepted.
+> If the money's there, it's there. If it isn't, don't take the job.
 >
-> That's the only claim we make, and it's the only one that takes thirty seconds to check.
+> That's the only claim we make.
 >
-> **[ Take one task ]**
+> **[ Open the app ]**
 >
-> — [[FOUNDER FIRST NAME]]
->
-> *Reply to this if you tried it and something went wrong. I'd rather know.*
+> *Reply if you tried it and something broke. I'd rather know.*
 
 ---
 
-## Transactional emails — the highest-open messages Tenda will ever send
+## Transactional — the highest-open emails Tenda will ever send
 
-These outperform every campaign email in the sequence and are usually written by nobody. They should be the best-written emails the company has.
+**Escrow locked (to the worker, on assignment)**
+> **Subject:** Locked: [[AMOUNT]] USDC is in the contract
+>
+> [[GIG]] is yours. The money is already in escrow — [[TX LINK]].
+> Do the work, upload the proof. Approval releases it to you.
 
-**First task paid**
-> **Subject:** Paid. [[AMOUNT]].
+**Released**
+> **Subject:** Released. [[AMOUNT]] USDC.
 >
-> That's it — that's the whole thing.
->
-> You finished a task, it was accepted, and the money moved. No request to file, nothing to wait for.
->
-> This is what we meant. **[ Take another ]**
+> [[POSTER]] approved. The contract paid you [[NET]] USDC in the same transaction — [[TX LINK]].
+> Fee: [[FEE]] · 2.5%.
 
-**Task accepted**
-> **Subject:** Accepted — and paid
+**Proof submitted (to the poster)**
+> **Subject:** Proof is in — one tap to release
 >
-> [[TASK NAME]] was accepted. [[AMOUNT]] settled at [[TIME]].
-
-**Poster's first task completed**
-> **Subject:** Your task is done
->
-> [[EARNER]] completed [[TASK NAME]]. You accepted it, so it's paid — nothing left to reconcile.
->
-> **[ Post another ]**
+> [[WORKER]] submitted proof for [[GIG]]. Review it and approve to release the escrow.
+> *Auto-approve at 48 hours is planned but not yet live — if you don't act, the funds stay locked until someone disputes.*
 
 ---
 
-## Sequence QA
+## QA
 
-- [ ] Every subject line matches the body — no bait-and-switch anywhere
-- [ ] One CTA per email, all seven specific — no "learn more," no "click here"
-- [ ] No manufactured urgency (Email 6 skipped if no real deadline)
-- [ ] No claim in any email that isn't also on the landing page, in the same words
-- [ ] Every `[[VERIFY]]` resolved before the sequence is enabled
-- [ ] Exit rule live: paid users leave the sequence immediately
-- [ ] All seven read as the same author
+- [ ] Testnet status in the body of every campaign email
+- [ ] Auto-approve described as planned, never as live
+- [ ] One CTA each, all specific
+- [ ] Email 6 skipped if no real deadline
+- [ ] No claim absent from the landing page in the same words
+- [ ] Exit rule live

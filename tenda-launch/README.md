@@ -1,98 +1,74 @@
 # Tenda — Product Launch Campaign
 
-Complete launch material for **Tenda**, a rewarding onchain microtasking application, built with the `marketing-campaign` skill.
+Launch material for **Tenda**, an on-chain escrow application for small paid work. Built with the `marketing-campaign` skill, against tendahq.com as source of truth.
 
-> ## Done and paid, in the same moment.
-
----
-
-## Read this first
-
-**Start with `01-brand-product-statement.md`.** It is the canonical description of Tenda; every other document quotes it rather than paraphrasing it.
-
-**Then read `13-copy-review-and-open-questions.md` §1.** There are 103 bracketed `[[VERIFY]]` placeholders across these files. They are deliberate. `tendahq.com` is blocked by this environment's network egress policy, so rather than invent a chain, a fee model or a launch date, every unverifiable fact is a named slot to be filled. **Nothing publishes with a bracket in it.**
+> ## The escrow does the trusting.
+> ### The money is already there.
 
 ---
 
-## The campaign in one page
+## Read in this order
+
+1. **`FACTS.md`** — everything verified from the site. Every claim in this campaign traces here.
+2. **`13-copy-review-and-open-questions.md` §1** — three findings that shaped the whole campaign. Read before anything else in the folder.
+3. **`01-brand-product-statement.md`** — the canonical description. Everything else quotes it.
+
+---
+
+## Three things to act on before pitching
+
+| # | | Why |
+|---|---|---|
+| 1 | **Change the site label `MARKETPLACE · GIGS` → `GIGS`** | You said you're not a marketplace; your site says you are, in the place every journalist screenshots |
+| 2 | **Two-track launch — testnet now, consumer at mainnet + audit** | Pitching consumer press an unaudited testnet earning app produces a correction cycle that never fully clears |
+| 3 | **Stop saying "paid instantly on completion"** | The contract pays instantly *on approval*. And auto-approve is planned, not live. The accurate line is stronger anyway |
+
+---
+
+## The campaign
 
 | | |
 |---|---|
-| **Core benefit** | Tenda closes the gap between finishing work and getting paid for it. |
-| **Positioning** | Tenda helps people who post and complete small paid tasks turn finished work into settled payment in the same moment, by running posting, assignment, completion and payout as one onchain loop inside a single mobile app. |
-| **Campaign angle** | **The gap between done and paid.** |
-| **Category claim** | An application, not a marketplace. A marketplace ends at the handshake; Tenda ends at the payment. |
-| **The line** | *Paid is a state of the task, not a promise about next month.* |
-| **Message hierarchy** | 1. Paid the moment the task is accepted · 2. Post or work from anywhere · 3. It's an app, not a marketplace — which is why #1 is possible |
-
-**The loop — the one mechanic every explanation returns to:**
+| **What Tenda is** | An on-chain escrow application. Gigs and Exchange are two surfaces over one contract |
+| **Angle** | **The money is already there** — locked before the worker starts, verifiable in a block explorer |
+| **Core benefit** | Getting paid isn't a promise. It's a release |
+| **Hierarchy** | 1. The money locks before you start · 2. Proof releases it · 3. No gas token, no platform balance, no admin key |
+| **Insight** | In informal work the problem was never matching. It's that somebody has to go first |
 
 ```
-  POST  ──▶  ASSIGN  ──▶  DO  ──▶  ACCEPT  ──▶  PAID
-   │                                              ▲
-   └──────────── all of it onchain ───────────────┘
+   LOCK  ────▶   WORK   ────▶  APPROVE  ────▶  RELEASE
+   < 2s          photo proof   one signature   97.5% / 2.5% · seconds
 ```
 
 ---
 
 ## Contents
 
-**Foundation** — read in order; each informs the next
-
 | File | What it is |
 |---|---|
-| `00-positioning-brief.md` | Audience research, competitive map, the three insights, positioning, tone profile |
-| `01-brand-product-statement.md` | **The canonical statement** — at 7, 25, 50, 100 and 250 words, plus the manifesto, voice rules, vocabulary, one-liner bank and boilerplate |
-
-**For tech blogs** — the primary deliverable
-
-| File | What it is |
-|---|---|
-| `02-press-release.md` | Full release, newswire short, 120-word version, six headline options |
-| `03-media-kit.md` | Fact sheet, boilerplate, five-quote bank, **a style note for writers**, journalist FAQ, asset checklist, correction protocol |
-| `04-blog-pitches.md` | Ten outlet-tiers, ten different stories — plus exclusive, embargo and follow-up templates |
-
-**Conversion**
-
-| File | What it is |
-|---|---|
-| `05-landing-page-copy.md` | Every section, four hero variants, SEO and Open Graph |
-| `06-app-store-listing.md` | App Store and Play copy, screenshot captions, ASO strategy |
-| `07-email-sequence.md` | Seven emails, problem → final CTA, plus the transactional emails |
-
-**Amplification**
-
-| File | What it is |
-|---|---|
-| `08-social-posts.md` | 4 LinkedIn posts, 8 X posts, a 9-post thread |
-| `09-video-scripts.md` | Five timestamp-blocked scripts with visual direction |
-| `10-ad-copy.md` | Four variants testing four angles, search ads, testing plan |
-
-**Execution**
-
-| File | What it is |
-|---|---|
-| `11-content-calendar.md` | T-21 → T+30, day by day, with dependencies |
-| `12-community-and-objections.md` | Product Hunt, Show HN, and the full objection playbook |
-| `13-copy-review-and-open-questions.md` | **The gate.** Quality-gate results, six flagged issues, every open question |
+| `FACTS.md` | Verified fact base from the site — the source of truth |
+| `00-positioning-brief.md` | Audience, competitors, three insights, positioning, tone |
+| `01-brand-product-statement.md` | **The canonical statement** — every length, manifesto, voice, one-liners, boilerplate |
+| `02-press-release.md` | Track A (testnet) full/wire/short + Track B drafts |
+| `03-media-kit.md` | Fact sheet, six quotes, writer's style note, journalist FAQ, assets |
+| `04-blog-pitches.md` | Nine outlet-tiers, nine different stories, plus templates |
+| `05-landing-page-copy.md` | Full page, hero variants, SEO |
+| `06-app-store-listing.md` | Store copy — **hold for mainnet** |
+| `07-email-sequence.md` | Seven emails + transactional |
+| `08-social-posts.md` | 8 X posts, a 9-post thread, 4 LinkedIn posts |
+| `09-video-scripts.md` | Five scripts — the block explorer is the co-star of each |
+| `10-ad-copy.md` | Track A live, Track B drafted |
+| `11-content-calendar.md` | Both tracks, with the Track B gate |
+| `12-community-and-objections.md` | Show HN + the questions that decide this launch |
+| `13-copy-review-and-open-questions.md` | Findings, quality gate, six flagged issues, ten unknowns |
+| `press-kit.html` | The shareable page for journalists |
 
 ---
 
-## Three rules that run through everything
+## Three rules
 
-**1. Proof beats claims, and this category knows the difference.**
-The most valuable asset in the campaign is a 20-second unedited screen recording of a task going from posted to paid. Not a montage, not sped up — speeding it up destroys the only evidence there is. It appears in the press kit, the landing page, the store listing, the ads and the reply to every "does this actually pay." Build it first; nothing ships before it exists.
+**1 · The block explorer is the proof.** Every claim about locked money is checkable, and "open the explorer and look" is the most persuasive sentence available. It's the co-star of every video and the reason the campaign can't be copied.
 
-**2. Never state a number you can't point at a dashboard for.**
-Tenda's audience has been lied to by this category, repeatedly and specifically. "Thousands trust us" is not weak copy here — it is a recognised warning sign. An empty proof section is honest; a padded one is disqualifying.
+**2 · Say testnet, every time.** In the body, not the footer. A smaller accurate story beats a bigger one you have to correct.
 
-**3. Lead with settlement, explain the architecture second.**
-"You're paid the moment your task is accepted" is the hook. "Because it's an application, not a marketplace" is the answer to the question that hook provokes. Never open with the architecture — it is the explanation, not the pitch.
-
----
-
-## Status
-
-Thirteen documents, complete and internally consistent. Voice, claims and CTAs audited across every channel — results in `13`, §2.
-
-Awaiting: the facts listed in `13`, §1. Those fill named slots; they don't require rewriting.
+**3 · Real gigs, real amounts.** *11 USDC to bike a laptop across Ikeja* does more work than any adjective. The site's own gig list is the best copy Tenda has.

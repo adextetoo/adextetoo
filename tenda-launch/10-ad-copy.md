@@ -1,107 +1,90 @@
 # Tenda — Ad Copy
 
-Four variants testing four genuinely different angles — not four rewordings of one. Each targets a different segment with a different belief about why they should care.
+> ⚠️ **Track A: builder/crypto channels only.** Do not run paid consumer acquisition for an unaudited testnet product — it buys users who expect to earn real money today, and the reviews that follow outlast the campaign. Consumer variants below are drafted for mainnet.
 
-**Claim discipline:** every claim below appears verbatim on the landing page. No ad promises anything the destination doesn't repeat in the same words. This is both a conversion rule and, in a category this heavily scrutinised, a compliance one.
+**Claim discipline:** every claim appears verbatim on the landing page. No ad implies mainnet, and none implies earnings.
 
 ---
 
-## Variant 1 — "The Payout Screen"
+## TRACK A — run now
 
-**Angle:** problem-first. Aimed at people who have used a microtask app and been burned.
-**Segment:** lookalikes and interest targeting on MTurk, Clickworker, Appen, Remotasks, Toloka, Freecash.
-**Hypothesis:** naming their exact grievance out-performs naming our benefit.
+### V1 · "Read the contracts"
+**Angle:** invite scrutiny. To crypto-native and developer audiences, an open pre-audit invitation reads as confidence.
+**Where:** X, crypto newsletters, dev communities.
 
 | | |
 |---|---|
-| **Short headline (30)** | The payout screen, deleted |
-| **Long headline (60)** | You did the work. Why are you waiting to be paid? |
-| **Body** | Tenda pays you the moment your completed task is accepted. No $50 minimum. No 30-day hold. No withdrawal request — there's nothing to request, because there's nothing left to happen. |
-| **CTA** | Get Tenda |
-| **Creative** | Script A, cut to 15s |
+| **Short (30)** | Read the contracts |
+| **Long (60)** | On-chain escrow for $11 gigs. Pre-audit. Source open. |
+| **Body** | Money locks when a gig posts. Photo proof releases it. 97.5% to the worker, atomic, in seconds. No admin key, no pause button, no sweep function. Testnet — read the Anchor and Solidity source before you deposit anything. |
+| **CTA** | Read the source |
 
----
-
-## Variant 2 — "No Country Check"
-
-**Angle:** access. The strongest angle in markets the incumbents exclude.
-**Segment:** Nigeria, Kenya, Ghana, Philippines, Indonesia, India, Vietnam, Brazil, Argentina.
-**Hypothesis:** eligibility beats speed where people are structurally excluded — being *allowed* to be paid matters more than being paid *fast*.
+### V2 · "Escrow at errand scale"
+**Angle:** the category insight. For fintech and infra audiences.
 
 | | |
 |---|---|
-| **Short headline (30)** | Paid, wherever you are |
-| **Long headline (60)** | Tenda doesn't check your country before it pays you |
-| **Body** | Post a task from anywhere. Take a task from anywhere. When your work is accepted, you're paid — no eligible-countries list standing between you and money you've already earned. |
-| **CTA** | Get Tenda |
-| **Creative** | Static: the changed balance, localised currency display |
+| **Short (30)** | Escrow for an $11 delivery |
+| **Long (60)** | Escrow has never been worth it on a small job. Until cents. |
+| **Body** | Traditional escrow's paperwork costs more than an eleven-dollar errand. A contract's overhead doesn't. Tenda locks in under two seconds and charges 2.5% flat. Testnet, on Solana, Base and Celo. |
+| **CTA** | See how it settles |
 
----
-
-## Variant 3 — "Twenty Seconds"
-
-**Angle:** proof-first. No argument at all — just the evidence.
-**Segment:** cold, broad, video-led. Also the retargeting creative for anyone who visited and didn't install.
-**Hypothesis:** in a category this saturated with claims, showing beats telling by a wide margin — this is the variant most likely to win outright.
+### V3 · "No gas token"
+**Angle:** the onboarding story — genuinely distinctive and under-told.
+**Where:** Celo, Solana and Base ecosystem channels.
 
 | | |
 |---|---|
-| **Short headline (30)** | Watch it get paid |
-| **Long headline (60)** | Posted to paid, in one unedited take |
-| **Body** | We're not going to argue about whether it's instant. Twenty seconds, one take, no edits: a task posted, done, accepted, and paid. Then try one yourself. |
-| **CTA** | Get Tenda |
-| **Creative** | Script E, unedited, visible timer |
+| **Short (30)** | Zero SOL to start |
+| **Long (60)** | Your USDC pays its own gas. That's the whole onboarding. |
+| **Body** | Most people quit at "first, buy a gas token." On Celo, network fees come out of the USDC you're already using. On Solana, a one-time grant covers your first full escrow. 400+ wallets supported. |
+| **CTA** | Start with nothing |
 
 ---
 
-## Variant 4 — "Post a Task" *(poster-side)*
+## TRACK B — draft, hold for mainnet + audit
 
-**Angle:** the other half of the loop. Different audience, different pain, different platform.
-**Segment:** founders, growth and ops, AI data teams, researchers. LinkedIn, X, targeted search.
-**Hypothesis:** posters don't care about payout speed — they care about overhead. Sell them the absence of process.
-
+### V4 · "Check before you go"
 | | |
 |---|---|
-| **Short headline (30)** | 300 small things, done |
-| **Long headline (60)** | Get small work done without opening a hiring process |
-| **Body** | Post a task from anywhere, to people anywhere. It gets assigned, done, and paid the moment you accept it. No contractor onboarding, no cross-border invoice, nothing to reconcile afterwards. |
-| **CTA** | Post your first task |
-| **Creative** | Script B, cut to 20s |
+| **Short (30)** | Check the money's there |
+| **Long (60)** | See the payment locked before you accept the job |
+| **Body** | On Tenda the money locks in a contract when the gig posts — before you agree to anything. Open a block explorer and look. Then do the work, photograph it, and get released in seconds. |
+| **CTA** | Open Tenda |
+
+### V5 · "Nobody goes first"
+| | |
+|---|---|
+| **Short (30)** | Nobody goes first |
+| **Long (60)** | You don't pay first. They don't work first. The contract holds it. |
+| **Body** | Deliveries, errands, photo work, repairs. The money locks up front, a photo releases it, 97.5% lands in seconds. Cash out to MoMo, M-Pesa or bank transfer. |
+| **CTA** | Open Tenda |
 
 ---
 
-## Search ads
-
-**High-intent terms** — these are typed by someone who has already been burned, and they convert at a multiple of everything else:
+## Search — Track A
 
 | Term | Headline | Description |
 |---|---|---|
-| `microtask app that actually pays` | Paid the moment you're done | No payout minimum, no hold, no withdrawal request. Watch a task go from posted to paid in one unedited take. |
-| `microtask no minimum payout` | No minimum. No hold. | Tenda settles the moment your completed task is accepted. Nothing to accumulate toward. |
-| `[competitor] alternative` | Paid at acceptance, not next month | Post or complete tasks from anywhere. Settlement happens when the work is accepted. |
-| `earn money on phone [country]` | Tasks that pay, in [country] | Tenda doesn't check your country before paying you. Post or complete tasks from anywhere. |
+| `crypto escrow smart contract` | Escrow for $11 gigs | Locks in under 2s on Solana, Base and Celo. Open source, pre-audit. Read it. |
+| `solana escrow program` | Anchor escrow, gas grants included | Native Solana program. First-time users start with zero SOL. |
+| `celo feecurrency usdc gas` | USDC pays its own gas | Escrow on Celo where network fees come out of the USDC you're transacting. |
 
-> **On competitor-term bidding:** bid on the alternative terms, and be scrupulously accurate in the copy. Comparative claims in this category attract complaints, and a takedown at launch costs more than the clicks are worth. Never name a competitor in the ad copy itself — bid on the term, write about Tenda.
+**Do not bid on:** `earn money online`, `make money app`, `side hustle`, or any earnings term. Wrong audience, and for a testnet product it borders on misrepresentation.
 
 ---
 
-## Testing plan
+## Testing
 
-**Structure:** four ad sets, one variant each, equal budget, no creative overlap. Run to statistical significance before touching anything.
+**Primary metric — Track A:** cost per *contract read* or per *first testnet escrow completed*. Not installs.
+**Primary metric — Track B:** cost per *first gig completed and released*.
 
-**Primary metric:** cost per *first completed and paid task* — not cost per install. An install that never completes a task is worth nothing here, and optimising to installs will systematically favour the wrong creative.
+**What a winner would mean**
 
-**Secondary:** install-to-first-task rate, by variant. This measures whether the ad set the right expectation. A variant with cheap installs and a low completion rate is an ad that lied.
-
-**What each result would mean:**
-
-| If this wins | It means | Then do this |
+| If it wins | Read it as | Then |
 |---|---|---|
-| V1 (Payout Screen) | The grievance is the strongest hook — people lead with what was done to them | Build the whole funnel problem-first; make hero variant C the default |
-| V2 (No Country Check) | Access is the real product in these markets | Localise hard, per market; make eligibility the headline everywhere |
-| V3 (Twenty Seconds) | Nobody believes claims in this category | Stop writing arguments; put proof in every slot, including the store listing |
-| V4 (Post a Task) | Supply, not demand, is the constrained side | Rebalance spend to posters and rewrite the landing page's section order |
+| V1 | Openness is the differentiator with technical audiences | Lead every asset with source links; make the audit publication a launch moment of its own |
+| V2 | The category insight travels on its own | Push fintech and business press harder than crypto |
+| V3 | The gas story is bigger than the escrow story | Restructure the site — onboarding is currently buried below the fold |
 
-**Kill criteria:** any variant at 2× the best cost-per-paid-task after significance is switched off, not optimised. In a four-way test, the fastest path to a good answer is turning off the losers early.
-
-**Do not run:** countdown timers, "limited spots," earnings claims of any kind ("make $500/month"), or fabricated testimonials. Earnings claims in this category attract both regulatory attention and exactly the users who churn hardest.
+**Kill anything at 2× the best CPA after significance.** Don't optimise a loser in a three-way test.

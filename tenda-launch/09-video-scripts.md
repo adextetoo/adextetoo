@@ -1,112 +1,90 @@
-# Tenda — Short-Form Video Scripts
+# Tenda — Video Scripts
 
-Written for screen and ear, not for the page. Timestamp-blocked, with visual direction.
+**The governing rule:** the block explorer is the co-star of every script. Copy can assert that the money is locked; only the explorer proves it. Any shot of the app alone is an advertisement. The app *and* the chain, in the same frame, is evidence.
 
-**The governing principle:** copy can only *assert* that payment is instant. Video can *show* it. Every script below ends on the same frame — the balance changing — because that frame is the product.
-
-**Captions are mandatory on all of them.** The core audience watches on mute, on mobile, often on a slow connection.
+Captions mandatory — muted, mobile, slow connections.
 
 ---
 
-## Script A — "The Screen" · 30s · TikTok / Reels / Shorts · primary install driver
+## A · "Nobody goes first" · 40s · primary
 
-Problem-first. The hook has to land in under two seconds or the scroll wins.
-
-| Time | Visual | Audio / On-screen text |
+| Time | Visual | Audio / Text |
 |---|---|---|
-| 0:00–0:02 | Tight on a phone. A payout screen: balance $12.40, and below it "Minimum withdrawal: $50.00" | **VO:** "You know this screen." |
-| 0:02–0:05 | Thumb scrolls a country dropdown. It goes on. And on. | **VO:** "A hundred and ninety countries in the list." |
-| 0:05–0:08 | Dropdown stops. A short "eligible" list. Hold on it. | **VO:** "Eleven of them can actually take the money out." |
-| 0:08–0:11 | Cut to a person on a bus, phone in hand, doing work. Unglamorous, real, ordinary light. | **VO:** "You did the work. The work was fine." |
-| 0:11–0:14 | Back to the balance. Sitting there. Not moving. | **VO:** "The work was never the problem." |
-| 0:14–0:17 | Hard cut. Black. Text only. | **TEXT:** THE PROBLEM IS THE GAP |
-| 0:17–0:23 | Tenda. Real-time screen recording: task open → submit → **ACCEPTED** → balance changes. **Do not cut inside this block.** | **VO:** "Tenda pays you the moment your task is accepted." |
-| 0:23–0:27 | Hold on the changed balance. Let it sit. Longer than feels comfortable. | **VO:** "No minimum. No hold. No withdrawal request." |
-| 0:27–0:30 | Logo. Lockup. | **TEXT:** Tenda — Done and paid, in the same moment. |
+| 0:00–0:03 | Two phones, two hands, a package between them. Neither moves. | **VO:** "Somebody has to go first." |
+| 0:03–0:08 | Left hand offers the package. Right hand withholds cash. Then reversed. | **VO:** "You do the job and hope they pay. Or you pay and hope they show up." |
+| 0:08–0:12 | Freeze. Both hands still. | **VO:** "One of you is always exposed." |
+| 0:12–0:16 | Cut to black. Type only. | **TEXT:** SO NEITHER OF YOU GOES FIRST |
+| 0:16–0:22 | Screen: gig posted. `ESCROW LOCKED` chip appears. Timer shows under 2s. | **VO:** "The money leaves the poster's wallet and locks in a contract." |
+| 0:22–0:28 | **Split screen. Left: the app. Right: block explorer, the transaction, the amount.** Hold. | **VO:** "Not with them. Not with us. Look it up yourself." |
+| 0:28–0:34 | Delivery happening. Photo taken at a door. Proof uploads. | **VO:** "Do the work. Photograph it." |
+| 0:34–0:38 | `APPROVED` → `SETTLED`. Balance moves. Explorer updates alongside. | **VO:** "One approval. The contract pays you in the same transaction." |
+| 0:38–0:40 | Lockup. | **TEXT:** tenda. — The escrow does the trusting.<br>*v0.4.3-testnet* |
 
-**Direction notes**
-- The 0:17–0:23 block must be one continuous unedited take. If the settlement is genuinely fast, that take is the ad. A cut anywhere inside it turns evidence back into a claim, and this audience is unusually good at spotting the difference.
-- Cast someone who looks like the actual user, in an actual place. Not a model in a co-working space.
-- Hold the final balance frame long enough that a viewer can screenshot it. They will.
+**Direction:** 0:22–0:28 is the whole film. Both panes must be legible simultaneously and the explorer must be a real one — basescan, celoscan, a Solana explorer. Never a mock. Never sped up.
 
 ---
 
-## Script B — "Five States" · 45s · YouTube / X / LinkedIn · explainer
-
-For the person who already believes the problem and wants the mechanism. Calmer, no hook pressure.
+## B · "Four stages" · 45s · explainer
 
 | Time | Visual | Audio |
 |---|---|---|
-| 0:00–0:04 | Clean type on white: **POST → ASSIGN → DO → ACCEPT → PAID** | **VO:** "A task on Tenda has five states." |
-| 0:04–0:10 | POST illuminates. A task being created in-app. | **VO:** "Someone posts a task. From anywhere. It goes onchain." |
-| 0:10–0:15 | ASSIGN illuminates. | **VO:** "It's assigned to the person who's going to do it." |
-| 0:15–0:21 | DO illuminates. Work happening on a phone. | **VO:** "They do it. On a phone. In the app." |
-| 0:21–0:26 | ACCEPT illuminates. | **VO:** "It's submitted, and it's accepted." |
-| 0:26–0:31 | PAID illuminates — *at the same time* as ACCEPT stays lit. Both glow together. | **VO:** "And that's when they're paid. Not after. Then." |
-| 0:31–0:38 | Split screen. Left: the five states, PAID lit. Right: a competitor-style flow — "payout requested → processing → 30 days." | **VO:** "On most apps, the fifth state is a separate process. Its own queue. Its own calendar. Its own country list." |
-| 0:38–0:43 | Right side falls away. Left side alone. | **VO:** "Here it's just the last state of the task. Same system, same moment." |
-| 0:43–0:45 | Lockup. | **TEXT:** Tenda — Done and paid, in the same moment. |
+| 0:00–0:05 | Type: **LOCK · WORK · APPROVE · RELEASE** | **VO:** "Every gig on Tenda has four stages." |
+| 0:05–0:13 | LOCK lights. Funds animate out of a wallet into a contract shape. Timer: 1.4s. | **VO:** "The money leaves the poster's wallet and enters the escrow contract. Under two seconds. Neither party controls it now — and neither do we." |
+| 0:13–0:21 | WORK lights. Delivery, photo, upload. | **VO:** "The worker delivers and uploads photo proof." |
+| 0:21–0:28 | APPROVE lights. One signature. | **VO:** "The poster reviews it and signs once. No back office. No phone calls." |
+| 0:28–0:38 | RELEASE lights. The contract splits: **11.70 →** worker, **0.30 →** Tenda. | **VO:** "In that same transaction the contract splits the funds. Twelve USDC in — eleven-seventy to the worker, thirty cents to us. Settled in seconds." |
+| 0:38–0:43 | All four lit. Explorer visible beneath. | **VO:** "Four transactions. All of them public." |
+| 0:43–0:45 | Lockup + testnet line. | **TEXT:** v0.4.3-testnet · audit before mainnet |
 
-**Direction notes**
-- The single most important visual decision in this script is at 0:26: **ACCEPT and PAID must illuminate together, not in sequence.** That simultaneity is the entire product argument, expressed without a word.
-- Restrained motion design. No particles, no coins, no confetti. The claim is credibility; the visual language should be closer to a bank than a game.
+**Direction:** show the real 11.70 / 0.30 split. A concrete arithmetic is more persuasive than "low fees" and it takes the same three seconds.
 
 ---
 
-## Script C — App Store preview · 25s · no narration
-
-Store previews often autoplay muted. Text and motion carry everything.
-
-| Time | Visual | On-screen text |
-|---|---|---|
-| 0:00–0:03 | Task list. Real tasks, real amounts, legible. | **TAKE A TASK** |
-| 0:03–0:07 | Task detail. Assigned. | **FROM ANYWHERE** |
-| 0:07–0:13 | Work happening in-app. Thumb moving. | **DO IT ON YOUR PHONE** |
-| 0:13–0:16 | Submit. | **SUBMIT** |
-| 0:16–0:21 | **ACCEPTED** → balance changes. Unedited. Hold. | **PAID. RIGHT THEN.** |
-| 0:21–0:25 | Logo. | **TENDA** / *Done and paid, in the same moment.* |
-
----
-
-## Script D — Founder, one take · 60s · organic social, press kit, About page
-
-No script in the acting sense — beats to hit, in their own words, straight to camera. Wobbly and true beats polished and hollow, and this audience can tell.
-
-**Beats:**
-
-1. **(0:00–0:08)** Open on the specific memory, not the mission. The moment you saw the balance you couldn't touch, or watched someone else see it. Name the amount. Name the country. Specificity is the whole thing.
-2. **(0:08–0:20)** "The strange part wasn't that it happened. It's that it was normal. Nobody was embarrassed. That's just the shape of this industry."
-3. **(0:20–0:32)** The realisation: the gap exists because the work and the money live on different systems. A platform introduces you, a processor pays you, a bank decides when, a list decides whether.
-4. **(0:32–0:44)** The decision: put them on the same system and the gap stops being necessary. That's what onchain is for here. Say plainly — "not a philosophy, a timing mechanism."
-5. **(0:44–0:54)** What it cost: "We gave up the float. In this category that's a real business model. We did it on purpose."
-6. **(0:54–1:00)** The plain close: "Tenda's on [[PLATFORMS]]. Post a task, or take one. Either way the money moves when the work is done."
-
-**Direction:** one camera, no cuts, no b-roll, ordinary room. If a take is perfect, use the one before it.
-
----
-
-## Script E — "Does it actually pay?" · 20s · reactive, for comment sections
-
-The highest-conversion asset in this entire campaign, and the cheapest to make. Produce it before launch and keep it ready — post it as a reply, not a broadcast, every time someone asks the question publicly.
+## C · "The gas wall" · 25s
 
 | Time | Visual | Text |
 |---|---|---|
-| 0:00–0:03 | Screen-recorded comment: *"does this actually pay??"* | **FAIR QUESTION** |
-| 0:03–0:16 | Single unbroken take: open Tenda → take a task → do it → submit → accepted → **balance changes.** No cuts. No speed-up. Timer visible in the corner if possible. | *(no text — let it play)* |
-| 0:16–0:20 | Hold on the changed balance. | **THAT'S THE WHOLE ANSWER.** |
-
-**Direction:** a visible running timer is worth more than any caption. It converts a claim into a measurement.
+| 0:00–0:04 | A generic wallet screen: *"Insufficient gas. Buy CELO to continue."* Thumb hovers. Closes the app. | **THIS IS WHERE MOST PEOPLE QUIT** |
+| 0:04–0:08 | Reopen. Tenda. | **SO WE DELETED THE STEP** |
+| 0:08–0:14 | Celo: transaction confirms, fee line reads `USDC`. | **ON CELO, YOUR USDC PAYS ITS OWN GAS** |
+| 0:14–0:20 | Solana: new wallet linked, small SOL grant lands. | **ON SOLANA, YOUR FIRST ESCROW IS ON US** |
+| 0:20–0:25 | Lockup. | **YOU DON'T NEED TO OWN CRYPTO TO BE PAID IN IT** |
 
 ---
 
-## Production priorities
+## D · "Check it yourself" · 20s · reactive
 
-If budget or time forces a choice, make them in this order:
+**The most valuable asset in this campaign and the cheapest to make.** Produce it before launch and post it as a *reply* every time someone asks whether the escrow is real.
 
-1. **Script E** — cheapest, highest conversion, answers the only question that matters, reusable forever
-2. **Script A** — the install driver
-3. **Script C** — the store listing needs it
-4. **Script D** — press and credibility
-5. **Script B** — explains the mechanism to people who are already interested
+| Time | Visual | Text |
+|---|---|---|
+| 0:00–0:03 | A real comment: *"how do I know the money is actually there"* | **BEST QUESTION** |
+| 0:03–0:16 | One unbroken take: open the gig → copy the contract address → paste into a block explorer → the locked amount appears. Nothing else. | *(no text)* |
+| 0:16–0:20 | Hold on the explorer. | **YOU DON'T HAVE TO TAKE OUR WORD FOR IT.** |
 
-**The non-negotiable across all five:** the settlement moment is never cut, never sped up, never composited. The instant it looks produced, it stops being proof and becomes advertising — and advertising is precisely what this audience has learned to discount.
+---
+
+## E · Founder, one take · 60s
+
+Beats, in their own words — not a script:
+
+1. **(0:00–0:10)** The specific moment. A job someone did and wasn't paid for. Name the amount, the city, the work. Specificity carries this entire film.
+2. **(0:10–0:22)** The realisation: the problem isn't matching, it's that somebody has to go first — and that risk is priced into every informal job.
+3. **(0:22–0:34)** Why escrow never reached this size: paperwork costs more than an eleven-dollar delivery. A contract's overhead is cents.
+4. **(0:34–0:45)** The design decision: no admin key, no pause button, no sweep function. *"If you have to trust us, we built it wrong."*
+5. **(0:45–0:54)** What isn't done: testnet, audit pending, auto-approve not shipped. Say it plainly, without softening.
+6. **(0:54–1:00)** "Read the contracts. Then tell us what's wrong with them."
+
+**Direction:** one camera, no cuts, no b-roll. Beat 5 is non-negotiable — a founder video that omits the gaps reads as marketing; one that names them reads as an engineer, which is the correct impression.
+
+---
+
+## Priority
+
+1. **D** — cheapest, answers the only question that matters, reusable forever
+2. **A** — the campaign film
+3. **C** — the gas story is under-told and genuinely distinctive
+4. **E** — press and credibility
+5. **B** — for people already interested
+
+**Non-negotiable across all five:** the explorer is real, the settlement is never sped up, and the testnet status appears in every end card.
