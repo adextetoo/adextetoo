@@ -1,0 +1,613 @@
+<title>Tenda Press Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;800&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap">
+<style>
+  :root{
+    --ground:#EDEFF0;
+    --surface:#FFFFFF;
+    --surface-2:#E4E7E9;
+    --ink:#12171A;
+    --ink-soft:#5A6469;
+    --ink-faint:#8B9498;
+    --rule:#D6DBDD;
+    --rule-strong:#B9C1C4;
+    --stamp:#D1372A;
+    --stamp-soft:rgba(209,55,42,.10);
+    --pending:#9A6B12;
+    --pending-soft:rgba(154,107,18,.12);
+    --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+    --body:"Newsreader",Georgia,"Times New Roman",serif;
+    --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
+    --measure:65ch;
+    --pad:clamp(20px,5vw,64px);
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --ground:#101416;
+      --surface:#171C1F;
+      --surface-2:#1F262A;
+      --ink:#E8ECEE;
+      --ink-soft:#98A3A8;
+      --ink-faint:#6B767B;
+      --rule:#283034;
+      --rule-strong:#3A4449;
+      --stamp:#F2573F;
+      --stamp-soft:rgba(242,87,63,.14);
+      --pending:#E0A93C;
+      --pending-soft:rgba(224,169,60,.14);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#101416;
+    --surface:#171C1F;
+    --surface-2:#1F262A;
+    --ink:#E8ECEE;
+    --ink-soft:#98A3A8;
+    --ink-faint:#6B767B;
+    --rule:#283034;
+    --rule-strong:#3A4449;
+    --stamp:#F2573F;
+    --stamp-soft:rgba(242,87,63,.14);
+    --pending:#E0A93C;
+    --pending-soft:rgba(224,169,60,.14);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--ground);
+    color:var(--ink);
+    font-family:var(--body);
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 var(--pad)}
+  section{border-top:1px solid var(--rule);padding:clamp(40px,7vw,88px) 0}
+  section:first-of-type{border-top:0}
+  h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
+  p{margin:0}
+  .prose{max-width:var(--measure);display:flex;flex-direction:column;gap:1.1em}
+  .prose p{font-size:1.06rem;color:var(--ink)}
+
+  .label{
+    font-family:var(--mono);font-size:.7rem;font-weight:600;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);
+  }
+  .sec-head{display:flex;flex-direction:column;gap:14px;margin-bottom:clamp(24px,4vw,40px)}
+  .sec-head h2{font-size:clamp(1.45rem,3.4vw,2.1rem);font-weight:800;letter-spacing:-.022em;line-height:1.1}
+  .sec-head .dek{max-width:var(--measure);color:var(--ink-soft);font-size:1rem}
+
+  /* ---------- masthead ---------- */
+  .masthead{padding-top:clamp(28px,5vw,52px)}
+  .rule-row{
+    display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+    font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--ink-faint);border-bottom:1px solid var(--rule);padding-bottom:12px;flex-wrap:wrap;
+  }
+  .wordmark{
+    font-family:var(--display);font-weight:800;
+    font-size:clamp(2.9rem,10vw,5.4rem);letter-spacing:-.045em;line-height:.92;
+    margin:clamp(26px,4vw,40px) 0 0;
+  }
+  .tagline{
+    font-family:var(--display);font-weight:500;
+    font-size:clamp(1.15rem,3.2vw,1.7rem);letter-spacing:-.018em;
+    color:var(--ink-soft);margin-top:10px;
+  }
+  .kicker{
+    max-width:58ch;margin-top:22px;font-size:1.06rem;color:var(--ink);
+  }
+
+  /* ---------- the stamp receipt (hero thesis) ---------- */
+  .receipt{
+    margin-top:clamp(30px,5vw,46px);background:var(--surface);
+    border:1px solid var(--rule);max-width:560px;
+  }
+  .receipt-head{
+    display:flex;justify-content:space-between;gap:12px;padding:14px 18px;
+    border-bottom:1px dashed var(--rule-strong);
+    font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--ink-faint);
+  }
+  .receipt-body{padding:18px}
+  .rline{
+    display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:12px;
+    font-family:var(--mono);font-size:.88rem;padding:7px 0;
+    font-variant-numeric:tabular-nums;
+  }
+  .rline .k{color:var(--ink-soft);letter-spacing:.06em}
+  .rline.paid .k,.rline.paid .v{color:var(--stamp);font-weight:600}
+  .rline.tie{
+    border-left:2px solid var(--stamp);margin-left:-18px;padding-left:16px;
+  }
+  .stamp-note{
+    display:inline-flex;align-items:center;gap:9px;margin-top:14px;
+    border:1.5px solid var(--stamp);color:var(--stamp);background:var(--stamp-soft);
+    padding:6px 11px;font-family:var(--mono);font-size:.68rem;
+    font-weight:600;letter-spacing:.13em;text-transform:uppercase;
+  }
+
+  /* ---------- ledger loop ---------- */
+  .ledger{border:1px solid var(--rule);background:var(--surface);overflow-x:auto}
+  .ledger table{width:100%;border-collapse:collapse;min-width:520px}
+  .ledger th{
+    text-align:left;font-family:var(--mono);font-size:.66rem;font-weight:600;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);
+    padding:12px 16px;border-bottom:1px solid var(--rule);white-space:nowrap;
+  }
+  .ledger td{
+    padding:13px 16px;border-bottom:1px solid var(--rule);
+    font-family:var(--mono);font-size:.86rem;font-variant-numeric:tabular-nums;
+    vertical-align:baseline;
+  }
+  .ledger tr:last-child td{border-bottom:0}
+  .ledger .n{color:var(--ink-faint);width:1%;white-space:nowrap}
+  .ledger .state{font-weight:600;letter-spacing:.08em;white-space:nowrap}
+  .ledger .ts{color:var(--ink-soft);white-space:nowrap}
+  .ledger .what{font-family:var(--body);font-size:.98rem;color:var(--ink-soft)}
+  .ledger tr.settled{background:var(--stamp-soft)}
+  .ledger tr.settled .state,.ledger tr.settled .ts{color:var(--stamp)}
+  .ledger tr.settled .what{color:var(--ink)}
+  .same-moment{
+    display:flex;align-items:center;gap:12px;margin-top:16px;
+    font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--stamp);
+  }
+  .same-moment::before{content:"";width:26px;height:1.5px;background:var(--stamp);flex:none}
+
+  /* ---------- gap bars ---------- */
+  .gap-grid{display:flex;flex-direction:column;gap:26px;margin-top:8px}
+  .gap-row{display:flex;flex-direction:column;gap:9px}
+  .gap-meta{
+    display:flex;justify-content:space-between;gap:12px;align-items:baseline;
+    font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  }
+  .gap-meta .who{color:var(--ink)}
+  .gap-meta .dur{color:var(--ink-faint);font-variant-numeric:tabular-nums}
+  .track{
+    position:relative;height:34px;background:var(--surface);
+    border:1px solid var(--rule);display:flex;align-items:stretch;
+  }
+  .track .done,.track .settle{
+    display:flex;align-items:center;padding:0 10px;
+    font-family:var(--mono);font-size:.64rem;font-weight:600;
+    letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;
+  }
+  .track .done{background:var(--surface-2);color:var(--ink-soft);flex:none}
+  .track .wait{
+    flex:1;background:repeating-linear-gradient(135deg,transparent,transparent 5px,var(--rule) 5px,var(--rule) 6px);
+    min-width:0;
+  }
+  .track .settle{background:var(--stamp);color:#fff;flex:none}
+  :root[data-theme="dark"] .track .settle{color:#12171A}
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .track .settle{color:#12171A}}
+  .track.tenda .wait{display:none}
+
+  /* ---------- fact sheet ---------- */
+  .facts{border:1px solid var(--rule);background:var(--surface)}
+  .fact{
+    display:grid;grid-template-columns:minmax(150px,220px) 1fr;gap:8px 24px;
+    padding:13px 18px;border-bottom:1px solid var(--rule);align-items:baseline;
+  }
+  .facts .fact:last-child{border-bottom:0}
+  .fact dt{
+    font-family:var(--mono);font-size:.7rem;font-weight:500;letter-spacing:.11em;
+    text-transform:uppercase;color:var(--ink-faint);
+  }
+  .fact dd{margin:0;font-size:1rem}
+  .chip{
+    display:inline-block;font-family:var(--mono);font-size:.66rem;font-weight:600;
+    letter-spacing:.11em;text-transform:uppercase;padding:3px 8px;
+    background:var(--pending-soft);color:var(--pending);border:1px solid currentColor;
+  }
+  @media (max-width:620px){.fact{grid-template-columns:1fr;gap:4px}}
+
+  /* ---------- copy blocks ---------- */
+  .block{
+    background:var(--surface);border:1px solid var(--rule);
+    padding:20px 22px;display:flex;flex-direction:column;gap:14px;
+  }
+  .block-head{
+    display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;
+  }
+  .block-body{max-width:var(--measure);font-size:1.02rem;display:flex;flex-direction:column;gap:.9em}
+  .stack{display:flex;flex-direction:column;gap:18px}
+  button.copy{
+    font-family:var(--mono);font-size:.66rem;font-weight:600;letter-spacing:.12em;
+    text-transform:uppercase;padding:6px 12px;cursor:pointer;
+    background:transparent;color:var(--ink-soft);
+    border:1px solid var(--rule-strong);
+    transition:background .15s ease,color .15s ease,border-color .15s ease;
+  }
+  button.copy:hover{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+  button.copy:focus-visible{outline:2px solid var(--stamp);outline-offset:2px}
+  button.copy[data-done="1"]{color:var(--stamp);border-color:var(--stamp);background:var(--stamp-soft)}
+
+  /* ---------- quotes ---------- */
+  .quote{
+    background:var(--surface);border:1px solid var(--rule);
+    border-left:3px solid var(--stamp);padding:20px 22px;
+    display:flex;flex-direction:column;gap:14px;
+  }
+  .quote .qtext{font-size:1.1rem;line-height:1.55;max-width:60ch}
+  .quote .qmeta{
+    display:flex;justify-content:space-between;gap:14px;align-items:center;flex-wrap:wrap;
+    border-top:1px solid var(--rule);padding-top:12px;
+  }
+  .qassign{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint)}
+
+  /* ---------- style guide table ---------- */
+  .styletable{border:1px solid var(--rule);background:var(--surface);overflow-x:auto}
+  .styletable table{width:100%;border-collapse:collapse;min-width:560px}
+  .styletable th{
+    text-align:left;font-family:var(--mono);font-size:.66rem;font-weight:600;
+    letter-spacing:.13em;text-transform:uppercase;color:var(--ink-faint);
+    padding:12px 16px;border-bottom:1px solid var(--rule);
+  }
+  .styletable td{padding:12px 16px;border-bottom:1px solid var(--rule);font-size:.98rem;vertical-align:top}
+  .styletable tr:last-child td{border-bottom:0}
+  .styletable .no{color:var(--ink-faint);text-decoration:line-through;text-decoration-color:var(--stamp)}
+  .styletable .yes{color:var(--ink)}
+
+  /* ---------- checklist ---------- */
+  .checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:0;border:1px solid var(--rule);background:var(--surface)}
+  .check{display:flex;gap:12px;padding:13px 16px;border-bottom:1px solid var(--rule);align-items:baseline}
+  .check .box{
+    font-family:var(--mono);font-size:.7rem;color:var(--ink-faint);
+    border:1px solid var(--rule-strong);width:16px;height:16px;flex:none;
+    display:inline-block;translate:0 3px;
+  }
+  .check span.t{font-size:.98rem}
+  .check .t em{font-style:normal;color:var(--stamp);font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;display:block;margin-top:3px}
+
+  /* ---------- notice ---------- */
+  .notice{
+    border:1px solid var(--pending);background:var(--pending-soft);
+    padding:18px 20px;display:flex;flex-direction:column;gap:10px;
+  }
+  .notice .label{color:var(--pending)}
+  .notice p{max-width:var(--measure);font-size:1rem}
+
+  footer{border-top:1px solid var(--rule);padding:36px 0 56px;color:var(--ink-faint)}
+  footer .fgrid{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:baseline}
+  footer .fline{font-family:var(--mono);font-size:.7rem;letter-spacing:.11em;text-transform:uppercase}
+
+  a{color:var(--stamp);text-underline-offset:3px}
+  a:focus-visible{outline:2px solid var(--stamp);outline-offset:2px}
+
+  .reveal{opacity:0;transform:translateY(10px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    *{animation:none!important}
+  }
+</style>
+
+<div class="wrap">
+
+  <!-- MASTHEAD -->
+  <section class="masthead">
+    <div class="rule-row">
+      <span>Press Kit &middot; For editorial use</span>
+      <span>Draft &middot; Facts pending verification</span>
+    </div>
+
+    <h1 class="wordmark">Tenda</h1>
+    <p class="tagline">Done and paid, in the same moment.</p>
+
+    <p class="kicker">A rewarding onchain microtasking application. Post a task from anywhere, take a task from anywhere, and get paid the moment your work is accepted.</p>
+
+    <div class="receipt reveal">
+      <div class="receipt-head">
+        <span>Task &middot; 0x8f3a</span>
+        <span>Settlement record</span>
+      </div>
+      <div class="receipt-body">
+        <div class="rline"><span class="k">SUBMITTED</span><span class="v">14:02:03</span></div>
+        <div class="rline tie"><span class="k">ACCEPTED</span><span class="v">14:02:07</span></div>
+        <div class="rline tie paid"><span class="k">PAID</span><span class="v">14:02:07</span></div>
+        <div class="stamp-note">Same timestamp &mdash; not a coincidence</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATEMENT -->
+  <section>
+    <div class="sec-head">
+      <span class="label">01 &middot; The statement</span>
+      <h2>What Tenda is</h2>
+      <p class="dek">The canonical description. Please quote from this rather than paraphrasing.</p>
+    </div>
+
+    <div class="stack">
+      <div class="block">
+        <div class="block-head">
+          <span class="label">Canonical &middot; 100 words</span>
+          <button class="copy" data-copy="Tenda is a rewarding onchain microtasking application. Post a task from anywhere. Take a task from anywhere. The moment your completed task is accepted, you are paid — not queued for payout, not scheduled for Friday, not held for thirty days. Tenda is not a marketplace. A marketplace's job ends when two people find each other. Tenda's job ends when the work is done and the money has moved. Posting, assignment, completion and settlement all happen in one app, onchain, so that paid is a state of the task rather than a promise about next month. Small work. Real money. No gap.">Copy</button>
+        </div>
+        <div class="block-body">
+          <p><strong>Tenda is a rewarding onchain microtasking application.</strong></p>
+          <p>Post a task from anywhere. Take a task from anywhere. The moment your completed task is accepted, you are paid &mdash; not queued for payout, not scheduled for Friday, not held for thirty days.</p>
+          <p>Tenda is not a marketplace. A marketplace&rsquo;s job ends when two people find each other. Tenda&rsquo;s job ends when the work is done and the money has moved. Posting, assignment, completion and settlement all happen in one app, onchain, so that <em>paid</em> is a state of the task rather than a promise about next month.</p>
+          <p>Small work. Real money. No gap.</p>
+        </div>
+      </div>
+
+      <div class="block">
+        <div class="block-head">
+          <span class="label">Short &middot; 25 words</span>
+          <button class="copy" data-copy="Tenda is a rewarding onchain microtasking app. Post or complete a task from anywhere, and get paid the instant your work is accepted. Not a marketplace — an application.">Copy</button>
+        </div>
+        <div class="block-body">
+          <p>Tenda is a rewarding onchain microtasking app. Post or complete a task from anywhere, and get paid the instant your work is accepted. Not a marketplace &mdash; an application.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE LOOP -->
+  <section>
+    <div class="sec-head">
+      <span class="label">02 &middot; The mechanic</span>
+      <h2>One loop. Five states. No gap.</h2>
+      <p class="dek">A task on Tenda has five states. On other platforms the fifth is a separate process with its own queue, threshold and calendar. Here it carries the same timestamp as the fourth.</p>
+    </div>
+
+    <div class="ledger reveal">
+      <table>
+        <thead>
+          <tr><th>&nbsp;</th><th>State</th><th>Time</th><th>What happens</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="n">01</td><td class="state">POST</td><td class="ts">14:01:12</td><td class="what">A task is created onchain, from anywhere</td></tr>
+          <tr><td class="n">02</td><td class="state">ASSIGN</td><td class="ts">14:01:20</td><td class="what">The task is assigned to the person who will do it</td></tr>
+          <tr><td class="n">03</td><td class="state">DO</td><td class="ts">14:02:03</td><td class="what">The work is completed and submitted in the app</td></tr>
+          <tr><td class="n">04</td><td class="state">ACCEPT</td><td class="ts">14:02:07</td><td class="what">The submission is accepted</td></tr>
+          <tr class="settled"><td class="n">05</td><td class="state">PAID</td><td class="ts">14:02:07</td><td class="what">Settlement happens onchain</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="same-moment">States 04 and 05 share a timestamp</p>
+
+    <div class="prose" style="margin-top:34px">
+      <p>That simultaneity is the entire product. It is possible because the task and the payment live on the same system &mdash; which is also why Tenda is an application rather than a marketplace.</p>
+      <p><strong>You cannot make payment part of finishing a task if the payment runs on a different system than the task.</strong></p>
+    </div>
+  </section>
+
+  <!-- THE GAP -->
+  <section>
+    <div class="sec-head">
+      <span class="label">03 &middot; The problem</span>
+      <h2>The gap between done and paid</h2>
+      <p class="dek">Nobody quits a microtasking app because the tasks were too hard. They quit at the payout screen &mdash; the minimum, the hold, the country list. The category&rsquo;s reputation problem lives entirely in one interval.</p>
+    </div>
+
+    <div class="gap-grid">
+      <div class="gap-row reveal">
+        <div class="gap-meta"><span class="who">Typical microtask platform</span><span class="dur">up to 30 days &middot; minimum threshold &middot; country list</span></div>
+        <div class="track"><span class="done">Work done</span><span class="wait"></span><span class="settle">Paid</span></div>
+      </div>
+      <div class="gap-row reveal">
+        <div class="gap-meta"><span class="who">Tenda</span><span class="dur">0 &middot; no threshold &middot; no country check</span></div>
+        <div class="track tenda"><span class="done">Work done</span><span class="settle">Paid</span></div>
+      </div>
+    </div>
+
+    <div class="prose" style="margin-top:34px">
+      <p>A thirty-day hold is not a delay. It is a loan. The work happened in week one and the money moves in week five, and in between somebody is holding it &mdash; and it isn&rsquo;t the person who did the work.</p>
+    </div>
+  </section>
+
+  <!-- FACT SHEET -->
+  <section>
+    <div class="sec-head">
+      <span class="label">04 &middot; Fact sheet</span>
+      <h2>The facts</h2>
+      <p class="dek">Rows marked <span class="chip">Pending</span> are not yet confirmed and must not be published. They are shown here so nothing is quietly invented in their place.</p>
+    </div>
+
+    <dl class="facts">
+      <div class="fact"><dt>Name</dt><dd>Tenda</dd></div>
+      <div class="fact"><dt>Category</dt><dd>Onchain microtasking application &mdash; <em>not</em> a marketplace</dd></div>
+      <div class="fact"><dt>What it is</dt><dd>A mobile app where tasks are posted, assigned, completed, accepted and paid, with settlement at the moment of acceptance</dd></div>
+      <div class="fact"><dt>Core claim</dt><dd>You are paid instantly after completing an assigned task</dd></div>
+      <div class="fact"><dt>Geography</dt><dd>Tasks can be created anywhere and executed anywhere</dd></div>
+      <div class="fact"><dt>Who it&rsquo;s for</dt><dd><strong>Earners:</strong> anyone with a phone and spare time. <strong>Posters:</strong> anyone who needs a volume of small tasks done without a hiring process</dd></div>
+      <div class="fact"><dt>Platforms</dt><dd><span class="chip">Pending</span></dd></div>
+      <div class="fact"><dt>Launch date</dt><dd><span class="chip">Pending</span></dd></div>
+      <div class="fact"><dt>Launch markets</dt><dd><span class="chip">Pending</span></dd></div>
+      <div class="fact"><dt>Chain &amp; settlement asset</dt><dd><span class="chip">Pending</span></dd></div>
+      <div class="fact"><dt>Wallet model</dt><dd><span class="chip">Pending</span></dd></div>
+      <div class="fact"><dt>Fee model</dt><dd><span class="chip">Pending</span></dd></div>
+      <div class="fact"><dt>Settlement time</dt><dd><span class="chip">Pending</span> &mdash; state the measured number, not the word &ldquo;instant&rdquo;</dd></div>
+      <div class="fact"><dt>Website</dt><dd>tendahq.com</dd></div>
+    </dl>
+  </section>
+
+  <!-- QUOTES -->
+  <section>
+    <div class="sec-head">
+      <span class="label">05 &middot; Quote bank</span>
+      <h2>Five quotes, five angles</h2>
+      <p class="dek">Assign one per outlet so that two publications covering the same launch don&rsquo;t run identical pulls. All require founder approval before use.</p>
+    </div>
+
+    <div class="stack">
+      <blockquote class="quote reveal">
+        <p class="qtext">&ldquo;Nobody ever quit a microtasking app because the tasks were too hard. They quit at the payout screen. The work was never the problem &mdash; the gap between finishing and being paid is. So we don&rsquo;t have one.&rdquo;</p>
+        <div class="qmeta"><span class="qassign">Q1 &middot; Default &mdash; general tech</span><button class="copy" data-copy="Nobody ever quit a microtasking app because the tasks were too hard. They quit at the payout screen. The work was never the problem — the gap between finishing and being paid is. So we don't have one.">Copy</button></div>
+      </blockquote>
+
+      <blockquote class="quote reveal">
+        <p class="qtext">&ldquo;A marketplace&rsquo;s job ends at the handshake. Ours ends when the money has moved. That&rsquo;s not a positioning line, it&rsquo;s an architecture decision &mdash; you cannot make payment part of finishing a task if the payment lives on a different system than the task.&rdquo;</p>
+        <div class="qmeta"><span class="qassign">Q2 &middot; Business &amp; analysis desks</span><button class="copy" data-copy="A marketplace's job ends at the handshake. Ours ends when the money has moved. That's not a positioning line, it's an architecture decision — you cannot make payment part of finishing a task if the payment lives on a different system than the task.">Copy</button></div>
+      </blockquote>
+
+      <blockquote class="quote reveal">
+        <p class="qtext">&ldquo;&lsquo;Work from anywhere&rsquo; in this industry has always been sold as a laptop on a beach. For the people actually doing this work it means something much plainer: the app doesn&rsquo;t check your passport before deciding whether you&rsquo;re allowed to be paid.&rdquo;</p>
+        <div class="qmeta"><span class="qassign">Q3 &middot; Global &amp; emerging markets</span><button class="copy" data-copy="'Work from anywhere' in this industry has always been sold as a laptop on a beach. For the people actually doing this work it means something much plainer: the app doesn't check your passport before deciding whether you're allowed to be paid.">Copy</button></div>
+      </blockquote>
+
+      <blockquote class="quote reveal">
+        <p class="qtext">&ldquo;We didn&rsquo;t put this onchain to make a point about decentralisation. We put it onchain because it was the only way to make the money land at the same time as the work. If a bank rail could have done it in that moment, we&rsquo;d have used a bank rail.&rdquo;</p>
+        <div class="qmeta"><span class="qassign">Q4 &middot; Crypto desks &amp; sceptics</span><button class="copy" data-copy="We didn't put this onchain to make a point about decentralisation. We put it onchain because it was the only way to make the money land at the same time as the work. If a bank rail could have done it in that moment, we'd have used a bank rail.">Copy</button></div>
+      </blockquote>
+
+      <blockquote class="quote reveal">
+        <p class="qtext">&ldquo;Tap-to-earn already proved that hundreds of millions of people will do small repetitive things on a phone for money. What it never had was work anyone needed done or money anyone could spend. We run the same loop and point it at real tasks.&rdquo;</p>
+        <div class="qmeta"><span class="qassign">Q5 &middot; Features &amp; podcasts</span><button class="copy" data-copy="Tap-to-earn already proved that hundreds of millions of people will do small repetitive things on a phone for money. What it never had was work anyone needed done or money anyone could spend. We run the same loop and point it at real tasks.">Copy</button></div>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- STYLE NOTE -->
+  <section>
+    <div class="sec-head">
+      <span class="label">06 &middot; For writers</span>
+      <h2>A note on how to describe Tenda</h2>
+      <p class="dek">Tenda is an application, not a marketplace. This is a description of the product rather than a branding preference, and getting it wrong changes what the story says &mdash; it is precisely the distinction that makes settlement at acceptance possible.</p>
+    </div>
+
+    <div class="styletable reveal">
+      <table>
+        <thead><tr><th>Instead of</th><th>Please write</th></tr></thead>
+        <tbody>
+          <tr><td class="no">Tenda, a marketplace for gig work</td><td class="yes">Tenda, an onchain microtasking app</td></tr>
+          <tr><td class="no">a platform connecting workers with employers</td><td class="yes">an app where tasks are posted, completed and paid</td></tr>
+          <tr><td class="no">users list their services</td><td class="yes">posters create tasks; earners complete them</td></tr>
+          <tr><td class="no">a crypto gig marketplace</td><td class="yes">an onchain microtasking application</td></tr>
+          <tr><td class="no">workers request a payout</td><td class="yes">earners are paid when a task is accepted</td></tr>
+          <tr><td class="no">the Tenda ecosystem</td><td class="yes">the Tenda app</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="prose" style="margin-top:26px">
+      <p><span class="label">Terms we use</span></p>
+      <p><strong>Poster</strong> creates a task. <strong>Earner</strong> completes it. A <strong>task</strong> is the unit of work. <strong>The loop</strong> is post &rarr; assign &rarr; do &rarr; accept &rarr; paid. <strong>Settlement</strong> is the payment event.</p>
+    </div>
+  </section>
+
+  <!-- BOILERPLATE -->
+  <section>
+    <div class="sec-head">
+      <span class="label">07 &middot; Boilerplate</span>
+      <h2>For the foot of the story</h2>
+    </div>
+
+    <div class="stack">
+      <div class="block">
+        <div class="block-head">
+          <span class="label">Long &middot; 75 words</span>
+          <button class="copy" data-copy="Tenda is a rewarding onchain microtasking application. Anyone can post a task from anywhere and anyone can complete one from anywhere, with payment settling onchain the moment a completed task is accepted — no payout queue, no threshold, no waiting period. Tenda is an application rather than a marketplace: posting, assignment, completion and settlement all happen on one surface, which is what makes instant settlement possible. More at tendahq.com.">Copy</button>
+        </div>
+        <div class="block-body"><p>Tenda is a rewarding onchain microtasking application. Anyone can post a task from anywhere and anyone can complete one from anywhere, with payment settling onchain the moment a completed task is accepted &mdash; no payout queue, no threshold, no waiting period. Tenda is an application rather than a marketplace: posting, assignment, completion and settlement all happen on one surface, which is what makes instant settlement possible. More at tendahq.com.</p></div>
+      </div>
+
+      <div class="block">
+        <div class="block-head">
+          <span class="label">Short &middot; 30 words</span>
+          <button class="copy" data-copy="Tenda is a rewarding onchain microtasking application where tasks can be posted or completed from anywhere, and payment settles the moment work is accepted. Not a marketplace — an application. tendahq.com">Copy</button>
+        </div>
+        <div class="block-body"><p>Tenda is a rewarding onchain microtasking application where tasks can be posted or completed from anywhere, and payment settles the moment work is accepted. Not a marketplace &mdash; an application. tendahq.com</p></div>
+      </div>
+
+      <div class="block">
+        <div class="block-head">
+          <span class="label">Ultra-short &middot; 15 words</span>
+          <button class="copy" data-copy="Tenda is an onchain microtasking app that pays earners the moment a task is accepted.">Copy</button>
+        </div>
+        <div class="block-body"><p>Tenda is an onchain microtasking app that pays earners the moment a task is accepted.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ASSETS -->
+  <section>
+    <div class="sec-head">
+      <span class="label">08 &middot; Assets</span>
+      <h2>What ships with this kit</h2>
+      <p class="dek">A journalist who has to ask for a screenshot on deadline writes a shorter story.</p>
+    </div>
+
+    <div class="checks reveal">
+      <div class="check"><span class="box"></span><span class="t">Logo &mdash; SVG and PNG, light and dark</span></div>
+      <div class="check"><span class="box"></span><span class="t">App icon &mdash; 1024&times;1024</span></div>
+      <div class="check"><span class="box"></span><span class="t">Founder headshot, name and title</span></div>
+      <div class="check"><span class="box"></span><span class="t">Five product screenshots, ending on the paid state<em>Screenshot 5 is the story</em></span></div>
+      <div class="check"><span class="box"></span><span class="t">20-second screen recording, one take, unedited<em>Do not speed this up &mdash; the take is the proof</em></span></div>
+      <div class="check"><span class="box"></span><span class="t">60-second product video, captioned</span></div>
+      <div class="check"><span class="box"></span><span class="t">The loop diagram, SVG and PNG</span></div>
+      <div class="check"><span class="box"></span><span class="t">Brand colours and typefaces</span></div>
+      <div class="check"><span class="box"></span><span class="t">Press release, .docx and plain text</span></div>
+    </div>
+  </section>
+
+  <!-- STATUS -->
+  <section>
+    <div class="sec-head">
+      <span class="label">09 &middot; Before this ships</span>
+      <h2>Status of this kit</h2>
+    </div>
+
+    <div class="notice reveal">
+      <span class="label">Draft &mdash; not yet for distribution</span>
+      <p>Every claim in this kit derives from Tenda&rsquo;s own product statements. The fields marked <span class="chip">Pending</span> could not be verified and have deliberately been left blank rather than estimated &mdash; a press kit is copied verbatim by every outlet that quotes it, so a wrong number travels much faster than a correction.</p>
+      <p>Two answers matter more than the rest. <strong>The measured settlement time</strong>, which should replace the word &ldquo;instant&rdquo; everywhere it appears &mdash; &ldquo;paid in under four seconds&rdquo; persuades where &ldquo;paid instantly&rdquo; does not, because it reads as a measurement. And <strong>three real example tasks with real amounts</strong>: this kit currently describes small paid work without naming a single instance of it, and abstraction is the enemy of a category this heavily doubted.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="fgrid">
+      <span class="fline">Tenda &middot; Press kit</span>
+      <span class="fline">Done and paid, in the same moment</span>
+    </div>
+  </footer>
+</div>
+
+<script>
+  document.querySelectorAll("button.copy").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var text = btn.getAttribute("data-copy") || "";
+      var done = function(){
+        btn.textContent = "Copied";
+        btn.setAttribute("data-done","1");
+        setTimeout(function(){ btn.textContent = "Copy"; btn.removeAttribute("data-done"); }, 1800);
+      };
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done, function(){ fallback(text, done); });
+        } else { fallback(text, done); }
+      } catch (e) { fallback(text, done); }
+    });
+  });
+
+  function fallback(text, done){
+    try{
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly","");
+      ta.style.position = "fixed";
+      ta.style.opacity = "0";
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      document.body.removeChild(ta);
+      done();
+    } catch(e){
+      var b = document.activeElement;
+      if (b && b.tagName === "BUTTON") { b.textContent = "Select and copy"; }
+    }
+  }
+
+  try {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if (en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); } });
+    }, { rootMargin: "0px 0px -8% 0px" });
+    document.querySelectorAll(".reveal").forEach(function(el){ io.observe(el); });
+  } catch (e) {
+    document.querySelectorAll(".reveal").forEach(function(el){ el.classList.add("in"); });
+  }
+</script>
