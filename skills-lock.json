@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "council-multi-model": {
+      "source": "affaan-m/ECC",
+      "sourceType": "github",
+      "skillPath": "skills/council-multi-model/SKILL.md",
+      "computedHash": "60580ea5f8c99de9648cfb7636b84104f7cc2d771e75b1142ba25714b6fdf9c6"
+    }
+  }
+}
