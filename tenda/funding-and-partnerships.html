@@ -1,0 +1,541 @@
+<title>Tenda Capital Ledger</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap">
+<style>
+  :root{
+    --ground:#F1F3EF; --surface:#FFFFFF; --surface-2:#E6EAE2; --inset:#F7F8F5;
+    --ink:#131C17; --ink-2:#4A574E; --ink-3:#7C8A80;
+    --rule:#D7DCD2; --rule-2:#B9C2B4;
+    --accent:#0B6B45; --accent-soft:rgba(11,107,69,.10); --accent-line:rgba(11,107,69,.42);
+    --gate:#A0521A; --gate-soft:rgba(160,82,26,.10); --gate-line:rgba(160,82,26,.42);
+    --stop:#8A2B33; --stop-soft:rgba(138,43,51,.10); --stop-line:rgba(138,43,51,.42);
+    --disp:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+    --body:"Newsreader",Georgia,"Times New Roman",serif;
+    --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+    --measure:64ch; --pad:clamp(18px,4.5vw,56px);
+  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --ground:#0B120E; --surface:#131C17; --surface-2:#1C271F; --inset:#0F1712;
+    --ink:#E8EFE9; --ink-2:#9CAA9F; --ink-3:#6E7D72;
+    --rule:#222E26; --rule-2:#334237;
+    --accent:#4FC08B; --accent-soft:rgba(79,192,139,.13); --accent-line:rgba(79,192,139,.45);
+    --gate:#DC9A50; --gate-soft:rgba(220,154,80,.13); --gate-line:rgba(220,154,80,.45);
+    --stop:#E0797F; --stop-soft:rgba(224,121,127,.13); --stop-line:rgba(224,121,127,.45);
+  }}
+  :root[data-theme="dark"]{
+    --ground:#0B120E; --surface:#131C17; --surface-2:#1C271F; --inset:#0F1712;
+    --ink:#E8EFE9; --ink-2:#9CAA9F; --ink-3:#6E7D72;
+    --rule:#222E26; --rule-2:#334237;
+    --accent:#4FC08B; --accent-soft:rgba(79,192,139,.13); --accent-line:rgba(79,192,139,.45);
+    --gate:#DC9A50; --gate-soft:rgba(220,154,80,.13); --gate-line:rgba(220,154,80,.45);
+    --stop:#E0797F; --stop-soft:rgba(224,121,127,.13); --stop-line:rgba(224,121,127,.45);
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+  body{background:var(--ground);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 var(--pad)}
+  h1,h2,h3,h4{margin:0;font-family:var(--disp);letter-spacing:-.02em;text-wrap:balance}
+  p{margin:0}
+  a{color:var(--accent)}
+  .prose{max-width:var(--measure);display:flex;flex-direction:column;gap:.85em;color:var(--ink-2)}
+  .prose strong{color:var(--ink);font-weight:600}
+
+  .eyebrow{font-family:var(--mono);font-size:.66rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+
+  /* ---- masthead ---- */
+  header.mast{padding:clamp(26px,5vw,54px) 0 clamp(24px,4vw,40px)}
+  .mast-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline;
+    border-bottom:1px solid var(--rule);padding-bottom:11px;margin-bottom:clamp(22px,4vw,38px)}
+  h1.title{font-size:clamp(2.1rem,6.4vw,4.05rem);font-weight:800;line-height:.98;letter-spacing:-.04em;max-width:16ch}
+  h1.title em{font-style:normal;color:var(--accent)}
+  .stand{font-family:var(--body);font-size:clamp(1.05rem,2.2vw,1.28rem);color:var(--ink-2);max-width:60ch;margin-top:18px;line-height:1.45}
+  .basis{margin-top:22px;padding:13px 16px;border:1px solid var(--rule);border-left:3px solid var(--accent-line);
+    background:var(--inset);font-size:.92rem;color:var(--ink-2);max-width:74ch}
+  .basis b{color:var(--ink);font-weight:600}
+
+  /* ---- position strip ---- */
+  .position{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));
+    border:1px solid var(--rule);background:var(--surface);margin-top:clamp(24px,4vw,34px)}
+  .pcell{padding:16px 18px;border-right:1px solid var(--rule)}
+  .pcell:last-child{border-right:0}
+  .pcell .v{font-family:var(--mono);font-size:1.55rem;font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.03em;line-height:1.1}
+  .pcell .k{font-family:var(--mono);font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);margin-top:6px}
+  .pcell.on .v{color:var(--accent)}
+  .pcell.gt .v{color:var(--gate)}
+  @media (max-width:660px){.pcell{border-right:0;border-bottom:1px solid var(--rule)}.position .pcell:last-child{border-bottom:0}}
+
+  /* ---- sections ---- */
+  section{border-top:1px solid var(--rule);padding:clamp(34px,5.5vw,62px) 0}
+  .shead{display:flex;flex-direction:column;gap:11px;margin-bottom:clamp(18px,3vw,28px)}
+  .shead h2{font-size:clamp(1.32rem,3.1vw,1.95rem);font-weight:700;line-height:1.1}
+  .shead .dek{max-width:var(--measure);color:var(--ink-2);font-size:1.02rem}
+
+  /* ---- gate ladder ---- */
+  .ladder{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));border:1px solid var(--rule);background:var(--surface)}
+  .rung{padding:19px;border-right:1px solid var(--rule);display:flex;flex-direction:column;gap:9px}
+  .rung:last-child{border-right:0}
+  .rung .st{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+  .rung h3{font-family:var(--disp);font-size:1.08rem;font-weight:700}
+  .rung.now{background:var(--accent-soft)} .rung.now h3{color:var(--accent)}
+  .rung.now .st{color:var(--accent)}
+  .rung p{font-size:.95rem;color:var(--ink-2)}
+  .rung ul{margin:0;padding-left:1.05em;font-size:.9rem;color:var(--ink-2);display:flex;flex-direction:column;gap:3px}
+  @media (max-width:760px){.rung{border-right:0;border-bottom:1px solid var(--rule)}.ladder .rung:last-child{border-bottom:0}}
+
+  /* ---- filter bar ---- */
+  .filters{position:sticky;top:0;z-index:5;background:var(--ground);border-bottom:1px solid var(--rule);
+    padding:11px 0;display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+  .filters .fl{font-family:var(--mono);font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3);margin-right:5px}
+  .fbtn{font-family:var(--mono);font-size:.68rem;font-weight:500;letter-spacing:.06em;padding:6px 11px;
+    border:1px solid var(--rule-2);background:transparent;color:var(--ink-2);cursor:pointer;border-radius:2px}
+  .fbtn:hover{border-color:var(--ink-3);color:var(--ink)}
+  .fbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .fbtn[aria-pressed="true"]{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+  .fcount{font-family:var(--mono);font-size:.68rem;color:var(--ink-3);margin-left:auto;font-variant-numeric:tabular-nums}
+
+  /* ---- tables ---- */
+  .tw{border:1px solid var(--rule);background:var(--surface);overflow-x:auto}
+  table{width:100%;border-collapse:collapse;min-width:940px}
+  thead th{text-align:left;background:var(--surface-2);
+    font-family:var(--mono);font-size:.61rem;font-weight:600;letter-spacing:.13em;text-transform:uppercase;
+    color:var(--ink-3);padding:11px 14px;border-bottom:1px solid var(--rule-2);white-space:nowrap}
+  tbody td{padding:13px 14px;border-bottom:1px solid var(--rule);font-size:.95rem;vertical-align:top;line-height:1.42}
+  tbody tr:last-child td{border-bottom:0}
+  tbody tr:hover{background:var(--inset)}
+  td.nm{border-left:3px solid var(--rule-2)}
+  tr[data-gate="open"] td.nm{border-left-color:var(--accent-line)}
+  tr[data-gate="audit"] td.nm,tr[data-gate="mainnet"] td.nm,tr[data-gate="traction"] td.nm{border-left-color:var(--gate-line)}
+  tr[data-gate="hold"] td.nm{border-left-color:var(--stop-line)}
+  td.nm b{font-family:var(--disp);font-weight:700;font-size:1rem;letter-spacing:-.01em;display:block}
+  td.nm span.by{font-family:var(--mono);font-size:.68rem;color:var(--ink-3);display:block;margin-top:3px}
+  td.amt{font-family:var(--mono);font-size:.83rem;font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--ink)}
+  td.amt small{display:block;font-size:.72rem;color:var(--ink-3);white-space:normal;margin-top:4px;letter-spacing:.02em}
+  td.win{font-family:var(--mono);font-size:.76rem;color:var(--ink-2);white-space:nowrap}
+  td.win small{display:block;white-space:normal;margin-top:5px}
+  col.c-nm{width:16%} col.c-ty{width:9%} col.c-am{width:13%}
+  col.c-hk{width:25%} col.c-un{width:17%} col.c-gt{width:9%} col.c-wn{width:11%}
+
+  code{font-family:var(--mono);font-size:.84em;background:var(--accent-soft);color:var(--accent);
+    padding:1px 5px;border-radius:2px;white-space:nowrap}
+  .chip{display:inline-block;font-family:var(--mono);font-size:.6rem;font-weight:600;letter-spacing:.1em;
+    text-transform:uppercase;padding:3px 7px;border:1px solid currentColor;border-radius:2px;white-space:nowrap}
+  .chip.open{color:var(--accent);background:var(--accent-soft)}
+  .chip.gated{color:var(--gate);background:var(--gate-soft)}
+  .chip.hold{color:var(--stop);background:var(--stop-soft)}
+  .chip.plain{color:var(--ink-3)}
+  .ver{font-family:var(--mono);font-size:.6rem;letter-spacing:.09em;text-transform:uppercase;color:var(--accent);display:block;margin-top:6px}
+  .ver.q{color:var(--ink-3)}
+
+  /* ---- sequence ---- */
+  .seq{display:flex;flex-direction:column;border:1px solid var(--rule);background:var(--surface)}
+  .sq{display:grid;grid-template-columns:minmax(120px,168px) 1fr;gap:6px 26px;padding:20px;border-bottom:1px solid var(--rule)}
+  .seq .sq:last-child{border-bottom:0}
+  .sq .when{font-family:var(--mono);font-size:.68rem;letter-spacing:.11em;text-transform:uppercase;color:var(--accent)}
+  .sq .when b{display:block;font-family:var(--disp);font-size:1.9rem;font-weight:800;color:var(--ink);letter-spacing:-.04em;line-height:1;margin-bottom:7px;font-variant-numeric:tabular-nums}
+  .sq ul{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:7px;font-size:.97rem;color:var(--ink-2)}
+  .sq ul strong{color:var(--ink);font-weight:600}
+  @media (max-width:640px){.sq{grid-template-columns:1fr;gap:12px}}
+
+  /* ---- two-column assessment ---- */
+  .two{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px}
+  .card{border:1px solid var(--rule);background:var(--surface);padding:19px 21px;display:flex;flex-direction:column;gap:12px}
+  .card.pro{border-left:3px solid var(--accent-line)}
+  .card.con{border-left:3px solid var(--stop-line)}
+  .card h3{font-size:1.08rem;font-weight:700}
+  .card.pro h3{color:var(--accent)} .card.con h3{color:var(--stop)}
+  .card ul{margin:0;padding-left:1.05em;display:flex;flex-direction:column;gap:8px;font-size:.95rem;color:var(--ink-2)}
+  .card ul strong{color:var(--ink);font-weight:600}
+
+  /* ---- fix-first ---- */
+  .fix{display:flex;flex-direction:column;gap:14px}
+  .fixi{border:1px solid var(--rule);background:var(--surface);padding:17px 19px;display:grid;
+    grid-template-columns:auto 1fr;gap:5px 17px;align-items:start}
+  .fixi .n{font-family:var(--mono);font-size:.72rem;font-weight:600;color:var(--gate);padding-top:3px}
+  .fixi h3{font-size:1.02rem;font-weight:700;grid-column:2}
+  .fixi p{grid-column:2;font-size:.95rem;color:var(--ink-2)}
+
+  footer{border-top:1px solid var(--rule);padding:26px 0 46px;display:flex;justify-content:space-between;
+    gap:12px;flex-wrap:wrap;font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+  .src{font-family:var(--body);font-size:.88rem;color:var(--ink-2);max-width:var(--measure);
+    display:flex;flex-direction:column;gap:5px;text-transform:none;letter-spacing:0}
+</style>
+
+<div class="wrap">
+
+<header class="mast">
+  <div class="mast-top">
+    <span class="eyebrow">Tenda &middot; capital &amp; partnership ledger</span>
+    <span class="eyebrow">v0.4.3-testnet &middot; audit pending</span>
+  </div>
+  <h1 class="title">Every opportunity has a <em>release condition</em>.</h1>
+  <p class="stand">Tenda's product is a contract that holds money until a condition is met. Its funding pipeline works the same way. This is every grant, fellowship, accelerator and partnership the core team can realistically move on &mdash; each one filed under the condition that actually releases it.</p>
+  <div class="basis">
+    <b>How to read this.</b> Rows marked <span class="chip open">Open now</span> can be actioned this quarter against the product as it stands today &mdash; testnet, unaudited, no users. Everything else is gated, and the gate is named. Figures marked <b>CONFIRMED AUG 2026</b> were checked against public sources this month; everything else needs verifying before you build a plan on it.
+  </div>
+  <div class="position">
+    <div class="pcell"><div class="v">64</div><div class="k">Opportunities mapped</div></div>
+    <div class="pcell on"><div class="v">35</div><div class="k">Actionable now</div></div>
+    <div class="pcell gt"><div class="v">25</div><div class="k">Gated on audit or scale</div></div>
+    <div class="pcell"><div class="v">4</div><div class="k">Do not chase yet</div></div>
+  </div>
+</header>
+
+<section id="gates">
+  <div class="shead">
+    <span class="eyebrow">The constraint</span>
+    <h2>One gate controls almost everything</h2>
+    <p class="dek">Tenda is testnet and unaudited, and says so. That single fact sorts the entire funding landscape into three tiers. The mistake to avoid is spending this quarter chasing tier-three money.</p>
+  </div>
+  <div class="ladder">
+    <div class="rung now">
+      <span class="st">Where Tenda is today</span>
+      <h3>Testnet, open source, no users</h3>
+      <p>Money that pays for building and for proving a thesis, not for scale.</p>
+      <ul><li>Audit subsidies</li><li>Hackathons &amp; bounties</li><li>Ecosystem grants for public goods</li><li>Pilot-stage impact capital</li><li>Distribution partnerships</li></ul>
+    </div>
+    <div class="rung">
+      <span class="st">Gate 1 &mdash; unlocks at</span>
+      <h3>Third-party audit complete</h3>
+      <p>The audit is the only item on this page that is a prerequisite rather than an option.</p>
+      <ul><li>Mainnet deployment</li><li>Bug bounty programs</li><li>Fiat off-ramp partnerships</li><li>Any consumer press or growth spend</li></ul>
+    </div>
+    <div class="rung">
+      <span class="st">Gate 2 &mdash; unlocks at</span>
+      <h3>Mainnet with real transactions</h3>
+      <p>Almost all retroactive and equity money is measured on shipped, used product.</p>
+      <ul><li>Base Builder Grants (retroactive)</li><li>Celo Anchor pool (tx thresholds)</li><li>Accelerators &amp; pre-seed</li><li>Impact funds requiring evidence</li></ul>
+    </div>
+  </div>
+</section>
+
+<div class="filters" id="filters" role="group" aria-label="Filter opportunities by release condition">
+  <span class="fl">Filter</span>
+  <button class="fbtn" data-f="all" aria-pressed="true">All</button>
+  <button class="fbtn" data-f="open" aria-pressed="false">Open now</button>
+  <button class="fbtn" data-f="audit" aria-pressed="false">Needs audit</button>
+  <button class="fbtn" data-f="mainnet" aria-pressed="false">Needs mainnet</button>
+  <button class="fbtn" data-f="traction" aria-pressed="false">Needs traction</button>
+  <button class="fbtn" data-f="hold" aria-pressed="false">Do not chase</button>
+  <span class="fcount" id="fcount">64 shown</span>
+</div>
+
+<section class="tsec" id="s-audit">
+  <div class="shead">
+    <span class="eyebrow">Category &middot; the unlock</span>
+    <h2>Audit funding</h2>
+    <p class="dek">The press kit commits to a third-party audit before public mainnet. That audit is the gate on everything downstream, and it is the one line item with a dedicated funding market of its own. Note the split: the Solidity contracts on Base and Celo are Ethereum-ecosystem code and qualify for Ethereum audit money; the Anchor program does not, and must be funded through Solana.</p>
+  </div>
+  <div class="tw"><table>
+    <colgroup><col class="c-nm"><col class="c-ty"><col class="c-am"><col class="c-hk"><col class="c-un"><col class="c-gt"><col class="c-wn"></colgroup>
+    <thead><tr><th>Programme</th><th>Type</th><th>Ticket &amp; terms</th><th>Why Tenda qualifies today</th><th>What it unlocks</th><th>Condition</th><th>Window</th></tr></thead>
+    <tbody>
+      <tr data-gate="open"><td class="nm"><b>EF Audit Subsidy</b><span class="by">Ethereum Foundation</span></td><td>Subsidy</td><td class="amt">$1M pool<small>20+ audit providers; subsidises cost, not a cash grant</small></td><td>TendaEscrow is Solidity/Foundry with full test suites, deployed on Base and Celo &mdash; both Ethereum L2s. Open source with public tests is exactly the profile this pool was built for.</td><td>Audit of the EVM contracts, i.e. two of three chains cleared for mainnet</td><td><span class="chip open">Open now</span></td><td class="win">Rolling<small class="ver">Confirmed Aug 2026</small></td></tr>
+      <tr data-gate="open"><td class="nm"><b>Solana Foundation Grants &mdash; security line</b><span class="by">Solana Foundation</span></td><td>Grant</td><td class="amt">Milestone-based<small>Standard or convertible; ~3 weeks to decision</small></td><td>The Anchor escrow program is the piece no Ethereum subsidy will touch. An open-source Solana program with a published test suite is a textbook public-good application.</td><td>Audit of the Anchor program &mdash; the third chain</td><td><span class="chip open">Open now</span></td><td class="win">Rolling<small class="ver">Confirmed Aug 2026</small></td></tr>
+      <tr data-gate="open"><td class="nm"><b>Zealynx Audit Grants</b><span class="by">Zealynx</span></td><td>Subsidy</td><td class="amt">$100K+ pool<small>Applied as credit against an engagement</small></td><td>Small, well-scoped contract set &mdash; escrow with four exit routes. Cheap to review relative to the pool, which makes it an attractive grant to award.</td><td>Partial or full EVM audit cost</td><td><span class="chip open">Open now</span></td><td class="win">Rolling<small class="ver q">Verify pool status</small></td></tr>
+      <tr data-gate="open"><td class="nm"><b>FailSafe Security Grant</b><span class="by">FailSafe / Chainstack</span></td><td>Subsidy</td><td class="amt">Up to $25K<small>Early-stage teams pre-launch</small></td><td>Explicitly aimed at teams auditing before launch rather than after an incident &mdash; Tenda's stated sequence.</td><td>Top-up on audit cost; security tooling</td><td><span class="chip open">Open now</span></td><td class="win">Rolling<small class="ver q">Verify</small></td></tr>
+      <tr data-gate="open"><td class="nm"><b>CertiK &times; YZi Labs audit grant</b><span class="by">CertiK / YZi Labs</span></td><td>Subsidy</td><td class="amt">$1M pool<small>Early-stage Web3 startups</small></td><td>Pre-mainnet consumer-facing custody logic is the risk class this pool targets.</td><td>Named audit firm on the press kit's open fact-sheet row</td><td><span class="chip open">Open now</span></td><td class="win">Rolling<small class="ver q">Verify</small></td></tr>
+      <tr data-gate="open"><td class="nm"><b>Code4rena / Cantina contest</b><span class="by">Competitive audit platforms</span></td><td>Contest</td><td class="amt">$15K&ndash;$50K typical<small>You fund the pot; often cheaper than a firm</small></td><td>A four-state escrow contract is small enough to be fully covered by a contest, and the public findings report is itself a credibility asset.</td><td>Audit coverage plus a citable public report</td><td><span class="chip open">Open now</span></td><td class="win">Scheduled<small class="ver q">Verify pricing</small></td></tr>
+      <tr data-gate="audit"><td class="nm"><b>Immunefi bug bounty</b><span class="by">Immunefi</span></td><td>Programme</td><td class="amt">Pool you fund<small>Ongoing; scaled to TVL</small></td><td>Meaningless on testnet with no value at risk. Becomes essential the day real USDC locks in the contract.</td><td>Ongoing assurance post-launch; a bounty page reads as maturity to grant committees</td><td><span class="chip gated">Post-audit</span></td><td class="win">After mainnet</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="tsec" id="s-chain">
+  <div class="shead">
+    <span class="eyebrow">Category &middot; largest near-term pool</span>
+    <h2>Chain ecosystem grants</h2>
+    <p class="dek">Tenda ships on three chains, and each runs its own independent grants programme. The same codebase legitimately qualifies for all three &mdash; this is the single most underexploited fact about Tenda's current position. Celo is the strongest of the three: Prezenti's most recent season explicitly funded stablecoin payments, and Tenda's <code>feeCurrency</code> implementation is a direct expression of Celo's core thesis.</p>
+  </div>
+  <div class="tw"><table>
+    <colgroup><col class="c-nm"><col class="c-ty"><col class="c-am"><col class="c-hk"><col class="c-un"><col class="c-gt"><col class="c-wn"></colgroup>
+    <thead><tr><th>Programme</th><th>Type</th><th>Ticket &amp; terms</th><th>Why Tenda qualifies today</th><th>What it unlocks</th><th>Condition</th><th>Window</th></tr></thead>
+    <tbody>
+      <tr data-gate="open"><td class="nm"><b>Prezenti Season 3 &mdash; Frontier pool</b><span class="by">Celo ecosystem grants</span></td><td>Grant</td><td class="amt">Early-stage tier<small>Non-dilutive; 4&ndash;6 weeks to outcome</small></td><td>Season 2 funded 19 projects across agent infra, <b>stablecoin payments</b> and gaming. Tenda is stablecoin payments with gas paid in USDC via <code>feeCurrency</code> &mdash; no CELO needed. Frontier is the pool built for pre-traction teams.</td><td>Celo mainnet deployment and the MiniPay integration work</td><td><span class="chip open">Open now</span></td><td class="win">12 Aug &ndash; 29 Dec 2026<small class="ver">Confirmed Aug 2026</small></td></tr>
+      <tr data-gate="open"><td class="nm"><b>Prezenti Season 3 &mdash; Boost pool</b><span class="by">Celo ecosystem grants</span></td><td>Grant</td><td class="amt">Small / fast<small>Lightweight application</small></td><td>Sized for a discrete piece of work. Fund one shippable thing &mdash; the auto-approve mechanism, or the Celo half of the audit.</td><td>A named missing feature, delivered</td><td><span class="chip open">Open now</span></td><td class="win">12 Aug &ndash; 29 Dec 2026<small class="ver">Confirmed Aug 2026</small></td></tr>
+      <tr data-gate="traction"><td class="nm"><b>Prezenti Season 3 &mdash; Anchor pool</b><span class="by">Celo ecosystem grants</span></td><td>Grant</td><td class="amt">~$25K &rarr; ~$50K<small>Stage 2: 10K&ndash;100K daily tx &middot; Stage 3: 100K&ndash;500K</small></td><td>Explicitly threshold-gated on daily transaction volume. Tenda has none today. This is the pool MiniPay distribution is designed to reach.</td><td>The largest non-dilutive cheque on this page, without equity</td><td><span class="chip gated">Traction</span></td><td class="win">Same season<small class="ver">Confirmed Aug 2026</small></td></tr>
+      <tr data-gate="open"><td class="nm"><b>Solana Foundation Grants</b><span class="by">Solana Foundation</span></td><td>Grant</td><td class="amt">Milestone-based<small>$100M+ deployed to 500+ projects; convertible option for commercial public goods</small></td><td>An open-source Anchor escrow program with test suites, serving informal work in emerging markets. Rolling applications, decisions in roughly three weeks.</td><td>Core protocol work; the convertible structure suits a product with a 2.5% fee</td><td><span class="chip open">Open now</span></td><td class="win">Rolling<small class="ver">Confirmed Aug 2026</small></td></tr>
+      <tr data-gate="open"><td class="nm"><b>Solana Foundation Nigeria Grants</b><span class="by">via Superteam Earn</span></td><td>Grant</td><td class="amt">Up to $10K USDC<small>Regional allocation</small></td><td>Tenda's own gig examples lead with Ikeja and Lagos. A Nigeria-focused Solana application writes itself, and Nigeria is the largest Solana developer market in Africa.</td><td>Fast working capital with almost no dilution or reporting burden</td><td><span class="chip open">Open now</span></td><td class="win">Rolling<small class="ver">Confirmed Aug 2026</small></td></tr>
+      <tr data-gate="open"><td class="nm"><b>Superteam Earn bounties</b><span class="by">Superteam Nigeria</span></td><td>Bounty</td><td class="amt">$500&ndash;$5K each<small>SuperteamNG placed $65,779 in bounties in Q1 2026 alone</small></td><td>Not funding for Tenda &mdash; funding for the people building it. The lowest-friction cash on this page, and it doubles as recruiting reach into the largest Solana dev community in Africa.</td><td>Team runway; local hiring pipeline</td><td><span class="chip open">Open now</span></td><td class="win">Continuous<small class="ver">Confirmed Aug 2026</small></td></tr>
+      <tr data-gate="open"><td class="nm"><b>Solana Mobile Builder Grants</b><span class="by">Solana Mobile</span></td><td>Grant</td><td class="amt">Up to $10K per team<small>Seeker and SKR-focused builds</small></td><td>Tenda already ships a reduced platform fee on Seeker &mdash; an existing, shipped mobile commitment rather than a promise. Escrow for physical errands is inherently a phone product.</td><td>A native mobile client; dApp Store placement</td><td><span class="chip open">Open now</span></td><td class="win">Rolling<small class="ver">Confirmed Aug 2026</small></td></tr>
+      <tr data-gate="mainnet"><td class="nm"><b>Base Builder Grants</b><span class="by">Base / Coinbase</span></td><td>Retroactive</td><td class="amt">1&ndash;5 ETH<small>No formal application; discovery, nomination and self-nomination via Gitcoin</small></td><td>Retroactive and explicitly rewards shipped, live work. A testnet contract will not be discovered. Ship the Base contracts to mainnet and become visible &mdash; then nominate.</td><td>Unrestricted ETH, no reporting, no equity</td><td><span class="chip gated">Mainnet</span></td><td class="win">Rolling cohorts<small class="ver">Confirmed Aug 2026</small></td></tr>
+      <tr data-gate="open"><td class="nm"><b>Coinbase CDP Builder Grants</b><span class="by">Coinbase Developer Platform</span></td><td>Grant</td><td class="amt">$25K&ndash;$30K per round<small>Seasonal cohorts</small></td><td>The press kit lists Base Paymaster sponsorship as in progress. Finishing a CDP integration is the qualifying act, and gasless USDC via EIP-2612 permit is already built.</td><td>Completes gasless onboarding on Base</td><td><span class="chip open">Open now</span></td><td class="win">Seasonal rounds<small class="ver">Confirmed Aug 2026</small></td></tr>
+      <tr data-gate="mainnet"><td class="nm"><b>Base Ecosystem Fund</b><span class="by">Base / Coinbase</span></td><td>Investment</td><td class="amt">$50K<small>Equity; subject to diligence; via Base Batches</small></td><td>Real capital rather than a grant, and diligence will ask about the audit and the Exchange surface's licensing before anything else.</td><td>First institutional cheque; Coinbase relationship</td><td><span class="chip gated">Mainnet</span></td><td class="win">Via Batches<small class="ver">Confirmed Aug 2026</small></td></tr>
+      <tr data-gate="mainnet"><td class="nm"><b>Optimism Retro Funding</b><span class="by">Optimism Collective</span></td><td>Retroactive</td><td class="amt">Mission-dependent<small>Non-dilutive, measured on onchain impact</small></td><td>Base is an OP Stack chain, so Base activity counts toward Superchain retro missions. Purely a function of measured usage.</td><td>Recurring non-dilutive revenue as volume grows</td><td><span class="chip gated">Mainnet</span></td><td class="win">Round-based<small class="ver q">Check current missions</small></td></tr>
+      <tr data-gate="open"><td class="nm"><b>Gitcoin Grants &amp; Octant</b><span class="by">Quadratic funding rounds</span></td><td>Public goods</td><td class="amt">Crowd-matched<small>Non-dilutive; scales with community support</small></td><td>Fully open-source contracts on two VMs. The catch is honest: quadratic funding rewards an existing community, and Tenda has not built one yet.</td><td>Small funding; a durable public-goods narrative</td><td><span class="chip open">Open now</span></td><td class="win">Seasonal rounds<small class="ver q">Verify round calendar</small></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="tsec" id="s-dist">
+  <div class="shead">
+    <span class="eyebrow">Category &middot; highest leverage</span>
+    <h2>Distribution partnerships</h2>
+    <p class="dek">The strongest opportunity on this page is not a grant. MiniPay is a Celo-native stablecoin wallet with more than 10 million activations, concentrated in exactly the markets Tenda's own gig examples name &mdash; Lagos, Nairobi, Accra, Johannesburg &mdash; and its users hold stablecoins and no gas token. Tenda's Celo build already satisfies that constraint. This is the one partnership that converts a testnet demo into the transaction volume every other tier-three row on this page is gated on.</p>
+  </div>
+  <div class="tw"><table>
+    <colgroup><col class="c-nm"><col class="c-ty"><col class="c-am"><col class="c-hk"><col class="c-un"><col class="c-gt"><col class="c-wn"></colgroup>
+    <thead><tr><th>Partner</th><th>Type</th><th>What it provides</th><th>Why Tenda fits</th><th>What it unlocks</th><th>Condition</th><th>Window</th></tr></thead>
+    <tbody>
+      <tr data-gate="open"><td class="nm"><b>MiniPay Mini App</b><span class="by">Opera &middot; on Celo</span></td><td>Distribution</td><td class="amt">Up to $1M in CELO<small>Performance-based builder incentives + $5K monthly prize pool + Opera product, BD and marketing support</small></td><td>10M+ activations, fastest-growing non-custodial wallet in the Global South, users hold stablecoins and no gas token. Tenda on Celo already pays gas in USDC via <code>feeCurrency</code> &mdash; the integration constraint is already met, not a roadmap item.</td><td>Distribution into millions of users in Tenda's exact markets; the transaction volume that unlocks Celo's Anchor pool</td><td><span class="chip open">Open now</span></td><td class="win">Programme live<small class="ver">Confirmed Aug 2026</small></td></tr>
+      <tr data-gate="open"><td class="nm"><b>MiniPay Mini App Roadshow</b><span class="by">Opera &amp; Celo regional ambassadors</span></td><td>Programme</td><td class="amt">Non-financial<small>Local go-to-market support per region</small></td><td>Regional ambassadors localise Mini Apps per market &mdash; a direct route into NG, KE, GH and ZA without building a country team.</td><td>Local user acquisition without local headcount</td><td><span class="chip open">Open now</span></td><td class="win">Ongoing<small class="ver">Confirmed Aug 2026</small></td></tr>
+      <tr data-gate="traction"><td class="nm"><b>Verda Ventures MiniPay fund</b><span class="by">Verda Ventures &times; Opera</span></td><td>Equity</td><td class="amt">$40M fund<small>Backs companies building financial products around MiniPay</small></td><td>Equity capital, so it follows evidence. Ship the Mini App first; this is the natural second conversation, not the first.</td><td>Priced round with a strategically aligned lead</td><td><span class="chip gated">Traction</span></td><td class="win">Rolling<small class="ver">Confirmed Aug 2026</small></td></tr>
+      <tr data-gate="mainnet"><td class="nm"><b>Solana Mobile dApp Store</b><span class="by">Solana Mobile &middot; Seeker</span></td><td>Distribution</td><td class="amt">Placement<small>No platform fee cut</small></td><td>The reduced Seeker fee is already live in the product. Store placement is the distribution half of a commitment Tenda has already made.</td><td>A committed crypto-native audience for the first real gigs</td><td><span class="chip gated">Mainnet</span></td><td class="win">Continuous<small class="ver q">Verify listing rules</small></td></tr>
+      <tr data-gate="mainnet"><td class="nm"><b>Base App mini apps</b><span class="by">Coinbase</span></td><td>Distribution</td><td class="amt">Placement + grants<small>Often bundled with CDP incentives</small></td><td>Base's stated purpose is onboarding non-crypto users. A gig that pays 11 USDC with no gas token is a clean demonstration of that.</td><td>Western remote-work demand to match African supply</td><td><span class="chip gated">Mainnet</span></td><td class="win">Rolling<small class="ver q">Verify</small></td></tr>
+      <tr data-gate="open"><td class="nm"><b>Reown / WalletConnect</b><span class="by">Reown</span></td><td>Tech + co-marketing</td><td class="amt">Ecosystem support<small>Grants and joint launches</small></td><td>AppKit is already integrated &mdash; 400+ wallets supported. Existing integrations are the cheapest partnership conversations to open.</td><td>Co-marketing at launch; possible ecosystem funding</td><td><span class="chip open">Open now</span></td><td class="win">Rolling<small class="ver q">Verify programme</small></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="tsec" id="s-impact">
+  <div class="shead">
+    <span class="eyebrow">Category &middot; funds the current stage</span>
+    <h2>Impact &amp; development finance</h2>
+    <p class="dek">This is the one category of funder that pays for a pilot rather than a business. Development finance measures success in evidence generated, not revenue &mdash; which means an unaudited testnet running a controlled pilot in Nairobi is a fundable proposition here and nowhere else on this page. Tenda's profile is close to ideal: informal workers, stablecoin settlement, mobile-money off-ramps, and eight fiat markets across Africa and Southeast Asia.</p>
+  </div>
+  <div class="tw"><table>
+    <colgroup><col class="c-nm"><col class="c-ty"><col class="c-am"><col class="c-hk"><col class="c-un"><col class="c-gt"><col class="c-wn"></colgroup>
+    <thead><tr><th>Funder</th><th>Type</th><th>Ticket &amp; terms</th><th>Why Tenda qualifies today</th><th>What it unlocks</th><th>Condition</th><th>Window</th></tr></thead>
+    <tbody>
+      <tr data-gate="open"><td class="nm"><b>Crypto for Good Fund</b><span class="by">Mercy Corps Ventures</span></td><td>Grant</td><td class="amt">Up to $100K<small>Equity-free; pilot-structured; plus impact-measurement advisory and partnership access</small></td><td>The closest fit on this page. MCV funds blockchain pilots for financial inclusion in Africa and Southeast Asia specifically &mdash; three completed rounds, 15+ pilots, 40,000+ users reached. Tenda is a blockchain payments pilot in Kenya, Nigeria and Ghana with M-Pesa and MoMo off-ramps. Being pre-mainnet is not a disqualifier here; it is the point.</td><td>A funded, measured pilot &mdash; the evidence base every later row demands</td><td><span class="chip open">Open now</span></td><td class="win">Round-based<small class="ver q">Confirm current round is open</small></td></tr>
+      <tr data-gate="open"><td class="nm"><b>MCV Crypto Lab</b><span class="by">Mercy Corps Ventures</span></td><td>Programme</td><td class="amt">Technical + design support<small>Non-financial</small></td><td>Runs alongside the fund and shapes pilot design. Worth entering even if a funding round is closed.</td><td>Research partnership and pilot methodology</td><td><span class="chip open">Open now</span></td><td class="win">Ongoing<small class="ver q">Verify</small></td></tr>
+      <tr data-gate="open"><td class="nm"><b>GSMA Innovation Fund</b><span class="by">GSMA</span></td><td>Grant</td><td class="amt">Typically $100K&ndash;$300K<small>Non-dilutive; mobile-enabled services</small></td><td>Tenda settles to M-Pesa, MoMo and GCash &mdash; three mobile money networks whose operators are GSMA members. Mobile-money-adjacent products are the fund's core mandate.</td><td>Funding plus warm introductions to the exact MNOs Tenda needs</td><td><span class="chip open">Open now</span></td><td class="win">Call-based<small class="ver q">Check open calls</small></td></tr>
+      <tr data-gate="open"><td class="nm"><b>Catalyst Fund</b><span class="by">BFA Global</span></td><td>Grant + support</td><td class="amt">~$100K + venture building<small>Non-dilutive; Africa-focused</small></td><td>Backs inclusive-fintech startups serving underserved African users. Escrow for informal workers is squarely in scope.</td><td>Pilot funding plus operator support in-market</td><td><span class="chip open">Open now</span></td><td class="win">Cohort-based<small class="ver q">Verify current thesis</small></td></tr>
+      <tr data-gate="open"><td class="nm"><b>Interledger Foundation</b><span class="by">Interledger</span></td><td>Grant</td><td class="amt">Varies by track<small>Non-dilutive; open payments</small></td><td>Funds open, interoperable payments infrastructure for the financially excluded. Tenda's contracts are open source and cross-chain by design.</td><td>Protocol and interoperability work</td><td><span class="chip open">Open now</span></td><td class="win">Rolling<small class="ver q">Verify tracks</small></td></tr>
+      <tr data-gate="traction"><td class="nm"><b>FSD Africa / FSD Kenya</b><span class="by">DFID-backed</span></td><td>Grant</td><td class="amt">Programme-scale<small>Non-dilutive; regulator-adjacent</small></td><td>Deep relationships with Kenyan and pan-African financial regulators &mdash; relevant well beyond the money, given the Exchange surface's licensing exposure.</td><td>Regulatory navigation for the fiat surface</td><td><span class="chip gated">Traction</span></td><td class="win">Programme cycles<small class="ver q">Verify</small></td></tr>
+      <tr data-gate="traction"><td class="nm"><b>Mastercard Foundation</b><span class="by">Young Africa Works / Resilience &amp; Prosperity</span></td><td>Grant</td><td class="amt">Large, slow<small>Non-dilutive; employment-outcome measured</small></td><td>Mandate is dignified work for young Africans. Tenda's thesis &mdash; workers paid without going first &mdash; maps directly, but these are multi-year processes with heavy reporting.</td><td>Scale funding once employment outcomes are measurable</td><td><span class="chip gated">Traction</span></td><td class="win">Long cycles<small class="ver q">Verify</small></td></tr>
+      <tr data-gate="traction"><td class="nm"><b>UNCDF &middot; UNDP &middot; Gates Foundation</b><span class="by">Multilateral &amp; philanthropic</span></td><td>Grant</td><td class="amt">Programme-scale<small>Digital public infrastructure and inclusive finance</small></td><td>Reachable, but these funders move on institutional timelines and expect an audited, licensed counterparty.</td><td>Long-horizon scale capital</td><td><span class="chip gated">Traction</span></td><td class="win">Long cycles<small class="ver q">Verify</small></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="tsec" id="s-accel">
+  <div class="shead">
+    <span class="eyebrow">Category &middot; fastest route to a cheque</span>
+    <h2>Hackathons &amp; accelerators</h2>
+    <p class="dek">Hackathons are the only funding mechanism on this page that treats being unaudited and pre-launch as normal. Colosseum's autumn hackathon opens 28 September and runs to 2 November &mdash; a working escrow program on Solana devnet is already a submission. The prize is the smaller part; acceptance into the accelerator and pre-seed funding is the real outcome.</p>
+  </div>
+  <div class="tw"><table>
+    <colgroup><col class="c-nm"><col class="c-ty"><col class="c-am"><col class="c-hk"><col class="c-un"><col class="c-gt"><col class="c-wn"></colgroup>
+    <thead><tr><th>Programme</th><th>Type</th><th>Ticket &amp; terms</th><th>Why Tenda qualifies today</th><th>What it unlocks</th><th>Condition</th><th>Window</th></tr></thead>
+    <tbody>
+      <tr data-gate="open"><td class="nm"><b>Colosseum autumn hackathon</b><span class="by">Colosseum &middot; Solana</span></td><td>Hackathon</td><td class="amt">Prizes + pre-seed<small>$2.5M+ deployed into winning founders via Colosseum's fund</small></td><td>The most concrete near-term date on this page. The spring edition drew 2,857 submissions from 150 countries, so the bar is high &mdash; but a live escrow with a real African gig corpus is a genuine differentiator against another DeFi primitive.</td><td>Prize capital, accelerator entry, and Solana ecosystem visibility in one</td><td><span class="chip open">Open now</span></td><td class="win">28 Sep &ndash; 2 Nov 2026<small class="ver">Confirmed Aug 2026</small></td></tr>
+      <tr data-gate="open"><td class="nm"><b>Colosseum Eternal sprint</b><span class="by">Colosseum</span></td><td>Competition</td><td class="amt">Pre-seed consideration<small>Runs continuously between hackathons</small></td><td>Built for teams already building who do not want to wait for a hackathon window. Zero reason not to be in it now.</td><td>Pre-seed consideration without waiting for a date</td><td><span class="chip open">Open now</span></td><td class="win">Continuous<small class="ver">Confirmed Aug 2026</small></td></tr>
+      <tr data-gate="mainnet"><td class="nm"><b>Colosseum Accelerator</b><span class="by">Colosseum</span></td><td>Accelerator</td><td class="amt">Pre-seed + programme<small>Equity; cohort-based</small></td><td>Entry runs primarily through hackathon placement. Treat the autumn hackathon as the application.</td><td>Structured pre-seed and a Solana founder network</td><td><span class="chip gated">Via hackathon</span></td><td class="win">Cohort<small class="ver">Confirmed Aug 2026</small></td></tr>
+      <tr data-gate="mainnet"><td class="nm"><b>Base Batches</b><span class="by">Base / Coinbase</span></td><td>Accelerator</td><td class="amt">$10K to top 15<small>8-week virtual programme + Demo Day in SF; 3+ teams receive $50K from the Base Ecosystem Fund</small></td><td>The clearest structured path from Base contracts to Base capital. Needs the EVM side live and demonstrable.</td><td>Grant, programme, investor access and a US demo stage</td><td><span class="chip gated">Mainnet</span></td><td class="win">Annual cohort<small class="ver">Confirmed Aug 2026</small></td></tr>
+      <tr data-gate="open"><td class="nm"><b>Celo Camp</b><span class="by">Celo ecosystem</span></td><td>Accelerator</td><td class="amt">Grant + mentorship<small>Cohort-based</small></td><td>Runs alongside Prezenti rather than competing with it &mdash; a team can hold both. Strong fit given the Celo build is live.</td><td>Celo ecosystem depth and follow-on introductions</td><td><span class="chip open">Open now</span></td><td class="win">Cohort<small class="ver q">Verify next cohort</small></td></tr>
+      <tr data-gate="open"><td class="nm"><b>ETHGlobal &amp; Encode Club</b><span class="by">Hackathon circuits</span></td><td>Hackathon</td><td class="amt">Bounties $1K&ndash;$10K<small>Sponsor prizes stack per event</small></td><td>Sponsor bounties from Circle, Celo and wallet providers can often be won with integration work Tenda needs to do anyway.</td><td>Cash for work already on the roadmap</td><td><span class="chip open">Open now</span></td><td class="win">Year-round<small class="ver q">Check calendar</small></td></tr>
+      <tr data-gate="mainnet"><td class="nm"><b>Alliance DAO &middot; a16z CSX &middot; Orange DAO</b><span class="by">Crypto accelerators</span></td><td>Accelerator</td><td class="amt">$25K&ndash;$500K<small>Equity or SAFE</small></td><td>Tier-one crypto accelerators. All will ask about the audit, the mediation centralisation and the Exchange licensing before anything else.</td><td>Institutional pre-seed and a US investor network</td><td><span class="chip gated">Mainnet</span></td><td class="win">Cohorts<small class="ver q">Verify</small></td></tr>
+      <tr data-gate="traction"><td class="nm"><b>Techstars ARM Labs Lagos &middot; MEST &middot; Norrsken &middot; Antler</b><span class="by">African accelerators</span></td><td>Accelerator</td><td class="amt">$20K&ndash;$120K<small>Equity; in-market</small></td><td>Local operator networks, regulatory familiarity and African investor access &mdash; the things crypto accelerators cannot provide.</td><td>In-market operations and local capital</td><td><span class="chip gated">Traction</span></td><td class="win">Cohorts<small class="ver q">Verify</small></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="tsec" id="s-infra">
+  <div class="shead">
+    <span class="eyebrow">Category &middot; suppliers who fund you</span>
+    <h2>Stablecoin &amp; infrastructure programmes</h2>
+    <p class="dek">USDC is Tenda's settlement asset on all three chains, which makes Circle a supplier with a grants budget. One honest caveat: the relaunched programme now weights heavily toward Arc being core to the flow of value, and Tenda does not touch Arc. Read that as a condition to meet, not a door that is open.</p>
+  </div>
+  <div class="tw"><table>
+    <colgroup><col class="c-nm"><col class="c-ty"><col class="c-am"><col class="c-hk"><col class="c-un"><col class="c-gt"><col class="c-wn"></colgroup>
+    <thead><tr><th>Programme</th><th>Type</th><th>Ticket &amp; terms</th><th>Why Tenda qualifies today</th><th>What it unlocks</th><th>Condition</th><th>Window</th></tr></thead>
+    <tbody>
+      <tr data-gate="hold"><td class="nm"><b>Circle Developer Grants</b><span class="by">Circle</span></td><td>Grant</td><td class="amt">Up to $100K in USDC<small>Milestone-based + technical guidance and co-marketing</small></td><td>USDC is the settlement asset across Solana, Base and Celo, and CCTP is a natural fit for cross-chain escrow. But the application window is currently closed, and the relaunched programme prioritises Arc integrations. Join the Discord, plan an Arc or CCTP integration, apply at the next cycle.</td><td>The largest single non-dilutive cheque available from a supplier</td><td><span class="chip hold">Window closed</span></td><td class="win">Next cycle<small class="ver">Confirmed Aug 2026</small></td></tr>
+      <tr data-gate="open"><td class="nm"><b>AWS Activate &middot; Google Cloud &middot; Microsoft Founders Hub</b><span class="by">Cloud credits</span></td><td>Credits</td><td class="amt">$5K&ndash;$100K in credits<small>Non-dilutive; near-automatic approval</small></td><td>Indexers, proof storage and the Exchange matching layer all cost money to run. The lowest-effort item on this page by a wide margin.</td><td>Infrastructure runway during the pre-revenue period</td><td><span class="chip open">Open now</span></td><td class="win">Rolling<small class="ver q">Standard programmes</small></td></tr>
+      <tr data-gate="open"><td class="nm"><b>Filecoin / Arweave / Storacha</b><span class="by">Decentralised storage</span></td><td>Grant + credits</td><td class="amt">Grants + free tiers<small>Non-dilutive</small></td><td>Photo and video proof is Tenda's release condition, so proof storage is core infrastructure rather than a nice-to-have. Storage-network grant programmes actively fund exactly this use case.</td><td>Durable, verifiable proof storage &mdash; and a stronger dispute record</td><td><span class="chip open">Open now</span></td><td class="win">Rolling<small class="ver q">Verify</small></td></tr>
+      <tr data-gate="open"><td class="nm"><b>Privy &middot; Dynamic &middot; Turnkey</b><span class="by">Embedded wallets</span></td><td>Startup programme</td><td class="amt">Free tiers + support<small>Non-dilutive</small></td><td>The press kit offers to let users "start with none at all". Embedded-wallet vendors give that away free at Tenda's volume and co-market the result.</td><td>Zero-wallet onboarding for non-crypto workers</td><td><span class="chip open">Open now</span></td><td class="win">Rolling<small class="ver q">Verify</small></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="tsec" id="s-rails">
+  <div class="shead">
+    <span class="eyebrow">Category &middot; makes the Exchange real</span>
+    <h2>Cash rails, off-ramps &amp; compliance</h2>
+    <p class="dek">Tenda Exchange trades against eight fiat currencies over bank transfer, M-Pesa, MoMo and GCash. These partnerships are what make that surface function &mdash; and they carry the sharpest risk on this page. A peer-to-peer fiat venue is a regulated activity in most of Tenda's target markets. Treat licensing as a workstream, not a footnote.</p>
+  </div>
+  <div class="tw"><table>
+    <colgroup><col class="c-nm"><col class="c-ty"><col class="c-am"><col class="c-hk"><col class="c-un"><col class="c-gt"><col class="c-wn"></colgroup>
+    <thead><tr><th>Partner</th><th>Type</th><th>What it provides</th><th>Why Tenda needs it</th><th>What it unlocks</th><th>Condition</th><th>Window</th></tr></thead>
+    <tbody>
+      <tr data-gate="audit"><td class="nm"><b>Kotani Pay</b><span class="by">Crypto &harr; mobile money, Africa</span></td><td>Rails</td><td class="amt">API + revenue share<small>Commercial partnership</small></td><td>Purpose-built for stablecoin-to-mobile-money conversion across African markets. The single best technical match for Tenda's M-Pesa and MoMo settlement legs.</td><td>Real off-ramp coverage in KE, GH, NG without building rails</td><td><span class="chip gated">Post-audit</span></td><td class="win">Commercial<small class="ver q">Verify coverage</small></td></tr>
+      <tr data-gate="audit"><td class="nm"><b>Yellow Card</b><span class="by">Pan-African on/off ramp</span></td><td>Rails</td><td class="amt">API + liquidity<small>Licensed across multiple markets</small></td><td>Licensed presence across much of Africa. Partnering may substantially reduce Tenda's own licensing burden on the Exchange surface.</td><td>Compliant fiat liquidity and licensing cover</td><td><span class="chip gated">Post-audit</span></td><td class="win">Commercial<small class="ver q">Verify</small></td></tr>
+      <tr data-gate="audit"><td class="nm"><b>Onafriq &middot; Flutterwave &middot; Paystack</b><span class="by">African payment infrastructure</span></td><td>Rails</td><td class="amt">API + settlement<small>Per-transaction pricing</small></td><td>Bank-transfer legs for NGN, GHS, KES and ZAR &mdash; four of Tenda's eight fiat markets.</td><td>Bank settlement outside mobile money</td><td><span class="chip gated">Post-audit</span></td><td class="win">Commercial<small class="ver q">Verify</small></td></tr>
+      <tr data-gate="audit"><td class="nm"><b>M-Pesa Daraja &middot; MTN MoMo Open API &middot; GCash</b><span class="by">Mobile network operators</span></td><td>Rails</td><td class="amt">Direct integration<small>Longer approval cycles</small></td><td>Direct MNO integration is cheaper per transaction than aggregation but far slower to approve. A GSMA relationship materially shortens this path.</td><td>Margin on the fiat leg; deeper market access</td><td><span class="chip gated">Post-audit</span></td><td class="win">Long lead<small class="ver q">Verify</small></td></tr>
+      <tr data-gate="audit"><td class="nm"><b>Smile ID &middot; Sumsub &middot; Persona</b><span class="by">KYC &amp; identity</span></td><td>Compliance</td><td class="amt">Per-verification<small>Smile ID is Africa-specialised</small></td><td>The Exchange surface almost certainly requires identity verification. Smile ID handles African ID documents that global vendors handle poorly.</td><td>A legally operable Exchange</td><td><span class="chip gated">Post-audit</span></td><td class="win">Commercial<small class="ver q">Verify</small></td></tr>
+      <tr data-gate="audit"><td class="nm"><b>TRM Labs &middot; Chainalysis</b><span class="by">Blockchain analytics</span></td><td>Compliance</td><td class="amt">Startup tiers available<small>Often discounted pre-revenue</small></td><td>Sanctions and wallet screening is table stakes for any fiat-touching partner. Most rails partners will require it before signing.</td><td>Prerequisite for every row above</td><td><span class="chip gated">Post-audit</span></td><td class="win">Commercial<small class="ver q">Verify</small></td></tr>
+      <tr data-gate="audit"><td class="nm"><b>Licensing counsel &mdash; NG, KE, ZA, GH, PH</b><span class="by">Regulatory</span></td><td>Cost, not funding</td><td class="amt">Material spend<small>Budget line, not a grant</small></td><td>A P2P fiat venue plausibly triggers VASP or money-transmission obligations in every market Tenda names. This belongs in a funding plan because it must be paid for before the Exchange scales.</td><td>The right to operate the Exchange surface at all</td><td><span class="chip gated">Post-audit</span></td><td class="win">Ahead of scale<small class="ver q">Take local advice</small></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="tsec" id="s-gaps">
+  <div class="shead">
+    <span class="eyebrow">Category &middot; fixes a stated gap</span>
+    <h2>Partnerships that close product gaps</h2>
+    <p class="dek">Tenda's own press kit names its weaknesses: auto-approve is designed but unshipped, and disputes are resolved by "Tenda mediation" &mdash; a human process that sits awkwardly beside "if you have to trust us, we built it wrong." Both gaps have off-the-shelf partners, and funding a partner integration is an easier grant application than funding headcount.</p>
+  </div>
+  <div class="tw"><table>
+    <colgroup><col class="c-nm"><col class="c-ty"><col class="c-am"><col class="c-hk"><col class="c-un"><col class="c-gt"><col class="c-wn"></colgroup>
+    <thead><tr><th>Partner</th><th>Type</th><th>What it provides</th><th>The gap it closes</th><th>What it unlocks</th><th>Condition</th><th>Window</th></tr></thead>
+    <tbody>
+      <tr data-gate="open"><td class="nm"><b>Kleros</b><span class="by">Decentralised arbitration</span></td><td>Protocol</td><td class="amt">Per-dispute fee<small>Integration grants sometimes available</small></td><td>Replaces or backstops centralised Tenda mediation, resolving the contradiction between a 24-hour human mediation step and "no admin key, no pause button."</td><td>A dispute route that survives the trust argument the product is built on</td><td><span class="chip open">Open now</span></td><td class="win">Rolling<small class="ver q">Verify</small></td></tr>
+      <tr data-gate="open"><td class="nm"><b>UMA optimistic oracle &middot; Chainlink Automation</b><span class="by">Oracles &amp; keepers</span></td><td>Protocol</td><td class="amt">Integration grants<small>Both run builder programmes</small></td><td>Ships auto-approve &mdash; the 48-hour release the press kit lists as planned. Until it exists, a silent poster leaves worker funds locked, which is the product's sharpest live flaw.</td><td>Closes the one honest weakness in the four exit routes</td><td><span class="chip open">Open now</span></td><td class="win">Rolling<small class="ver q">Verify</small></td></tr>
+      <tr data-gate="mainnet"><td class="nm"><b>EAS &middot; Gitcoin Passport &middot; World ID</b><span class="by">Attestation &amp; personhood</span></td><td>Protocol</td><td class="amt">Grants available<small>Non-dilutive</small></td><td>Worker reputation across gigs, and sybil resistance on any first-escrow subsidy. The SOL grant covering a first escrow is farmable without it.</td><td>Protects the onboarding subsidy; makes reputation portable</td><td><span class="chip gated">Mainnet</span></td><td class="win">Rolling<small class="ver q">Verify</small></td></tr>
+      <tr data-gate="traction"><td class="nm"><b>Ajira Digital &middot; Digital Jobs Africa &middot; local delivery networks</b><span class="by">Demand-side partners</span></td><td>Distribution</td><td class="amt">Non-financial<small>Programme partnerships</small></td><td>Government and NGO digital-work programmes already aggregate the exact worker population Tenda serves. Supply is easier to find than demand; these partners bring posted gigs.</td><td>Gig supply at launch instead of an empty marketplace</td><td><span class="chip gated">Traction</span></td><td class="win">Programme cycles<small class="ver q">Verify</small></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="tsec" id="s-fellow">
+  <div class="shead">
+    <span class="eyebrow">Category &middot; backs the person, not the company</span>
+    <h2>Fellowships for the core team</h2>
+    <p class="dek">Fellowships fund founders rather than products, which makes them uniquely unbothered by an unaudited codebase. They are slow, personal and competitive, and they should run as a background process rather than a quarter's focus. The 2026 Echoing Green cycle has already closed &mdash; note the September pattern and prepare rather than scramble.</p>
+  </div>
+  <div class="tw"><table>
+    <colgroup><col class="c-nm"><col class="c-ty"><col class="c-am"><col class="c-hk"><col class="c-un"><col class="c-gt"><col class="c-wn"></colgroup>
+    <thead><tr><th>Fellowship</th><th>Type</th><th>Ticket &amp; terms</th><th>Why a Tenda founder qualifies</th><th>What it unlocks</th><th>Condition</th><th>Window</th></tr></thead>
+    <tbody>
+      <tr data-gate="hold"><td class="nm"><b>Echoing Green Fellowship</b><span class="by">Echoing Green</span></td><td>Fellowship</td><td class="amt">$100K seed + stipend<small>Non-dilutive; open to all nationalities</small></td><td>Backs early social entrepreneurs. Payment security for informal workers is a clean fit &mdash; but the 2026 deadline passed in October 2025. Applications typically open in September, so prepare now for the next cycle.</td><td>Personal runway plus a global impact network</td><td><span class="chip hold">Cycle closed</span></td><td class="win">Next cycle ~Sep<small class="ver">Confirmed Aug 2026</small></td></tr>
+      <tr data-gate="open"><td class="nm"><b>Emergent Ventures</b><span class="by">Mercatus Center</span></td><td>Grant</td><td class="amt">$10K&ndash;$100K<small>Non-dilutive; short application, fast decision</small></td><td>Deliberately unstructured and comfortable with unconventional, early ideas. The lowest cost-to-apply of any fellowship here.</td><td>Fast, unrestricted personal funding</td><td><span class="chip open">Open now</span></td><td class="win">Rolling<small class="ver q">Verify</small></td></tr>
+      <tr data-gate="open"><td class="nm"><b>Obama Foundation Leaders Africa</b><span class="by">Obama Foundation</span></td><td>Fellowship</td><td class="amt">Non-financial<small>Leadership programme + network</small></td><td>Africa-focused leadership programme for founders building civic and economic impact on the continent.</td><td>Continental network and credibility with impact funders</td><td><span class="chip open">Open now</span></td><td class="win">Annual<small class="ver q">Check cycle</small></td></tr>
+      <tr data-gate="open"><td class="nm"><b>Mandela Washington Fellowship</b><span class="by">YALI / US State Dept</span></td><td>Fellowship</td><td class="amt">Fully funded<small>Non-dilutive; young African leaders</small></td><td>Business and entrepreneurship track, open to young African founders. Well-recognised by African institutional funders.</td><td>US network and institutional legitimacy</td><td><span class="chip open">Open now</span></td><td class="win">Annual, ~Sep open<small class="ver q">Check cycle</small></td></tr>
+      <tr data-gate="traction"><td class="nm"><b>Endeavor Entrepreneur</b><span class="by">Endeavor</span></td><td>Network</td><td class="amt">Non-financial<small>Selection is traction-based</small></td><td>Strong presence in Nigeria, Kenya and South Africa. Selection requires demonstrated scale, so this is a later milestone.</td><td>Growth-stage mentorship and investor access</td><td><span class="chip gated">Traction</span></td><td class="win">Rolling<small class="ver q">Verify</small></td></tr>
+      <tr data-gate="open"><td class="nm"><b>Ashoka &middot; Unreasonable &middot; Village Capital</b><span class="by">Social entrepreneurship networks</span></td><td>Fellowship</td><td class="amt">Varies; often stipend + network<small>Non-dilutive</small></td><td>All fund founders addressing structural economic exclusion. Tenda's framing &mdash; nobody has to go first &mdash; translates well outside crypto audiences.</td><td>Non-crypto validation and funder introductions</td><td><span class="chip open">Open now</span></td><td class="win">Varies<small class="ver q">Verify each</small></td></tr>
+      <tr data-gate="hold"><td class="nm"><b>Acumen Academy Africa fellowships</b><span class="by">Acumen</span></td><td>Fellowship</td><td class="amt">Fully funded<small>Non-dilutive</small></td><td>The open 2026 African cohort is Green RISE, which is climate-scoped and not a fit for Tenda. Watch for a general or fintech-scoped cohort rather than forcing this one.</td><td>Nothing this cycle &mdash; monitor only</td><td><span class="chip hold">Wrong scope</span></td><td class="win">Watch<small class="ver">Confirmed Aug 2026</small></td></tr>
+      <tr data-gate="hold"><td class="nm"><b>Google for Startups Black Founders Fund Africa</b><span class="by">Google for Startups</span></td><td>Grant</td><td class="amt">Historically non-dilutive<small>Nigeria, Kenya, Ghana, South Africa all eligible</small></td><td>Strong historical fit and eligible geographies, but there is no open African application window right now &mdash; Google currently presents it as a past initiative. Monitor rather than plan around it.</td><td>Nothing this cycle &mdash; monitor only</td><td><span class="chip hold">No open window</span></td><td class="win">Watch<small class="ver">Confirmed Aug 2026</small></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="sequence">
+  <div class="shead">
+    <span class="eyebrow">Execution</span>
+    <h2>The order to work it in</h2>
+    <p class="dek">This is a real sequence, not a priority list &mdash; each block depends on the one before it. A small team cannot run fifty applications; it can run the six that unlock the rest.</p>
+  </div>
+  <div class="seq">
+    <div class="sq">
+      <div class="when"><b>01</b>Next 30 days</div>
+      <ul>
+        <li><strong>Fix the three things the press kit already flagged.</strong> Every grant reviewer reads the site. "Marketplace &middot; Gigs" contradicts the positioning, and "paid instantly after completing a task" is inaccurate against the product's own mechanics. These are application blockers, not marketing tidiness.</li>
+        <li><strong>Apply to Prezenti Season 3, Frontier pool.</strong> The window is open and confirmed until 29 December. The <code>feeCurrency</code> implementation is the strongest single technical argument Tenda can make to any funder.</li>
+        <li><strong>Open the MiniPay conversation.</strong> Highest leverage item on this page. Enter the Mini App builder incentive programme and the roadshow.</li>
+        <li><strong>Register for the Colosseum autumn hackathon</strong> (28 Sep &ndash; 2 Nov) and start an Eternal sprint immediately.</li>
+        <li><strong>Submit to the EF Audit Subsidy Program</strong> for the Solidity contracts, and a Solana Foundation grant covering the Anchor program audit.</li>
+        <li><strong>Take the free money.</strong> Superteam Nigeria grant and bounties; cloud credits. Days of effort, not weeks.</li>
+      </ul>
+    </div>
+    <div class="sq">
+      <div class="when"><b>02</b>30&ndash;90 days</div>
+      <ul>
+        <li><strong>Book the audit</strong> with whatever combination of subsidy, contest and grant lands. Publish the engagement &mdash; it closes two "Unknown" rows on the fact sheet.</li>
+        <li><strong>Apply to the Mercy Corps Ventures Crypto for Good Fund.</strong> Up to $100K equity-free, and the only funder on this page for which testnet-stage is the right stage. Frame the whole thing as a measured pilot.</li>
+        <li><strong>Ship auto-approve.</strong> It is the one acknowledged flaw where a poster's silence strands a worker's money, and it is the single most convincing thing to fix before asking anyone for growth capital.</li>
+        <li><strong>Finish the Base Paymaster integration</strong> and apply to the next CDP Builder Grants round.</li>
+        <li><strong>Start GSMA and Catalyst Fund conversations.</strong> Long lead times &mdash; begin before you need them.</li>
+      </ul>
+    </div>
+    <div class="sq">
+      <div class="when"><b>03</b>90&ndash;180 days</div>
+      <ul>
+        <li><strong>Audit complete &rarr; mainnet.</strong> Gate 1 clears, and roughly half of this page unlocks at once.</li>
+        <li><strong>Become discoverable on Base.</strong> Builder Grants are retroactive and awarded on shipped work &mdash; deploy, get used, then self-nominate.</li>
+        <li><strong>Sign one off-ramp partner</strong> &mdash; Kotani Pay or Yellow Card &mdash; rather than building rails. Pair it with KYC and screening vendors in the same workstream.</li>
+        <li><strong>Get licensing advice for the Exchange surface</strong> in Nigeria and Kenya first. This is the largest unpriced risk in the plan.</li>
+        <li><strong>Stand up an Immunefi bounty</strong> the week mainnet carries real value.</li>
+      </ul>
+    </div>
+    <div class="sq">
+      <div class="when"><b>04</b>180&ndash;365 days</div>
+      <ul>
+        <li><strong>Convert volume into the Celo Anchor pool</strong> &mdash; roughly $25K at 10K daily transactions, roughly $50K at 100K. MiniPay distribution is how you get there.</li>
+        <li><strong>Raise on evidence, not narrative.</strong> Verda Ventures' MiniPay fund, the Base Ecosystem Fund and Colosseum are all warmer conversations once transactions exist.</li>
+        <li><strong>Return to impact funders with pilot data.</strong> Mastercard Foundation and FSD Africa need measured employment and income outcomes, which the MCV pilot should have produced by now.</li>
+        <li><strong>Run the fellowship cycle.</strong> Echoing Green opens around September; prepare the application in August rather than writing it in a week.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="honest">
+  <div class="shead">
+    <span class="eyebrow">Before you apply</span>
+    <h2>What a reviewer will see</h2>
+    <p class="dek">Grant committees read the same signals investors do. Tenda's position is genuinely strong in ways that are easy to under-sell, and weak in ways that are easy to be caught out on. Both lists below are short on purpose.</p>
+  </div>
+  <div class="two">
+    <div class="card pro">
+      <h3>Argues in your favour</h3>
+      <ul>
+        <li><strong>Three chains, three independent grant pools.</strong> Most applicants can approach one ecosystem. Tenda has legitimate standing with Solana, Base and Celo simultaneously, for the same work.</li>
+        <li><strong>The gas problem is actually solved, not promised.</strong> USDC paying its own gas on Celo and a covered first escrow on Solana are shipped, demonstrable answers to the objection every consumer-crypto funder raises.</li>
+        <li><strong>Open source with test suites, on both VMs.</strong> This is the qualifying condition for most public-goods funding, and Tenda already meets it.</li>
+        <li><strong>Real markets, named specifically.</strong> Lagos, Nairobi, Accra, Johannesburg, plus M-Pesa, MoMo and GCash settlement. Development finance funds this profile; abstract global gig platforms do not get funded.</li>
+        <li><strong>The honesty is an asset.</strong> A team that publishes "auto-approve is designed and not yet shipped" is a team whose numbers a reviewer will believe. Lead with that posture rather than hiding it.</li>
+      </ul>
+    </div>
+    <div class="card con">
+      <h3>Will be raised against you</h3>
+      <ul>
+        <li><strong>No audit.</strong> Nothing consumer-facing gets funded past this. It is the whole plan's critical path.</li>
+        <li><strong>No users and no transactions.</strong> Retroactive and threshold-gated programmes &mdash; Base Builder Grants, the Celo Anchor pool, Optimism retro funding &mdash; are simply unreachable until this changes.</li>
+        <li><strong>Mediation is centralised.</strong> "Tenda mediation instructs the contract within 24h" is a trusted human step inside a product whose pitch is that you should not have to trust Tenda. Expect this question in every technical review.</li>
+        <li><strong>Auto-approve is not shipped.</strong> A silent poster strands a worker's funds. This is the flaw a careful reviewer will find on their own if you do not name it first.</li>
+        <li><strong>The Exchange surface is a regulated activity.</strong> Peer-to-peer fiat trading across eight currencies plausibly requires VASP or money-transmission registration in most target markets. No funder will ignore this, and it is currently unaddressed in public materials.</li>
+        <li><strong>Two open questions on your own fact sheet.</strong> Founder and mainnet date are both listed as unknown. Funders do not fund anonymous teams with undated roadmaps.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="fixfirst">
+  <div class="shead">
+    <span class="eyebrow">Cheapest wins available</span>
+    <h2>Three fixes worth more than any single application</h2>
+  </div>
+  <div class="fix">
+    <div class="fixi"><span class="n">01</span><h3>Name the founder and date the mainnet launch</h3><p>Both sit as "Unknown" on Tenda's own fact sheet. Every grant application, accelerator form and fellowship requires both. This is an afternoon of decisions that unblocks the entire page.</p></div>
+    <div class="fixi"><span class="n">02</span><h3>Publish the audit engagement the moment it is booked</h3><p>"Audit scheduled with a named firm, report due in March" converts the single largest objection into a timeline. Reviewers accept timelines; they do not accept "pending."</p></div>
+    <div class="fixi"><span class="n">03</span><h3>Write the licensing position down, even if it is provisional</h3><p>A one-page statement of how the Exchange surface is structured, which markets are live, and what advice has been taken. Not having an answer is far worse than having a conservative one.</p></div>
+  </div>
+</section>
+
+<footer>
+  <span>Tenda &middot; capital &amp; partnership ledger &middot; Aug 2026</span>
+  <span>64 opportunities &middot; 9 categories</span>
+  <div class="src">
+    <strong style="color:var(--ink);font-family:var(--disp)">Sources for confirmed figures</strong>
+    <span>Programme details, amounts and windows marked <em>Confirmed Aug 2026</em> were checked against solana.org/grants, solanamobile.com/grants, prezenti.xyz and the Celo Forum, blog.colosseum.com, batches.base.org and Coinbase Developer Platform, press.opera.com, mercycorpsventures.com, superteam.fun/earn, circle.com/grant, echoinggreen.org, and Ethereum Foundation audit-subsidy coverage. Everything marked <em>Verify</em> reflects general programme knowledge and should be confirmed before it enters a plan. Ticket sizes move between cycles; treat every figure here as an order of magnitude, not a quote.</span>
+  </div>
+</footer>
+
+</div>
+
+<script>
+(function(){
+  var btns=[].slice.call(document.querySelectorAll(".fbtn"));
+  var rows=[].slice.call(document.querySelectorAll("tbody tr[data-gate]"));
+  var secs=[].slice.call(document.querySelectorAll("section.tsec"));
+  var count=document.getElementById("fcount");
+  function apply(f){
+    var shown=0;
+    rows.forEach(function(r){
+      var on=(f==="all")||r.getAttribute("data-gate")===f;
+      r.hidden=!on; if(on){shown++;}
+    });
+    secs.forEach(function(s){
+      var any=[].slice.call(s.querySelectorAll("tbody tr[data-gate]")).some(function(r){return !r.hidden;});
+      s.hidden=!any;
+    });
+    count.textContent=shown+(shown===1?" shown":" shown");
+    btns.forEach(function(b){b.setAttribute("aria-pressed",String(b.getAttribute("data-f")===f));});
+  }
+  btns.forEach(function(b){b.addEventListener("click",function(){apply(b.getAttribute("data-f"));});});
+  apply("all");
+})();
+</script>
