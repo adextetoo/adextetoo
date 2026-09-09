@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- The mark is the diagram: a small tip, a large mass, one waterline. -->
+  <rect width="32" height="32" rx="7" fill="#0B1A28"/>
+  <path d="M16 5 11.4 14h9.2L16 5Z" fill="#BC8639"/>
+  <path d="M8 17.5h16l-3.6 8.4a1.4 1.4 0 0 1-1.3.8h-6.2a1.4 1.4 0 0 1-1.3-.8L8 17.5Z" fill="#3B97BE"/>
+  <path d="M4 15.6h24" stroke="#B8DCEA" stroke-width="1.7" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,366 @@
+@import "tailwindcss";
+
+/* ==================================================================
+   Waterline — design tokens
+
+   The product argues that a brand is an iceberg, so its own interface
+   is built that way: a deep, cold ground for the strategy work below
+   the waterline, and bright, paper-like surfaces for the identity work
+   above it. The theme is not decoration — it is the argument.
+   ================================================================== */
+
+:root {
+  color-scheme: dark;
+
+  --bg: #060c14;
+  --bg-elev: #0a1420;
+  --panel: #0d1926;
+  --panel-2: #112232;
+  --panel-3: #16293c;
+  --line: #1c2e3f;
+  --line-strong: #2b4358;
+
+  --ink: #eaf2f7;
+  --ink-muted: #9ab0c2;
+  --ink-faint: #6a8398;
+
+  --signal: #4fb3d9;
+  --signal-hover: #6cc4e6;
+  --signal-ink: #04101a;
+  --ice: #b8dcea;
+
+  --good: #56b184;
+  --warn: #d9a05b;
+  --danger: #dd7a64;
+
+  --deep-wash: rgba(79, 179, 217, 0.08);
+  --shadow-lg: 0 24px 60px -20px rgba(0, 0, 0, 0.7);
+  --shadow-sm: 0 2px 8px -2px rgba(0, 0, 0, 0.5);
+
+  --radius: 14px;
+  --radius-sm: 9px;
+  --maxw: 1280px;
+
+  /* --ff-* are injected by next/font on <html>. The fallback inside each var()
+     keeps the stack valid even if a font fails to load, since an unresolvable
+     var() would otherwise invalidate the entire declaration. */
+  --font-serif: var(--ff-display, "Iowan Old Style"), Palatino, Georgia, serif;
+  --font-sans: var(--ff-ui, ui-sans-serif), system-ui, -apple-system, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: var(--ff-code, ui-monospace), "SFMono-Regular", Menlo, Consolas,
+    monospace;
+
+  /* --- Data-visualisation tokens -------------------------------------
+     Two categorical series (strategy / identity) and one five-step
+     ordinal ramp for maturity. Every value below was produced by
+     snap-to-passing against the validator rather than chosen by eye:
+     dark pair clears CVD dE 18.1 protan / 21.4 normal on --panel, and
+     the ramp is monotone in lightness with the faint end at 2.38:1.
+     ------------------------------------------------------------------ */
+  --viz-deep: #3b97be;
+  --viz-surface: #bc8639;
+  --viz-m0: #305a70;
+  --viz-m1: #3a7592;
+  --viz-m2: #4691b2;
+  --viz-m3: #5faccb;
+  --viz-m4: #8acae1;
+  --viz-grid: rgba(154, 176, 194, 0.16);
+  --viz-gap: rgba(188, 134, 57, 0.14);
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+
+  --bg: #f6f4f0;
+  --bg-elev: #ffffff;
+  --panel: #ffffff;
+  --panel-2: #f2efe9;
+  --panel-3: #eae5dc;
+  --line: #e2ddd4;
+  --line-strong: #c8c1b4;
+
+  --ink: #12181d;
+  --ink-muted: #53616c;
+  --ink-faint: #7d8c98;
+
+  --signal: #14708f;
+  --signal-hover: #0e5a75;
+  --signal-ink: #ffffff;
+  --ice: #0b3b4d;
+
+  --good: #2f7f57;
+  --warn: #9a6520;
+  --danger: #a8412c;
+
+  --deep-wash: rgba(20, 112, 143, 0.07);
+  --shadow-lg: 0 24px 50px -24px rgba(20, 30, 40, 0.22);
+  --shadow-sm: 0 1px 3px rgba(20, 30, 40, 0.08);
+
+  --viz-deep: #0a7a9c;
+  --viz-surface: #b4642a;
+  --viz-m0: #8fbace;
+  --viz-m1: #6ba0bb;
+  --viz-m2: #4585a3;
+  --viz-m3: #25698a;
+  --viz-m4: #044a61;
+  --viz-grid: rgba(30, 50, 65, 0.14);
+  --viz-gap: rgba(180, 100, 42, 0.12);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-elev: var(--bg-elev);
+  --color-panel: var(--panel);
+  --color-panel-2: var(--panel-2);
+  --color-panel-3: var(--panel-3);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-muted: var(--ink-muted);
+  --color-faint: var(--ink-faint);
+  --color-signal: var(--signal);
+  --color-signal-hover: var(--signal-hover);
+  --color-signal-ink: var(--signal-ink);
+  --color-ice: var(--ice);
+  --color-good: var(--good);
+  --color-warn: var(--warn);
+  --color-danger: var(--danger);
+  --color-viz-deep: var(--viz-deep);
+  --color-viz-surface: var(--viz-surface);
+
+  --font-display: var(--font-serif);
+  --font-body: var(--font-sans);
+  --font-code: var(--font-mono);
+
+  --radius-card: var(--radius);
+}
+
+/* ------------------------------------------------------------------ */
+
+* {
+  border-color: var(--line);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--signal);
+  color: var(--signal-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Scrollbars, matched to the theme rather than left to the browser. */
+::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--line-strong);
+  border-radius: 99px;
+  border: 3px solid var(--bg);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-faint);
+}
+
+/* ------------------------------------------------------------------ */
+/* Type helpers                                                        */
+/* ------------------------------------------------------------------ */
+
+.display {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.022em;
+  line-height: 1.02;
+}
+
+.serif {
+  font-family: var(--font-serif);
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+.prose-measure {
+  max-width: 68ch;
+}
+
+/* ------------------------------------------------------------------ */
+/* Surfaces                                                            */
+/* ------------------------------------------------------------------ */
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.panel-quiet {
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+/* The abyss gradient — used behind anything representing the deep tier. */
+.abyss {
+  background:
+    radial-gradient(120% 80% at 50% -10%, rgba(79, 179, 217, 0.14), transparent 60%),
+    linear-gradient(180deg, var(--bg-elev), var(--bg) 60%);
+}
+
+/* A fine caustic texture, kept far below the threshold of noticing. */
+.caustics {
+  position: relative;
+  isolation: isolate;
+}
+.caustics::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image:
+    repeating-linear-gradient(
+      100deg,
+      transparent 0 40px,
+      rgba(79, 179, 217, 0.035) 40px 41px,
+      transparent 41px 90px
+    );
+}
+
+.hairline {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line-strong), transparent);
+}
+
+/* ------------------------------------------------------------------ */
+/* Motion                                                              */
+/* ------------------------------------------------------------------ */
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rise {
+  animation: rise 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes swell {
+  0%,
+  100% {
+    transform: translateX(0) scaleY(1);
+  }
+  50% {
+    transform: translateX(-14px) scaleY(1.12);
+  }
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+.drift {
+  animation: drift 9s ease-in-out infinite;
+}
+
+@keyframes sheen {
+  from {
+    background-position: -220% 0;
+  }
+  to {
+    background-position: 220% 0;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Print — the brand book has to survive being printed for a board     */
+/* ------------------------------------------------------------------ */
+
+@media print {
+  :root {
+    --bg: #ffffff;
+    --bg-elev: #ffffff;
+    --panel: #ffffff;
+    --panel-2: #ffffff;
+    --line: #d4d4d4;
+    --ink: #000000;
+    --ink-muted: #333333;
+    --ink-faint: #555555;
+  }
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .page-break {
+    break-before: page;
+  }
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 10px;
+    color: #555;
+  }
+}
