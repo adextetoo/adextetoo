@@ -35,10 +35,11 @@
 
 <p align="left">
   <a href="https://github.com/adextetoo/caysra-n8n"><img width="278" src="https://denvercoder1-github-readme-stats.vercel.app/api/pin/?username=adextetoo&repo=caysra-n8n&theme=react&bg_color=20232a&title_color=61D9FA&icon_color=F8D866&hide_border=true&show_icons=true" alt="github-readme-streak-stats"></a>
-  <a href="[https://github.com/adextetoo/prince2]"><img width="278" src="https://denvercoder1-github-readme-stats.vercel.app/api/pin/?username=adextetoo&repo=prince2&theme=react&bg_color=20232a&title_color=61D9FA&icon_color=F8D866&hide_border=true&show_icons=true" alt="github-readme-streak-stats"></a>
+  <a href="https://github.com/adextetoo/prince2"><img width="278" src="https://denvercoder1-github-readme-stats.vercel.app/api/pin/?username=adextetoo&repo=prince2&theme=react&bg_color=20232a&title_color=61D9FA&icon_color=F8D866&hide_border=true&show_icons=true" alt="github-readme-streak-stats"></a>
   <a href="https://github.com/adextetoo/github-trends"><img width="278" src="https://denvercoder1-github-readme-stats.vercel.app/api/pin/?username=adextetoo&repo=github-trends&theme=react&bg_color=20232a&title_color=61D9FA&icon_color=F8D866&hide_border=true&show_icons=true" alt="github-readme-streak-stats"></a>
-  <a href="https://github.com/adextetoo/nsn-energiemonitor"><img width="278" src="https://github.com/adextetoo/nsn-energiemonitor?username=adextetoo&repo=nsn-energiemonitor&theme=react&bg_color=20232a&title_color=61D9FA&icon_color=F8D866&hide_border=true&bg_color=20232a&title_color=61D9FA&icon_color=F8D866&theme=react&show_icons=true" alt="readme-typing-svg"></a>
   <a href="https://github.com/Design-and-Code/Design-and-Code"><img width="278" src="https://denvercoder1-github-readme-stats.vercel.app/api/pin?username=Design-and-Code&repo=Design-and-Code&theme=react&bg_color=20232a&title_color=61D9FA&icon_color=F8D866&hide_border=true&show_icons=true" alt="custom-icon-badges"></a>
+  <a href="https://github.com/adextetoo/nsn-energiemonitor"><img width="278" src="https://denvercoder1-github-readme-stats.vercel.app/api/pin/?username=adextetoo&repo=prince2&theme=react&bg_color=20232a&title_color=61D9FA&icon_color=F8D866&hide_border=true&show_icons=true" alt="github-readme-streak-stats"></a>
+
 </p>
 <p align="left">
   <a href="https://github.com/adextetootab=repositories"><img alt="All Repositories" title="All Repositories" src="https://custom-icon-badges.herokuapp.com/badge/-All%20Repos-2962FF?style=for-the-badge&logoColor=white&logo=repo"/></a>
